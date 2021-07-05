@@ -1,0 +1,1277 @@
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"sx126x_driver.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.sx126x_init,"ax",%progbits
+  18              		.align	1
+  19              		.global	sx126x_init
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	sx126x_init:
+  27              	.LFB3:
+  28              		.file 1 "Drivers/sx126x/sx126x_driver.c"
+   1:Drivers/sx126x/sx126x_driver.c **** #include "sx126x_driver.h"
+   2:Drivers/sx126x/sx126x_driver.c **** #include <stdio.h>
+   3:Drivers/sx126x/sx126x_driver.c **** #include <string.h>
+   4:Drivers/sx126x/sx126x_driver.c **** #include "board.h"
+   5:Drivers/sx126x/sx126x_driver.c **** #include "gpio.h"
+   6:Drivers/sx126x/sx126x_driver.c **** #include "delay.h"
+   7:Drivers/sx126x/sx126x_driver.c **** #include "timer.h"
+   8:Drivers/sx126x/sx126x_driver.c **** #include "radio.h"
+   9:Drivers/sx126x/sx126x_driver.c **** #include "sx126x.h"
+  10:Drivers/sx126x/sx126x_driver.c **** #include "board-config.h"
+  11:Drivers/sx126x/sx126x_driver.c **** 
+  12:Drivers/sx126x/sx126x_driver.c **** 
+  13:Drivers/sx126x/sx126x_driver.c **** #define USE_MODEM_FSK
+  14:Drivers/sx126x/sx126x_driver.c **** #define RF_FREQUENCY                                433000000 // Hz
+  15:Drivers/sx126x/sx126x_driver.c **** #define TX_OUTPUT_POWER                             14        // dBm
+  16:Drivers/sx126x/sx126x_driver.c **** 
+  17:Drivers/sx126x/sx126x_driver.c **** #if defined( USE_MODEM_LORA )
+  18:Drivers/sx126x/sx126x_driver.c **** 
+  19:Drivers/sx126x/sx126x_driver.c **** #define LORA_BANDWIDTH                              0         // [0: 125 kHz,
+  20:Drivers/sx126x/sx126x_driver.c ****                                                               //  1: 250 kHz,
+  21:Drivers/sx126x/sx126x_driver.c ****                                                               //  2: 500 kHz,
+  22:Drivers/sx126x/sx126x_driver.c ****                                                               //  3: Reserved]
+  23:Drivers/sx126x/sx126x_driver.c **** #define LORA_SPREADING_FACTOR                       7         // [SF7..SF12]
+  24:Drivers/sx126x/sx126x_driver.c **** #define LORA_CODINGRATE                             1         // [1: 4/5,
+  25:Drivers/sx126x/sx126x_driver.c ****                                                               //  2: 4/6,
+  26:Drivers/sx126x/sx126x_driver.c ****                                                               //  3: 4/7,
+  27:Drivers/sx126x/sx126x_driver.c ****                                                               //  4: 4/8]
+  28:Drivers/sx126x/sx126x_driver.c **** #define LORA_PREAMBLE_LENGTH                        8         // Same for Tx and Rx
+  29:Drivers/sx126x/sx126x_driver.c **** #define LORA_SYMBOL_TIMEOUT                         5         // Symbols
+  30:Drivers/sx126x/sx126x_driver.c **** #define LORA_FIX_LENGTH_PAYLOAD_ON                  false
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 2
+
+
+  31:Drivers/sx126x/sx126x_driver.c **** #define LORA_IQ_INVERSION_ON                        false
+  32:Drivers/sx126x/sx126x_driver.c **** 
+  33:Drivers/sx126x/sx126x_driver.c **** #elif defined( USE_MODEM_FSK )
+  34:Drivers/sx126x/sx126x_driver.c **** 
+  35:Drivers/sx126x/sx126x_driver.c **** #define FSK_FDEV                                    25000     // Hz
+  36:Drivers/sx126x/sx126x_driver.c **** #define FSK_DATARATE                                50000     // bps
+  37:Drivers/sx126x/sx126x_driver.c **** #define FSK_BANDWIDTH                               50000     // Hz
+  38:Drivers/sx126x/sx126x_driver.c **** #define FSK_AFC_BANDWIDTH                           83333     // Hz
+  39:Drivers/sx126x/sx126x_driver.c **** #define FSK_PREAMBLE_LENGTH                         5         // Same for Tx and Rx
+  40:Drivers/sx126x/sx126x_driver.c **** #define FSK_FIX_LENGTH_PAYLOAD_ON                   false
+  41:Drivers/sx126x/sx126x_driver.c **** 
+  42:Drivers/sx126x/sx126x_driver.c **** #else
+  43:Drivers/sx126x/sx126x_driver.c ****     #error "Please define a modem in the compiler options."
+  44:Drivers/sx126x/sx126x_driver.c **** #endif
+  45:Drivers/sx126x/sx126x_driver.c **** 
+  46:Drivers/sx126x/sx126x_driver.c **** typedef enum
+  47:Drivers/sx126x/sx126x_driver.c **** {
+  48:Drivers/sx126x/sx126x_driver.c ****     LOWPOWER,
+  49:Drivers/sx126x/sx126x_driver.c ****     RX,
+  50:Drivers/sx126x/sx126x_driver.c ****     RX_TIMEOUT,
+  51:Drivers/sx126x/sx126x_driver.c ****     RX_ERROR,
+  52:Drivers/sx126x/sx126x_driver.c ****     TX,
+  53:Drivers/sx126x/sx126x_driver.c ****     TX_TIMEOUT,
+  54:Drivers/sx126x/sx126x_driver.c **** }States_t;
+  55:Drivers/sx126x/sx126x_driver.c **** 
+  56:Drivers/sx126x/sx126x_driver.c **** #define RX_TIMEOUT_VALUE                            1000
+  57:Drivers/sx126x/sx126x_driver.c **** #define BUFFER_SIZE                                 64 // Define the payload size here
+  58:Drivers/sx126x/sx126x_driver.c **** 
+  59:Drivers/sx126x/sx126x_driver.c **** const uint8_t PingMsg[] = "PING";
+  60:Drivers/sx126x/sx126x_driver.c **** const uint8_t PongMsg[] = "PONG";
+  61:Drivers/sx126x/sx126x_driver.c **** 
+  62:Drivers/sx126x/sx126x_driver.c **** uint16_t BufferSize = BUFFER_SIZE;
+  63:Drivers/sx126x/sx126x_driver.c **** uint8_t Buffer[BUFFER_SIZE];
+  64:Drivers/sx126x/sx126x_driver.c **** 
+  65:Drivers/sx126x/sx126x_driver.c **** States_t State = LOWPOWER;
+  66:Drivers/sx126x/sx126x_driver.c **** 
+  67:Drivers/sx126x/sx126x_driver.c **** int8_t RssiValue = 0;
+  68:Drivers/sx126x/sx126x_driver.c **** int8_t SnrValue = 0;
+  69:Drivers/sx126x/sx126x_driver.c **** 
+  70:Drivers/sx126x/sx126x_driver.c **** /*!
+  71:Drivers/sx126x/sx126x_driver.c ****  * Radio events function pointer
+  72:Drivers/sx126x/sx126x_driver.c ****  */
+  73:Drivers/sx126x/sx126x_driver.c **** static RadioEvents_t RadioEvents;
+  74:Drivers/sx126x/sx126x_driver.c **** 
+  75:Drivers/sx126x/sx126x_driver.c **** /*!
+  76:Drivers/sx126x/sx126x_driver.c ****  * LED GPIO pins objects
+  77:Drivers/sx126x/sx126x_driver.c ****  */
+  78:Drivers/sx126x/sx126x_driver.c **** extern Gpio_t Led1;
+  79:Drivers/sx126x/sx126x_driver.c **** extern Gpio_t Led2;
+  80:Drivers/sx126x/sx126x_driver.c **** 
+  81:Drivers/sx126x/sx126x_driver.c **** extern SX126x_t SX126x;
+  82:Drivers/sx126x/sx126x_driver.c **** uint8_t xorbuf[]={0xff,0xe1 ,0x1d ,0x9a ,0xed ,0x85 ,0x33 ,0x24 ,0xea ,0x7a ,0xd2 ,0x39 ,0x70 ,0x97
+  83:Drivers/sx126x/sx126x_driver.c **** 
+  84:Drivers/sx126x/sx126x_driver.c **** /**
+  85:Drivers/sx126x/sx126x_driver.c ****  * @brief 
+  86:Drivers/sx126x/sx126x_driver.c ****  * 
+  87:Drivers/sx126x/sx126x_driver.c ****  */
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 3
+
+
+  88:Drivers/sx126x/sx126x_driver.c **** void sx126x_init(void)
+  89:Drivers/sx126x/sx126x_driver.c **** {
+  29              		.loc 1 89 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 00B5     		push	{lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 4
+  36              		.cfi_offset 14, -4
+  37 0002 83B0     		sub	sp, sp, #12
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_offset 16
+  90:Drivers/sx126x/sx126x_driver.c ****     // GpioInit(&Led1, LED_1, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0);
+  91:Drivers/sx126x/sx126x_driver.c ****     // GpioInit(&Led2, LED_2, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0);
+  92:Drivers/sx126x/sx126x_driver.c ****     
+  93:Drivers/sx126x/sx126x_driver.c **** 
+  94:Drivers/sx126x/sx126x_driver.c ****      SpiInit( &SX126x.Spi, SPI_1, RADIO_MOSI, RADIO_MISO, RADIO_SCLK, NC );
+  40              		.loc 1 94 6 view .LVU1
+  41 0004 4FF0FF33 		mov	r3, #-1
+  42 0008 0193     		str	r3, [sp, #4]
+  43 000a 0523     		movs	r3, #5
+  44 000c 0093     		str	r3, [sp]
+  45 000e 0623     		movs	r3, #6
+  46 0010 0722     		movs	r2, #7
+  47 0012 0021     		movs	r1, #0
+  48 0014 0348     		ldr	r0, .L3
+  49 0016 FFF7FEFF 		bl	SpiInit
+  50              	.LVL0:
+  95:Drivers/sx126x/sx126x_driver.c ****     SX126xIoInit();
+  51              		.loc 1 95 5 view .LVU2
+  52 001a FFF7FEFF 		bl	SX126xIoInit
+  53              	.LVL1:
+  96:Drivers/sx126x/sx126x_driver.c ****     return ;
+  54              		.loc 1 96 5 view .LVU3
+  97:Drivers/sx126x/sx126x_driver.c ****     Radio.Init(0);
+  98:Drivers/sx126x/sx126x_driver.c **** 
+  99:Drivers/sx126x/sx126x_driver.c ****     Radio.SetChannel(RF_FREQUENCY);
+ 100:Drivers/sx126x/sx126x_driver.c **** 
+ 101:Drivers/sx126x/sx126x_driver.c **** #if defined(USE_MODEM_LORA)
+ 102:Drivers/sx126x/sx126x_driver.c **** 
+ 103:Drivers/sx126x/sx126x_driver.c ****     Radio.SetTxConfig(MODEM_LORA, TX_OUTPUT_POWER, 0, LORA_BANDWIDTH,
+ 104:Drivers/sx126x/sx126x_driver.c ****                       LORA_SPREADING_FACTOR, LORA_CODINGRATE,
+ 105:Drivers/sx126x/sx126x_driver.c ****                       LORA_PREAMBLE_LENGTH, LORA_FIX_LENGTH_PAYLOAD_ON,
+ 106:Drivers/sx126x/sx126x_driver.c ****                       true, 0, 0, LORA_IQ_INVERSION_ON, 3000);
+ 107:Drivers/sx126x/sx126x_driver.c **** 
+ 108:Drivers/sx126x/sx126x_driver.c ****     Radio.SetRxConfig(MODEM_LORA, LORA_BANDWIDTH, LORA_SPREADING_FACTOR,
+ 109:Drivers/sx126x/sx126x_driver.c ****                       LORA_CODINGRATE, 0, LORA_PREAMBLE_LENGTH,
+ 110:Drivers/sx126x/sx126x_driver.c ****                       LORA_SYMBOL_TIMEOUT, LORA_FIX_LENGTH_PAYLOAD_ON,
+ 111:Drivers/sx126x/sx126x_driver.c ****                       0, true, 0, 0, LORA_IQ_INVERSION_ON, true);
+ 112:Drivers/sx126x/sx126x_driver.c **** 
+ 113:Drivers/sx126x/sx126x_driver.c ****     Radio.SetMaxPayloadLength(MODEM_LORA, BUFFER_SIZE);
+ 114:Drivers/sx126x/sx126x_driver.c **** 
+ 115:Drivers/sx126x/sx126x_driver.c **** #elif defined(USE_MODEM_FSK)
+ 116:Drivers/sx126x/sx126x_driver.c **** 
+ 117:Drivers/sx126x/sx126x_driver.c ****     Radio.SetTxConfig(MODEM_FSK, TX_OUTPUT_POWER, FSK_FDEV, 0,
+ 118:Drivers/sx126x/sx126x_driver.c ****                       FSK_DATARATE, 0,
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 4
+
+
+ 119:Drivers/sx126x/sx126x_driver.c ****                       FSK_PREAMBLE_LENGTH, FSK_FIX_LENGTH_PAYLOAD_ON,
+ 120:Drivers/sx126x/sx126x_driver.c ****                       true, 0, 0, 0, 3000);
+ 121:Drivers/sx126x/sx126x_driver.c **** 
+ 122:Drivers/sx126x/sx126x_driver.c ****     Radio.SetRxConfig(MODEM_FSK, FSK_BANDWIDTH, FSK_DATARATE,
+ 123:Drivers/sx126x/sx126x_driver.c ****                       0, FSK_AFC_BANDWIDTH, FSK_PREAMBLE_LENGTH,
+ 124:Drivers/sx126x/sx126x_driver.c ****                       0, FSK_FIX_LENGTH_PAYLOAD_ON, 0, true,
+ 125:Drivers/sx126x/sx126x_driver.c ****                       0, 0, false, true);
+ 126:Drivers/sx126x/sx126x_driver.c **** 
+ 127:Drivers/sx126x/sx126x_driver.c ****     Radio.SetMaxPayloadLength(MODEM_FSK, BUFFER_SIZE);
+ 128:Drivers/sx126x/sx126x_driver.c **** 
+ 129:Drivers/sx126x/sx126x_driver.c **** #else
+ 130:Drivers/sx126x/sx126x_driver.c **** #error "Please define a frequency band in the compiler options."
+ 131:Drivers/sx126x/sx126x_driver.c **** #endif
+ 132:Drivers/sx126x/sx126x_driver.c **** }
+  55              		.loc 1 132 1 is_stmt 0 view .LVU4
+  56 001e 03B0     		add	sp, sp, #12
+  57              	.LCFI2:
+  58              		.cfi_def_cfa_offset 4
+  59              		@ sp needed
+  60 0020 5DF804FB 		ldr	pc, [sp], #4
+  61              	.L4:
+  62              		.align	2
+  63              	.L3:
+  64 0024 64000000 		.word	SX126x+100
+  65              		.cfi_endproc
+  66              	.LFE3:
+  68              		.section	.rodata.sx126x_test.str1.4,"aMS",%progbits,1
+  69              		.align	2
+  70              	.LC0:
+  71 0000 72656769 		.ascii	"register write and read test\000"
+  71      73746572 
+  71      20777269 
+  71      74652061 
+  71      6E642072 
+  72 001d 000000   		.align	2
+  73              	.LC1:
+  74 0020 74686520 		.ascii	"the sync 0 is 0x%02x\012\000"
+  74      73796E63 
+  74      20302069 
+  74      73203078 
+  74      25303278 
+  75 0036 0000     		.align	2
+  76              	.LC2:
+  77 0038 74686520 		.ascii	"the sync 1 is 0x%02x\012\000"
+  77      73796E63 
+  77      20312069 
+  77      73203078 
+  77      25303278 
+  78 004e 0000     		.align	2
+  79              	.LC3:
+  80 0050 74686520 		.ascii	"the sync 2 is 0x%02x\012\000"
+  80      73796E63 
+  80      20322069 
+  80      73203078 
+  80      25303278 
+  81 0066 0000     		.align	2
+  82              	.LC4:
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 5
+
+
+  83 0068 74686520 		.ascii	"the sync 3 is 0x%02x\012\000"
+  83      73796E63 
+  83      20332069 
+  83      73203078 
+  83      25303278 
+  84              		.section	.text.sx126x_test,"ax",%progbits
+  85              		.align	1
+  86              		.global	sx126x_test
+  87              		.syntax unified
+  88              		.thumb
+  89              		.thumb_func
+  90              		.fpu fpv4-sp-d16
+  92              	sx126x_test:
+  93              	.LFB4:
+ 133:Drivers/sx126x/sx126x_driver.c **** 
+ 134:Drivers/sx126x/sx126x_driver.c **** /**
+ 135:Drivers/sx126x/sx126x_driver.c ****  * @brief 
+ 136:Drivers/sx126x/sx126x_driver.c ****  * 
+ 137:Drivers/sx126x/sx126x_driver.c ****  */
+ 138:Drivers/sx126x/sx126x_driver.c **** void sx126x_test(void)
+ 139:Drivers/sx126x/sx126x_driver.c **** {
+  94              		.loc 1 139 1 is_stmt 1 view -0
+  95              		.cfi_startproc
+  96              		@ args = 0, pretend = 0, frame = 24
+  97              		@ frame_needed = 0, uses_anonymous_args = 0
+  98 0000 00B5     		push	{lr}
+  99              	.LCFI3:
+ 100              		.cfi_def_cfa_offset 4
+ 101              		.cfi_offset 14, -4
+ 102 0002 87B0     		sub	sp, sp, #28
+ 103              	.LCFI4:
+ 104              		.cfi_def_cfa_offset 32
+ 140:Drivers/sx126x/sx126x_driver.c ****     //write register
+ 141:Drivers/sx126x/sx126x_driver.c ****     char xx[20];
+ 105              		.loc 1 141 5 view .LVU6
+ 142:Drivers/sx126x/sx126x_driver.c ****     int a;
+ 106              		.loc 1 142 5 view .LVU7
+ 143:Drivers/sx126x/sx126x_driver.c ****     printf("register write and read test\n");
+ 107              		.loc 1 143 5 view .LVU8
+ 108 0004 2448     		ldr	r0, .L7
+ 109 0006 FFF7FEFF 		bl	puts
+ 110              	.LVL2:
+ 144:Drivers/sx126x/sx126x_driver.c ****     SX126xWriteRegister(0x06C0, 0x12);
+ 111              		.loc 1 144 5 view .LVU9
+ 112 000a 1221     		movs	r1, #18
+ 113 000c 4FF4D860 		mov	r0, #1728
+ 114 0010 FFF7FEFF 		bl	SX126xWriteRegister
+ 115              	.LVL3:
+ 145:Drivers/sx126x/sx126x_driver.c ****     SX126xWriteRegister(0x06C1, 0x34);
+ 116              		.loc 1 145 5 view .LVU10
+ 117 0014 3421     		movs	r1, #52
+ 118 0016 40F2C160 		movw	r0, #1729
+ 119 001a FFF7FEFF 		bl	SX126xWriteRegister
+ 120              	.LVL4:
+ 146:Drivers/sx126x/sx126x_driver.c ****     SX126xWriteRegister(0x06C2, 0x56);
+ 121              		.loc 1 146 5 view .LVU11
+ 122 001e 5621     		movs	r1, #86
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 6
+
+
+ 123 0020 40F2C260 		movw	r0, #1730
+ 124 0024 FFF7FEFF 		bl	SX126xWriteRegister
+ 125              	.LVL5:
+ 147:Drivers/sx126x/sx126x_driver.c ****     SX126xWriteRegister(0x06C3, 0x78);
+ 126              		.loc 1 147 5 view .LVU12
+ 127 0028 7821     		movs	r1, #120
+ 128 002a 40F2C360 		movw	r0, #1731
+ 129 002e FFF7FEFF 		bl	SX126xWriteRegister
+ 130              	.LVL6:
+ 148:Drivers/sx126x/sx126x_driver.c **** 
+ 149:Drivers/sx126x/sx126x_driver.c ****     a=SX126xReadRegister(0x06C0);
+ 131              		.loc 1 149 5 view .LVU13
+ 132              		.loc 1 149 7 is_stmt 0 view .LVU14
+ 133 0032 4FF4D860 		mov	r0, #1728
+ 134 0036 FFF7FEFF 		bl	SX126xReadRegister
+ 135              	.LVL7:
+ 136 003a 0246     		mov	r2, r0
+ 137              	.LVL8:
+ 150:Drivers/sx126x/sx126x_driver.c ****     sprintf(xx,"the sync 0 is 0x%02x\n",a);
+ 138              		.loc 1 150 5 is_stmt 1 view .LVU15
+ 139 003c 1749     		ldr	r1, .L7+4
+ 140 003e 01A8     		add	r0, sp, #4
+ 141              	.LVL9:
+ 142              		.loc 1 150 5 is_stmt 0 view .LVU16
+ 143 0040 FFF7FEFF 		bl	sprintf
+ 144              	.LVL10:
+ 151:Drivers/sx126x/sx126x_driver.c ****     printf(xx);
+ 145              		.loc 1 151 5 is_stmt 1 view .LVU17
+ 146 0044 01A8     		add	r0, sp, #4
+ 147 0046 FFF7FEFF 		bl	printf
+ 148              	.LVL11:
+ 152:Drivers/sx126x/sx126x_driver.c **** 
+ 153:Drivers/sx126x/sx126x_driver.c ****     a=SX126xReadRegister(0x06C1);
+ 149              		.loc 1 153 5 view .LVU18
+ 150              		.loc 1 153 7 is_stmt 0 view .LVU19
+ 151 004a 40F2C160 		movw	r0, #1729
+ 152 004e FFF7FEFF 		bl	SX126xReadRegister
+ 153              	.LVL12:
+ 154 0052 0246     		mov	r2, r0
+ 155              	.LVL13:
+ 154:Drivers/sx126x/sx126x_driver.c ****     sprintf(xx,"the sync 1 is 0x%02x\n",a);
+ 156              		.loc 1 154 5 is_stmt 1 view .LVU20
+ 157 0054 1249     		ldr	r1, .L7+8
+ 158 0056 01A8     		add	r0, sp, #4
+ 159              	.LVL14:
+ 160              		.loc 1 154 5 is_stmt 0 view .LVU21
+ 161 0058 FFF7FEFF 		bl	sprintf
+ 162              	.LVL15:
+ 155:Drivers/sx126x/sx126x_driver.c ****     printf(xx);
+ 163              		.loc 1 155 5 is_stmt 1 view .LVU22
+ 164 005c 01A8     		add	r0, sp, #4
+ 165 005e FFF7FEFF 		bl	printf
+ 166              	.LVL16:
+ 156:Drivers/sx126x/sx126x_driver.c **** 
+ 157:Drivers/sx126x/sx126x_driver.c ****     a=SX126xReadRegister(0x06C2);
+ 167              		.loc 1 157 5 view .LVU23
+ 168              		.loc 1 157 7 is_stmt 0 view .LVU24
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 7
+
+
+ 169 0062 40F2C260 		movw	r0, #1730
+ 170 0066 FFF7FEFF 		bl	SX126xReadRegister
+ 171              	.LVL17:
+ 172 006a 0246     		mov	r2, r0
+ 173              	.LVL18:
+ 158:Drivers/sx126x/sx126x_driver.c ****     sprintf(xx,"the sync 2 is 0x%02x\n",a);
+ 174              		.loc 1 158 5 is_stmt 1 view .LVU25
+ 175 006c 0D49     		ldr	r1, .L7+12
+ 176 006e 01A8     		add	r0, sp, #4
+ 177              	.LVL19:
+ 178              		.loc 1 158 5 is_stmt 0 view .LVU26
+ 179 0070 FFF7FEFF 		bl	sprintf
+ 180              	.LVL20:
+ 159:Drivers/sx126x/sx126x_driver.c ****     printf(xx);
+ 181              		.loc 1 159 5 is_stmt 1 view .LVU27
+ 182 0074 01A8     		add	r0, sp, #4
+ 183 0076 FFF7FEFF 		bl	printf
+ 184              	.LVL21:
+ 160:Drivers/sx126x/sx126x_driver.c **** 
+ 161:Drivers/sx126x/sx126x_driver.c ****     a=SX126xReadRegister(0x06C3);
+ 185              		.loc 1 161 5 view .LVU28
+ 186              		.loc 1 161 7 is_stmt 0 view .LVU29
+ 187 007a 40F2C360 		movw	r0, #1731
+ 188 007e FFF7FEFF 		bl	SX126xReadRegister
+ 189              	.LVL22:
+ 190 0082 0246     		mov	r2, r0
+ 191              	.LVL23:
+ 162:Drivers/sx126x/sx126x_driver.c ****     sprintf(xx,"the sync 3 is 0x%02x\n",a);
+ 192              		.loc 1 162 5 is_stmt 1 view .LVU30
+ 193 0084 0849     		ldr	r1, .L7+16
+ 194 0086 01A8     		add	r0, sp, #4
+ 195              	.LVL24:
+ 196              		.loc 1 162 5 is_stmt 0 view .LVU31
+ 197 0088 FFF7FEFF 		bl	sprintf
+ 198              	.LVL25:
+ 163:Drivers/sx126x/sx126x_driver.c ****     printf(xx);
+ 199              		.loc 1 163 5 is_stmt 1 view .LVU32
+ 200 008c 01A8     		add	r0, sp, #4
+ 201 008e FFF7FEFF 		bl	printf
+ 202              	.LVL26:
+ 164:Drivers/sx126x/sx126x_driver.c **** }
+ 203              		.loc 1 164 1 is_stmt 0 view .LVU33
+ 204 0092 07B0     		add	sp, sp, #28
+ 205              	.LCFI5:
+ 206              		.cfi_def_cfa_offset 4
+ 207              		@ sp needed
+ 208 0094 5DF804FB 		ldr	pc, [sp], #4
+ 209              	.L8:
+ 210              		.align	2
+ 211              	.L7:
+ 212 0098 00000000 		.word	.LC0
+ 213 009c 20000000 		.word	.LC1
+ 214 00a0 38000000 		.word	.LC2
+ 215 00a4 50000000 		.word	.LC3
+ 216 00a8 68000000 		.word	.LC4
+ 217              		.cfi_endproc
+ 218              	.LFE4:
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 8
+
+
+ 220              		.section	.text.sx126x_tx_cw,"ax",%progbits
+ 221              		.align	1
+ 222              		.global	sx126x_tx_cw
+ 223              		.syntax unified
+ 224              		.thumb
+ 225              		.thumb_func
+ 226              		.fpu fpv4-sp-d16
+ 228              	sx126x_tx_cw:
+ 229              	.LFB5:
+ 165:Drivers/sx126x/sx126x_driver.c **** 
+ 166:Drivers/sx126x/sx126x_driver.c **** /**
+ 167:Drivers/sx126x/sx126x_driver.c ****  * @brief sx126x tx contiunous wave
+ 168:Drivers/sx126x/sx126x_driver.c ****  * 
+ 169:Drivers/sx126x/sx126x_driver.c ****  */
+ 170:Drivers/sx126x/sx126x_driver.c **** void sx126x_tx_cw(void)
+ 171:Drivers/sx126x/sx126x_driver.c **** {
+ 230              		.loc 1 171 1 is_stmt 1 view -0
+ 231              		.cfi_startproc
+ 232              		@ args = 0, pretend = 0, frame = 0
+ 233              		@ frame_needed = 0, uses_anonymous_args = 0
+ 234 0000 08B5     		push	{r3, lr}
+ 235              	.LCFI6:
+ 236              		.cfi_def_cfa_offset 8
+ 237              		.cfi_offset 3, -8
+ 238              		.cfi_offset 14, -4
+ 172:Drivers/sx126x/sx126x_driver.c ****     Radio.SetTxContinuousWave(RF_FREQUENCY,TX_OUTPUT_POWER,0);
+ 239              		.loc 1 172 5 view .LVU35
+ 240              		.loc 1 172 10 is_stmt 0 view .LVU36
+ 241 0002 034B     		ldr	r3, .L11
+ 242 0004 DB6B     		ldr	r3, [r3, #60]
+ 243              		.loc 1 172 5 view .LVU37
+ 244 0006 0022     		movs	r2, #0
+ 245 0008 0E21     		movs	r1, #14
+ 246 000a 0248     		ldr	r0, .L11+4
+ 247 000c 9847     		blx	r3
+ 248              	.LVL27:
+ 173:Drivers/sx126x/sx126x_driver.c **** }
+ 249              		.loc 1 173 1 view .LVU38
+ 250 000e 08BD     		pop	{r3, pc}
+ 251              	.L12:
+ 252              		.align	2
+ 253              	.L11:
+ 254 0010 00000000 		.word	Radio
+ 255 0014 400ECF19 		.word	433000000
+ 256              		.cfi_endproc
+ 257              	.LFE5:
+ 259              		.section	.rodata.sx126x_tx_packet.str1.4,"aMS",%progbits,1
+ 260              		.align	2
+ 261              	.LC5:
+ 262 0000 7472616E 		.ascii	"transmit finished\000"
+ 262      736D6974 
+ 262      2066696E 
+ 262      69736865 
+ 262      6400
+ 263 0012 0000     		.align	2
+ 264              	.LC6:
+ 265 0014 7472616E 		.ascii	"transmit timeout\000"
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 9
+
+
+ 265      736D6974 
+ 265      2074696D 
+ 265      656F7574 
+ 265      00
+ 266              		.section	.text.sx126x_tx_packet,"ax",%progbits
+ 267              		.align	1
+ 268              		.global	sx126x_tx_packet
+ 269              		.syntax unified
+ 270              		.thumb
+ 271              		.thumb_func
+ 272              		.fpu fpv4-sp-d16
+ 274              	sx126x_tx_packet:
+ 275              	.LFB6:
+ 174:Drivers/sx126x/sx126x_driver.c **** 
+ 175:Drivers/sx126x/sx126x_driver.c **** /**
+ 176:Drivers/sx126x/sx126x_driver.c ****  * @brief sx126x tx packet
+ 177:Drivers/sx126x/sx126x_driver.c ****  * 
+ 178:Drivers/sx126x/sx126x_driver.c ****  */
+ 179:Drivers/sx126x/sx126x_driver.c **** void sx126x_tx_packet(void)
+ 180:Drivers/sx126x/sx126x_driver.c **** {
+ 276              		.loc 1 180 1 is_stmt 1 view -0
+ 277              		.cfi_startproc
+ 278              		@ args = 0, pretend = 0, frame = 0
+ 279              		@ frame_needed = 0, uses_anonymous_args = 0
+ 280 0000 38B5     		push	{r3, r4, r5, lr}
+ 281              	.LCFI7:
+ 282              		.cfi_def_cfa_offset 16
+ 283              		.cfi_offset 3, -16
+ 284              		.cfi_offset 4, -12
+ 285              		.cfi_offset 5, -8
+ 286              		.cfi_offset 14, -4
+ 181:Drivers/sx126x/sx126x_driver.c ****     uint16_t irqRegs;
+ 287              		.loc 1 181 5 view .LVU40
+ 182:Drivers/sx126x/sx126x_driver.c ****     int i;
+ 288              		.loc 1 182 5 view .LVU41
+ 183:Drivers/sx126x/sx126x_driver.c ****     // Buffer[0]=11^0xff;
+ 184:Drivers/sx126x/sx126x_driver.c ****     // Buffer[0]=10;
+ 185:Drivers/sx126x/sx126x_driver.c ****     // for (i = 1; i <= 10; i++)
+ 186:Drivers/sx126x/sx126x_driver.c ****     // {
+ 187:Drivers/sx126x/sx126x_driver.c ****     //     // Buffer[i]='A'+i;
+ 188:Drivers/sx126x/sx126x_driver.c ****     //     // Buffer[i]=0x10+i;
+ 189:Drivers/sx126x/sx126x_driver.c ****     //     // Buffer[i]=Buffer[i]^xorbuf[i];
+ 190:Drivers/sx126x/sx126x_driver.c **** 
+ 191:Drivers/sx126x/sx126x_driver.c ****     // }
+ 192:Drivers/sx126x/sx126x_driver.c ****     for ( i = 0; i < 7; i++)
+ 289              		.loc 1 192 5 view .LVU42
+ 290              	.LVL28:
+ 291              		.loc 1 192 13 is_stmt 0 view .LVU43
+ 292 0002 0023     		movs	r3, #0
+ 293              	.LVL29:
+ 294              	.L14:
+ 295              		.loc 1 192 18 is_stmt 1 discriminator 1 view .LVU44
+ 296              		.loc 1 192 5 is_stmt 0 discriminator 1 view .LVU45
+ 297 0004 062B     		cmp	r3, #6
+ 298 0006 05DC     		bgt	.L20
+ 193:Drivers/sx126x/sx126x_driver.c ****     {
+ 194:Drivers/sx126x/sx126x_driver.c ****         Buffer[i]=0x12+0x10*(i);
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 10
+
+
+ 299              		.loc 1 194 9 is_stmt 1 discriminator 3 view .LVU46
+ 300              		.loc 1 194 23 is_stmt 0 discriminator 3 view .LVU47
+ 301 0008 1A01     		lsls	r2, r3, #4
+ 302 000a 1232     		adds	r2, r2, #18
+ 303              		.loc 1 194 18 discriminator 3 view .LVU48
+ 304 000c 1549     		ldr	r1, .L22
+ 305 000e CA54     		strb	r2, [r1, r3]
+ 192:Drivers/sx126x/sx126x_driver.c ****     {
+ 306              		.loc 1 192 25 is_stmt 1 discriminator 3 view .LVU49
+ 192:Drivers/sx126x/sx126x_driver.c ****     {
+ 307              		.loc 1 192 26 is_stmt 0 discriminator 3 view .LVU50
+ 308 0010 0133     		adds	r3, r3, #1
+ 309              	.LVL30:
+ 192:Drivers/sx126x/sx126x_driver.c ****     {
+ 310              		.loc 1 192 26 discriminator 3 view .LVU51
+ 311 0012 F7E7     		b	.L14
+ 312              	.L20:
+ 195:Drivers/sx126x/sx126x_driver.c ****         // printf("the buffer[%d] is 0x%02x\n",i,Buffer[i]);
+ 196:Drivers/sx126x/sx126x_driver.c ****     }
+ 197:Drivers/sx126x/sx126x_driver.c ****     
+ 198:Drivers/sx126x/sx126x_driver.c ****     BufferSize=7;
+ 313              		.loc 1 198 5 is_stmt 1 view .LVU52
+ 314              		.loc 1 198 15 is_stmt 0 view .LVU53
+ 315 0014 144C     		ldr	r4, .L22+4
+ 316 0016 0723     		movs	r3, #7
+ 317              	.LVL31:
+ 318              		.loc 1 198 15 view .LVU54
+ 319 0018 2380     		strh	r3, [r4]	@ movhi
+ 199:Drivers/sx126x/sx126x_driver.c ****     Radio.Standby();
+ 320              		.loc 1 199 5 is_stmt 1 view .LVU55
+ 321              		.loc 1 199 10 is_stmt 0 view .LVU56
+ 322 001a 144D     		ldr	r5, .L22+8
+ 323 001c 2B6B     		ldr	r3, [r5, #48]
+ 324              		.loc 1 199 5 view .LVU57
+ 325 001e 9847     		blx	r3
+ 326              	.LVL32:
+ 200:Drivers/sx126x/sx126x_driver.c ****     
+ 201:Drivers/sx126x/sx126x_driver.c ****     DelayMs(2);
+ 327              		.loc 1 201 5 is_stmt 1 view .LVU58
+ 328 0020 0220     		movs	r0, #2
+ 329 0022 FFF7FEFF 		bl	DelayMs
+ 330              	.LVL33:
+ 202:Drivers/sx126x/sx126x_driver.c ****     irqRegs=SX126xGetIrqStatus();
+ 331              		.loc 1 202 5 view .LVU59
+ 332              		.loc 1 202 13 is_stmt 0 view .LVU60
+ 333 0026 FFF7FEFF 		bl	SX126xGetIrqStatus
+ 334              	.LVL34:
+ 203:Drivers/sx126x/sx126x_driver.c ****     SX126xClearIrqStatus(irqRegs);
+ 335              		.loc 1 203 5 is_stmt 1 view .LVU61
+ 336 002a FFF7FEFF 		bl	SX126xClearIrqStatus
+ 337              	.LVL35:
+ 204:Drivers/sx126x/sx126x_driver.c ****     Radio.Send( Buffer, BufferSize );
+ 338              		.loc 1 204 5 view .LVU62
+ 339              		.loc 1 204 10 is_stmt 0 view .LVU63
+ 340 002e AB6A     		ldr	r3, [r5, #40]
+ 341              		.loc 1 204 5 view .LVU64
+ 342 0030 2178     		ldrb	r1, [r4]	@ zero_extendqisi2
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 11
+
+
+ 343 0032 0C48     		ldr	r0, .L22
+ 344 0034 9847     		blx	r3
+ 345              	.LVL36:
+ 205:Drivers/sx126x/sx126x_driver.c ****     i=0;
+ 346              		.loc 1 205 5 is_stmt 1 view .LVU65
+ 347              		.loc 1 205 6 is_stmt 0 view .LVU66
+ 348 0036 0024     		movs	r4, #0
+ 349              	.LVL37:
+ 350              	.L18:
+ 206:Drivers/sx126x/sx126x_driver.c ****     while (1)
+ 351              		.loc 1 206 5 is_stmt 1 view .LVU67
+ 207:Drivers/sx126x/sx126x_driver.c ****     {
+ 208:Drivers/sx126x/sx126x_driver.c ****         irqRegs=SX126xGetIrqStatus();
+ 352              		.loc 1 208 9 view .LVU68
+ 353              		.loc 1 208 17 is_stmt 0 view .LVU69
+ 354 0038 FFF7FEFF 		bl	SX126xGetIrqStatus
+ 355              	.LVL38:
+ 209:Drivers/sx126x/sx126x_driver.c ****         // printf("the Irq status is 0x%04x\n",irqRegs);
+ 210:Drivers/sx126x/sx126x_driver.c ****         if((irqRegs&IRQ_TX_DONE) ==IRQ_TX_DONE)
+ 356              		.loc 1 210 9 is_stmt 1 view .LVU70
+ 357              		.loc 1 210 11 is_stmt 0 view .LVU71
+ 358 003c 10F0010F 		tst	r0, #1
+ 359 0040 09D1     		bne	.L21
+ 360              	.LBB2:
+ 211:Drivers/sx126x/sx126x_driver.c ****         {
+ 212:Drivers/sx126x/sx126x_driver.c ****             printf("transmit finished\n");
+ 213:Drivers/sx126x/sx126x_driver.c ****             GpioToggle(&Led1);
+ 214:Drivers/sx126x/sx126x_driver.c ****             break;
+ 215:Drivers/sx126x/sx126x_driver.c ****         }
+ 216:Drivers/sx126x/sx126x_driver.c ****         else
+ 217:Drivers/sx126x/sx126x_driver.c ****         {
+ 218:Drivers/sx126x/sx126x_driver.c ****             // printf("--------\n");
+ 219:Drivers/sx126x/sx126x_driver.c ****             i++;
+ 361              		.loc 1 219 13 is_stmt 1 view .LVU72
+ 362              		.loc 1 219 14 is_stmt 0 view .LVU73
+ 363 0042 0134     		adds	r4, r4, #1
+ 364              	.LVL39:
+ 220:Drivers/sx126x/sx126x_driver.c ****             HAL_Delay(10);
+ 365              		.loc 1 220 13 is_stmt 1 view .LVU74
+ 366 0044 0A20     		movs	r0, #10
+ 367              	.LVL40:
+ 368              		.loc 1 220 13 is_stmt 0 view .LVU75
+ 369 0046 FFF7FEFF 		bl	HAL_Delay
+ 370              	.LVL41:
+ 221:Drivers/sx126x/sx126x_driver.c ****             if(i>=200)
+ 371              		.loc 1 221 13 is_stmt 1 view .LVU76
+ 372              		.loc 1 221 15 is_stmt 0 view .LVU77
+ 373 004a C72C     		cmp	r4, #199
+ 374 004c F4DD     		ble	.L18
+ 222:Drivers/sx126x/sx126x_driver.c ****             {
+ 223:Drivers/sx126x/sx126x_driver.c ****                 printf("transmit timeout\n");
+ 375              		.loc 1 223 17 is_stmt 1 view .LVU78
+ 376 004e 0848     		ldr	r0, .L22+12
+ 377 0050 FFF7FEFF 		bl	puts
+ 378              	.LVL42:
+ 224:Drivers/sx126x/sx126x_driver.c ****                 break;
+ 379              		.loc 1 224 17 view .LVU79
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 12
+
+
+ 380              	.LBE2:
+ 225:Drivers/sx126x/sx126x_driver.c ****             }
+ 226:Drivers/sx126x/sx126x_driver.c ****         }
+ 227:Drivers/sx126x/sx126x_driver.c ****     }
+ 228:Drivers/sx126x/sx126x_driver.c **** 
+ 229:Drivers/sx126x/sx126x_driver.c **** }
+ 381              		.loc 1 229 1 is_stmt 0 view .LVU80
+ 382 0054 05E0     		b	.L13
+ 383              	.LVL43:
+ 384              	.L21:
+ 212:Drivers/sx126x/sx126x_driver.c ****             GpioToggle(&Led1);
+ 385              		.loc 1 212 13 is_stmt 1 view .LVU81
+ 386 0056 0748     		ldr	r0, .L22+16
+ 387              	.LVL44:
+ 212:Drivers/sx126x/sx126x_driver.c ****             GpioToggle(&Led1);
+ 388              		.loc 1 212 13 is_stmt 0 view .LVU82
+ 389 0058 FFF7FEFF 		bl	puts
+ 390              	.LVL45:
+ 213:Drivers/sx126x/sx126x_driver.c ****             break;
+ 391              		.loc 1 213 13 is_stmt 1 view .LVU83
+ 392 005c 0648     		ldr	r0, .L22+20
+ 393 005e FFF7FEFF 		bl	GpioToggle
+ 394              	.LVL46:
+ 214:Drivers/sx126x/sx126x_driver.c ****         }
+ 395              		.loc 1 214 13 view .LVU84
+ 396              	.L13:
+ 397              		.loc 1 229 1 is_stmt 0 view .LVU85
+ 398 0062 38BD     		pop	{r3, r4, r5, pc}
+ 399              	.LVL47:
+ 400              	.L23:
+ 401              		.loc 1 229 1 view .LVU86
+ 402              		.align	2
+ 403              	.L22:
+ 404 0064 00000000 		.word	.LANCHOR0
+ 405 0068 00000000 		.word	.LANCHOR1
+ 406 006c 00000000 		.word	Radio
+ 407 0070 14000000 		.word	.LC6
+ 408 0074 00000000 		.word	.LC5
+ 409 0078 00000000 		.word	Led1
+ 410              		.cfi_endproc
+ 411              	.LFE6:
+ 413              		.section	.rodata.sx126x_rx_packet.str1.4,"aMS",%progbits,1
+ 414              		.align	2
+ 415              	.LC7:
+ 416 0000 72656365 		.ascii	"receive packet successfully\000"
+ 416      69766520 
+ 416      7061636B 
+ 416      65742073 
+ 416      75636365 
+ 417              		.align	2
+ 418              	.LC8:
+ 419 001c 74686520 		.ascii	"the receive length is %d\012\000"
+ 419      72656365 
+ 419      69766520 
+ 419      6C656E67 
+ 419      74682069 
+ 420 0036 0000     		.align	2
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 13
+
+
+ 421              	.LC9:
+ 422 0038 30782530 		.ascii	"0x%02x ,\000"
+ 422      3278202C 
+ 422      00
+ 423 0041 000000   		.align	2
+ 424              	.LC10:
+ 425 0044 74686520 		.ascii	"the rssi is %d\012\000"
+ 425      72737369 
+ 425      20697320 
+ 425      25640A00 
+ 426              		.align	2
+ 427              	.LC11:
+ 428 0054 72656365 		.ascii	"receive timeout\000"
+ 428      69766520 
+ 428      74696D65 
+ 428      6F757400 
+ 429              		.section	.text.sx126x_rx_packet,"ax",%progbits
+ 430              		.align	1
+ 431              		.global	sx126x_rx_packet
+ 432              		.syntax unified
+ 433              		.thumb
+ 434              		.thumb_func
+ 435              		.fpu fpv4-sp-d16
+ 437              	sx126x_rx_packet:
+ 438              	.LFB7:
+ 230:Drivers/sx126x/sx126x_driver.c **** 
+ 231:Drivers/sx126x/sx126x_driver.c **** /**
+ 232:Drivers/sx126x/sx126x_driver.c ****  * @brief sx126x rx packet
+ 233:Drivers/sx126x/sx126x_driver.c ****  * 
+ 234:Drivers/sx126x/sx126x_driver.c ****  */
+ 235:Drivers/sx126x/sx126x_driver.c **** void sx126x_rx_packet(void)
+ 236:Drivers/sx126x/sx126x_driver.c **** {
+ 439              		.loc 1 236 1 is_stmt 1 view -0
+ 440              		.cfi_startproc
+ 441              		@ args = 0, pretend = 0, frame = 280
+ 442              		@ frame_needed = 0, uses_anonymous_args = 0
+ 443 0000 10B5     		push	{r4, lr}
+ 444              	.LCFI8:
+ 445              		.cfi_def_cfa_offset 8
+ 446              		.cfi_offset 4, -8
+ 447              		.cfi_offset 14, -4
+ 448 0002 C6B0     		sub	sp, sp, #280
+ 449              	.LCFI9:
+ 450              		.cfi_def_cfa_offset 288
+ 237:Drivers/sx126x/sx126x_driver.c ****     int i;
+ 451              		.loc 1 237 5 view .LVU88
+ 238:Drivers/sx126x/sx126x_driver.c ****     uint16_t irqRegs = SX126xGetIrqStatus();
+ 452              		.loc 1 238 5 view .LVU89
+ 453              		.loc 1 238 24 is_stmt 0 view .LVU90
+ 454 0004 FFF7FEFF 		bl	SX126xGetIrqStatus
+ 455              	.LVL48:
+ 239:Drivers/sx126x/sx126x_driver.c ****     uint8_t rxbuf[255];
+ 456              		.loc 1 239 5 is_stmt 1 view .LVU91
+ 240:Drivers/sx126x/sx126x_driver.c ****     
+ 241:Drivers/sx126x/sx126x_driver.c ****     uint8_t size=0;
+ 457              		.loc 1 241 5 view .LVU92
+ 458              		.loc 1 241 13 is_stmt 0 view .LVU93
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 14
+
+
+ 459 0008 0024     		movs	r4, #0
+ 460 000a 8DF81740 		strb	r4, [sp, #23]
+ 242:Drivers/sx126x/sx126x_driver.c ****     PacketStatus_t radiopkstatus;
+ 461              		.loc 1 242 5 is_stmt 1 view .LVU94
+ 243:Drivers/sx126x/sx126x_driver.c ****     SX126xClearIrqStatus(irqRegs);
+ 462              		.loc 1 243 5 view .LVU95
+ 463 000e FFF7FEFF 		bl	SX126xClearIrqStatus
+ 464              	.LVL49:
+ 244:Drivers/sx126x/sx126x_driver.c ****     // Radio.Rx(0);
+ 245:Drivers/sx126x/sx126x_driver.c ****     Radio.RxBoosted(0);
+ 465              		.loc 1 245 5 view .LVU96
+ 466              		.loc 1 245 10 is_stmt 0 view .LVU97
+ 467 0012 214B     		ldr	r3, .L32
+ 468 0014 5B6E     		ldr	r3, [r3, #100]
+ 469              		.loc 1 245 5 view .LVU98
+ 470 0016 2046     		mov	r0, r4
+ 471 0018 9847     		blx	r3
+ 472              	.LVL50:
+ 246:Drivers/sx126x/sx126x_driver.c ****     i=0;
+ 473              		.loc 1 246 5 is_stmt 1 view .LVU99
+ 474              	.L29:
+ 247:Drivers/sx126x/sx126x_driver.c ****     while (1)
+ 475              		.loc 1 247 5 view .LVU100
+ 248:Drivers/sx126x/sx126x_driver.c ****     {
+ 249:Drivers/sx126x/sx126x_driver.c ****         irqRegs = SX126xGetIrqStatus();
+ 476              		.loc 1 249 9 view .LVU101
+ 477              		.loc 1 249 19 is_stmt 0 view .LVU102
+ 478 001a FFF7FEFF 		bl	SX126xGetIrqStatus
+ 479              	.LVL51:
+ 250:Drivers/sx126x/sx126x_driver.c **** 
+ 251:Drivers/sx126x/sx126x_driver.c ****         // printf("the Irq status is 0x%04x\n",irqRegs);
+ 252:Drivers/sx126x/sx126x_driver.c ****         if((irqRegs&IRQ_RX_DONE)==IRQ_RX_DONE)
+ 480              		.loc 1 252 9 is_stmt 1 view .LVU103
+ 481              		.loc 1 252 11 is_stmt 0 view .LVU104
+ 482 001e 10F0020F 		tst	r0, #2
+ 483 0022 09D1     		bne	.L31
+ 484              	.LBB3:
+ 253:Drivers/sx126x/sx126x_driver.c ****         {
+ 254:Drivers/sx126x/sx126x_driver.c ****             printf("receive packet successfully\n");
+ 255:Drivers/sx126x/sx126x_driver.c ****             GpioToggle(&Led2);
+ 256:Drivers/sx126x/sx126x_driver.c **** 
+ 257:Drivers/sx126x/sx126x_driver.c ****             SX126xGetPayload( rxbuf, &size , 255 );
+ 258:Drivers/sx126x/sx126x_driver.c ****             printf("the receive length is %d\n",size);
+ 259:Drivers/sx126x/sx126x_driver.c ****             // size=20;
+ 260:Drivers/sx126x/sx126x_driver.c ****             for (i = 0; i < size; i++)
+ 261:Drivers/sx126x/sx126x_driver.c ****             {
+ 262:Drivers/sx126x/sx126x_driver.c ****                 // rxbuf[i]=rxbuf[i]^xorbuf[i];
+ 263:Drivers/sx126x/sx126x_driver.c ****                 printf("0x%02x ,",rxbuf[i]);
+ 264:Drivers/sx126x/sx126x_driver.c ****                 // printf("%c ",rxbuf[i]);
+ 265:Drivers/sx126x/sx126x_driver.c ****             }
+ 266:Drivers/sx126x/sx126x_driver.c ****             // printf("\nthe crc is :");
+ 267:Drivers/sx126x/sx126x_driver.c ****             // printf("0x%02x ,",rxbuf[11]);
+ 268:Drivers/sx126x/sx126x_driver.c ****             // printf("0x%02x ,",rxbuf[12]);
+ 269:Drivers/sx126x/sx126x_driver.c ****             printf("\n");
+ 270:Drivers/sx126x/sx126x_driver.c ****             SX126xGetPacketStatus(&radiopkstatus);
+ 271:Drivers/sx126x/sx126x_driver.c ****             printf("the rssi is %d\n", radiopkstatus.Params.Gfsk.RssiAvg);
+ 272:Drivers/sx126x/sx126x_driver.c **** 
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 15
+
+
+ 273:Drivers/sx126x/sx126x_driver.c ****             break;
+ 274:Drivers/sx126x/sx126x_driver.c ****         }
+ 275:Drivers/sx126x/sx126x_driver.c ****         else
+ 276:Drivers/sx126x/sx126x_driver.c ****         {
+ 277:Drivers/sx126x/sx126x_driver.c ****             i++;
+ 485              		.loc 1 277 13 is_stmt 1 view .LVU105
+ 486              		.loc 1 277 14 is_stmt 0 view .LVU106
+ 487 0024 0134     		adds	r4, r4, #1
+ 488              	.LVL52:
+ 278:Drivers/sx126x/sx126x_driver.c ****             HAL_Delay(1);
+ 489              		.loc 1 278 13 is_stmt 1 view .LVU107
+ 490 0026 0120     		movs	r0, #1
+ 491              	.LVL53:
+ 492              		.loc 1 278 13 is_stmt 0 view .LVU108
+ 493 0028 FFF7FEFF 		bl	HAL_Delay
+ 494              	.LVL54:
+ 279:Drivers/sx126x/sx126x_driver.c ****             if(i>=100)
+ 495              		.loc 1 279 13 is_stmt 1 view .LVU109
+ 496              		.loc 1 279 15 is_stmt 0 view .LVU110
+ 497 002c 632C     		cmp	r4, #99
+ 498 002e F4DD     		ble	.L29
+ 280:Drivers/sx126x/sx126x_driver.c ****             {
+ 281:Drivers/sx126x/sx126x_driver.c ****                 printf("receive timeout\n");
+ 499              		.loc 1 281 17 is_stmt 1 view .LVU111
+ 500 0030 1A48     		ldr	r0, .L32+4
+ 501 0032 FFF7FEFF 		bl	puts
+ 502              	.LVL55:
+ 282:Drivers/sx126x/sx126x_driver.c ****                 break;
+ 503              		.loc 1 282 17 view .LVU112
+ 504 0036 27E0     		b	.L28
+ 505              	.LVL56:
+ 506              	.L31:
+ 507              		.loc 1 282 17 is_stmt 0 view .LVU113
+ 508              	.LBE3:
+ 254:Drivers/sx126x/sx126x_driver.c ****             GpioToggle(&Led2);
+ 509              		.loc 1 254 13 is_stmt 1 view .LVU114
+ 510 0038 1948     		ldr	r0, .L32+8
+ 511              	.LVL57:
+ 254:Drivers/sx126x/sx126x_driver.c ****             GpioToggle(&Led2);
+ 512              		.loc 1 254 13 is_stmt 0 view .LVU115
+ 513 003a FFF7FEFF 		bl	puts
+ 514              	.LVL58:
+ 255:Drivers/sx126x/sx126x_driver.c **** 
+ 515              		.loc 1 255 13 is_stmt 1 view .LVU116
+ 516 003e 1948     		ldr	r0, .L32+12
+ 517 0040 FFF7FEFF 		bl	GpioToggle
+ 518              	.LVL59:
+ 257:Drivers/sx126x/sx126x_driver.c ****             printf("the receive length is %d\n",size);
+ 519              		.loc 1 257 13 view .LVU117
+ 520 0044 FF22     		movs	r2, #255
+ 521 0046 0DF11701 		add	r1, sp, #23
+ 522 004a 06A8     		add	r0, sp, #24
+ 523 004c FFF7FEFF 		bl	SX126xGetPayload
+ 524              	.LVL60:
+ 258:Drivers/sx126x/sx126x_driver.c ****             // size=20;
+ 525              		.loc 1 258 13 view .LVU118
+ 526 0050 9DF81710 		ldrb	r1, [sp, #23]	@ zero_extendqisi2
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 16
+
+
+ 527 0054 1448     		ldr	r0, .L32+16
+ 528 0056 FFF7FEFF 		bl	printf
+ 529              	.LVL61:
+ 260:Drivers/sx126x/sx126x_driver.c ****             {
+ 530              		.loc 1 260 13 view .LVU119
+ 260:Drivers/sx126x/sx126x_driver.c ****             {
+ 531              		.loc 1 260 20 is_stmt 0 view .LVU120
+ 532 005a 0024     		movs	r4, #0
+ 260:Drivers/sx126x/sx126x_driver.c ****             {
+ 533              		.loc 1 260 13 view .LVU121
+ 534 005c 05E0     		b	.L26
+ 535              	.LVL62:
+ 536              	.L27:
+ 263:Drivers/sx126x/sx126x_driver.c ****                 // printf("%c ",rxbuf[i]);
+ 537              		.loc 1 263 17 is_stmt 1 discriminator 3 view .LVU122
+ 538 005e 06AB     		add	r3, sp, #24
+ 539 0060 195D     		ldrb	r1, [r3, r4]	@ zero_extendqisi2
+ 540 0062 1248     		ldr	r0, .L32+20
+ 541 0064 FFF7FEFF 		bl	printf
+ 542              	.LVL63:
+ 260:Drivers/sx126x/sx126x_driver.c ****             {
+ 543              		.loc 1 260 35 discriminator 3 view .LVU123
+ 260:Drivers/sx126x/sx126x_driver.c ****             {
+ 544              		.loc 1 260 36 is_stmt 0 discriminator 3 view .LVU124
+ 545 0068 0134     		adds	r4, r4, #1
+ 546              	.LVL64:
+ 547              	.L26:
+ 260:Drivers/sx126x/sx126x_driver.c ****             {
+ 548              		.loc 1 260 25 is_stmt 1 discriminator 1 view .LVU125
+ 260:Drivers/sx126x/sx126x_driver.c ****             {
+ 549              		.loc 1 260 27 is_stmt 0 discriminator 1 view .LVU126
+ 550 006a 9DF81730 		ldrb	r3, [sp, #23]	@ zero_extendqisi2
+ 260:Drivers/sx126x/sx126x_driver.c ****             {
+ 551              		.loc 1 260 13 discriminator 1 view .LVU127
+ 552 006e A342     		cmp	r3, r4
+ 553 0070 F5DC     		bgt	.L27
+ 269:Drivers/sx126x/sx126x_driver.c ****             SX126xGetPacketStatus(&radiopkstatus);
+ 554              		.loc 1 269 13 is_stmt 1 view .LVU128
+ 555 0072 0A20     		movs	r0, #10
+ 556 0074 FFF7FEFF 		bl	putchar
+ 557              	.LVL65:
+ 270:Drivers/sx126x/sx126x_driver.c ****             printf("the rssi is %d\n", radiopkstatus.Params.Gfsk.RssiAvg);
+ 558              		.loc 1 270 13 view .LVU129
+ 559 0078 6846     		mov	r0, sp
+ 560 007a FFF7FEFF 		bl	SX126xGetPacketStatus
+ 561              	.LVL66:
+ 271:Drivers/sx126x/sx126x_driver.c **** 
+ 562              		.loc 1 271 13 view .LVU130
+ 563 007e 9DF90510 		ldrsb	r1, [sp, #5]
+ 564 0082 0B48     		ldr	r0, .L32+24
+ 565 0084 FFF7FEFF 		bl	printf
+ 566              	.LVL67:
+ 273:Drivers/sx126x/sx126x_driver.c ****         }
+ 567              		.loc 1 273 13 view .LVU131
+ 568              	.L28:
+ 283:Drivers/sx126x/sx126x_driver.c ****             }
+ 284:Drivers/sx126x/sx126x_driver.c ****         }
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 17
+
+
+ 285:Drivers/sx126x/sx126x_driver.c ****     }
+ 286:Drivers/sx126x/sx126x_driver.c ****     Radio.Standby();
+ 569              		.loc 1 286 5 view .LVU132
+ 570              		.loc 1 286 10 is_stmt 0 view .LVU133
+ 571 0088 034B     		ldr	r3, .L32
+ 572 008a 1B6B     		ldr	r3, [r3, #48]
+ 573              		.loc 1 286 5 view .LVU134
+ 574 008c 9847     		blx	r3
+ 575              	.LVL68:
+ 287:Drivers/sx126x/sx126x_driver.c ****     HAL_Delay(10);
+ 576              		.loc 1 287 5 is_stmt 1 view .LVU135
+ 577 008e 0A20     		movs	r0, #10
+ 578 0090 FFF7FEFF 		bl	HAL_Delay
+ 579              	.LVL69:
+ 288:Drivers/sx126x/sx126x_driver.c **** 
+ 289:Drivers/sx126x/sx126x_driver.c **** }
+ 580              		.loc 1 289 1 is_stmt 0 view .LVU136
+ 581 0094 46B0     		add	sp, sp, #280
+ 582              	.LCFI10:
+ 583              		.cfi_def_cfa_offset 8
+ 584              		@ sp needed
+ 585 0096 10BD     		pop	{r4, pc}
+ 586              	.LVL70:
+ 587              	.L33:
+ 588              		.loc 1 289 1 view .LVU137
+ 589              		.align	2
+ 590              	.L32:
+ 591 0098 00000000 		.word	Radio
+ 592 009c 54000000 		.word	.LC11
+ 593 00a0 00000000 		.word	.LC7
+ 594 00a4 00000000 		.word	Led2
+ 595 00a8 1C000000 		.word	.LC8
+ 596 00ac 38000000 		.word	.LC9
+ 597 00b0 44000000 		.word	.LC10
+ 598              		.cfi_endproc
+ 599              	.LFE7:
+ 601              		.section	.text.crc16,"ax",%progbits
+ 602              		.align	1
+ 603              		.global	crc16
+ 604              		.syntax unified
+ 605              		.thumb
+ 606              		.thumb_func
+ 607              		.fpu fpv4-sp-d16
+ 609              	crc16:
+ 610              	.LVL71:
+ 611              	.LFB8:
+ 290:Drivers/sx126x/sx126x_driver.c **** 
+ 291:Drivers/sx126x/sx126x_driver.c **** /**
+ 292:Drivers/sx126x/sx126x_driver.c ****  * @brief crc16 for IBM
+ 293:Drivers/sx126x/sx126x_driver.c ****  * which can get the same result as si4463
+ 294:Drivers/sx126x/sx126x_driver.c ****  * the important factor is not reverse,start from the MSB
+ 295:Drivers/sx126x/sx126x_driver.c ****  * @param data
+ 296:Drivers/sx126x/sx126x_driver.c ****  * @param length 
+ 297:Drivers/sx126x/sx126x_driver.c ****  * @return unsigned int 
+ 298:Drivers/sx126x/sx126x_driver.c ****  */
+ 299:Drivers/sx126x/sx126x_driver.c **** unsigned int crc16(unsigned char *data, unsigned char length)
+ 300:Drivers/sx126x/sx126x_driver.c **** {
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 18
+
+
+ 612              		.loc 1 300 1 is_stmt 1 view -0
+ 613              		.cfi_startproc
+ 614              		@ args = 0, pretend = 0, frame = 0
+ 615              		@ frame_needed = 0, uses_anonymous_args = 0
+ 616              		@ link register save eliminated.
+ 617              		.loc 1 300 1 is_stmt 0 view .LVU139
+ 618 0000 8446     		mov	ip, r0
+ 301:Drivers/sx126x/sx126x_driver.c ****   int j;
+ 619              		.loc 1 301 3 is_stmt 1 view .LVU140
+ 302:Drivers/sx126x/sx126x_driver.c ****   // unsigned int reg_crc = 0xFFFF;
+ 303:Drivers/sx126x/sx126x_driver.c ****   unsigned int reg_crc = 0x0000;
+ 620              		.loc 1 303 3 view .LVU141
+ 621              	.LVL72:
+ 304:Drivers/sx126x/sx126x_driver.c ****   // unsigned int reg_crc = 0x4230;
+ 305:Drivers/sx126x/sx126x_driver.c ****   while (length--)
+ 622              		.loc 1 305 3 view .LVU142
+ 303:Drivers/sx126x/sx126x_driver.c ****   // unsigned int reg_crc = 0x4230;
+ 623              		.loc 1 303 16 is_stmt 0 view .LVU143
+ 624 0002 0023     		movs	r3, #0
+ 625              	.LVL73:
+ 626              	.L35:
+ 627              		.loc 1 305 9 is_stmt 1 view .LVU144
+ 628 0004 0A46     		mov	r2, r1
+ 629              		.loc 1 305 16 is_stmt 0 view .LVU145
+ 630 0006 0139     		subs	r1, r1, #1
+ 631              	.LVL74:
+ 632              		.loc 1 305 16 view .LVU146
+ 633 0008 C9B2     		uxtb	r1, r1
+ 634              	.LVL75:
+ 635              		.loc 1 305 9 view .LVU147
+ 636 000a 8AB1     		cbz	r2, .L41
+ 306:Drivers/sx126x/sx126x_driver.c ****   {
+ 307:Drivers/sx126x/sx126x_driver.c **** 
+ 308:Drivers/sx126x/sx126x_driver.c ****     reg_crc ^= (*data++<<8);
+ 637              		.loc 1 308 5 is_stmt 1 view .LVU148
+ 638              	.LVL76:
+ 639              		.loc 1 308 17 is_stmt 0 view .LVU149
+ 640 000c 1CF8012B 		ldrb	r2, [ip], #1	@ zero_extendqisi2
+ 641              	.LVL77:
+ 642              		.loc 1 308 13 view .LVU150
+ 643 0010 83EA0223 		eor	r3, r3, r2, lsl #8
+ 644              	.LVL78:
+ 309:Drivers/sx126x/sx126x_driver.c ****     for (j = 0; j < 8; j++)
+ 645              		.loc 1 309 5 is_stmt 1 view .LVU151
+ 646              		.loc 1 309 12 is_stmt 0 view .LVU152
+ 647 0014 0022     		movs	r2, #0
+ 648              		.loc 1 309 5 view .LVU153
+ 649 0016 01E0     		b	.L36
+ 650              	.LVL79:
+ 651              	.L37:
+ 310:Drivers/sx126x/sx126x_driver.c ****     {
+ 311:Drivers/sx126x/sx126x_driver.c ****       if (reg_crc & 0x8000)
+ 312:Drivers/sx126x/sx126x_driver.c ****       {
+ 313:Drivers/sx126x/sx126x_driver.c ****         // reg_crc = (reg_crc >> 1) ^ 0xA001;
+ 314:Drivers/sx126x/sx126x_driver.c ****         reg_crc = (reg_crc << 1) ^ 0x8005;
+ 315:Drivers/sx126x/sx126x_driver.c ****       }
+ 316:Drivers/sx126x/sx126x_driver.c ****       else
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 19
+
+
+ 317:Drivers/sx126x/sx126x_driver.c ****       {
+ 318:Drivers/sx126x/sx126x_driver.c ****         reg_crc = reg_crc << 1;
+ 652              		.loc 1 318 9 is_stmt 1 view .LVU154
+ 653              		.loc 1 318 17 is_stmt 0 view .LVU155
+ 654 0018 5B00     		lsls	r3, r3, #1
+ 655              	.LVL80:
+ 656              	.L38:
+ 309:Drivers/sx126x/sx126x_driver.c ****     for (j = 0; j < 8; j++)
+ 657              		.loc 1 309 24 is_stmt 1 discriminator 2 view .LVU156
+ 309:Drivers/sx126x/sx126x_driver.c ****     for (j = 0; j < 8; j++)
+ 658              		.loc 1 309 25 is_stmt 0 discriminator 2 view .LVU157
+ 659 001a 0132     		adds	r2, r2, #1
+ 660              	.LVL81:
+ 661              	.L36:
+ 309:Drivers/sx126x/sx126x_driver.c ****     for (j = 0; j < 8; j++)
+ 662              		.loc 1 309 17 is_stmt 1 discriminator 1 view .LVU158
+ 309:Drivers/sx126x/sx126x_driver.c ****     for (j = 0; j < 8; j++)
+ 663              		.loc 1 309 5 is_stmt 0 discriminator 1 view .LVU159
+ 664 001c 072A     		cmp	r2, #7
+ 665 001e F1DC     		bgt	.L35
+ 311:Drivers/sx126x/sx126x_driver.c ****       {
+ 666              		.loc 1 311 7 is_stmt 1 view .LVU160
+ 311:Drivers/sx126x/sx126x_driver.c ****       {
+ 667              		.loc 1 311 10 is_stmt 0 view .LVU161
+ 668 0020 13F4004F 		tst	r3, #32768
+ 669 0024 F8D0     		beq	.L37
+ 314:Drivers/sx126x/sx126x_driver.c ****       }
+ 670              		.loc 1 314 9 is_stmt 1 view .LVU162
+ 314:Drivers/sx126x/sx126x_driver.c ****       }
+ 671              		.loc 1 314 17 is_stmt 0 view .LVU163
+ 672 0026 48F20500 		movw	r0, #32773
+ 673 002a 80EA4303 		eor	r3, r0, r3, lsl #1
+ 674              	.LVL82:
+ 314:Drivers/sx126x/sx126x_driver.c ****       }
+ 675              		.loc 1 314 17 view .LVU164
+ 676 002e F4E7     		b	.L38
+ 677              	.LVL83:
+ 678              	.L41:
+ 319:Drivers/sx126x/sx126x_driver.c ****       }
+ 320:Drivers/sx126x/sx126x_driver.c ****     }
+ 321:Drivers/sx126x/sx126x_driver.c ****   }
+ 322:Drivers/sx126x/sx126x_driver.c ****   reg_crc&=0xffff;
+ 679              		.loc 1 322 3 is_stmt 1 view .LVU165
+ 323:Drivers/sx126x/sx126x_driver.c ****   return reg_crc;
+ 680              		.loc 1 323 3 view .LVU166
+ 324:Drivers/sx126x/sx126x_driver.c **** }
+ 681              		.loc 1 324 1 is_stmt 0 view .LVU167
+ 682 0030 98B2     		uxth	r0, r3
+ 683              	.LVL84:
+ 684              		.loc 1 324 1 view .LVU168
+ 685 0032 7047     		bx	lr
+ 686              		.cfi_endproc
+ 687              	.LFE8:
+ 689              		.global	xorbuf
+ 690              		.global	SnrValue
+ 691              		.global	RssiValue
+ 692              		.global	State
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 20
+
+
+ 693              		.global	Buffer
+ 694              		.global	BufferSize
+ 695              		.global	PongMsg
+ 696              		.global	PingMsg
+ 697              		.section	.bss.Buffer,"aw",%nobits
+ 698              		.align	2
+ 699              		.set	.LANCHOR0,. + 0
+ 702              	Buffer:
+ 703 0000 00000000 		.space	64
+ 703      00000000 
+ 703      00000000 
+ 703      00000000 
+ 703      00000000 
+ 704              		.section	.bss.RssiValue,"aw",%nobits
+ 707              	RssiValue:
+ 708 0000 00       		.space	1
+ 709              		.section	.bss.SnrValue,"aw",%nobits
+ 712              	SnrValue:
+ 713 0000 00       		.space	1
+ 714              		.section	.bss.State,"aw",%nobits
+ 717              	State:
+ 718 0000 00       		.space	1
+ 719              		.section	.data.BufferSize,"aw"
+ 720              		.align	1
+ 721              		.set	.LANCHOR1,. + 0
+ 724              	BufferSize:
+ 725 0000 4000     		.short	64
+ 726              		.section	.data.xorbuf,"aw"
+ 727              		.align	2
+ 730              	xorbuf:
+ 731 0000 FFE11D9A 		.ascii	"\377\341\035\232\355\2053$\352z\3229p\227W\012T}-\330"
+ 731      ED853324 
+ 731      EA7AD239 
+ 731      7097570A 
+ 731      547D2DD8 
+ 732 0014 6D0DBA8F 		.ascii	"m\015\272\217gY\307\242\2774\312\0300S\223\337\222\354"
+ 732      6759C7A2 
+ 732      BF34CA18 
+ 732      305393DF 
+ 732      92EC
+ 733 0026 A7158ADC 		.ascii	"\247\025\212\334\364\206UN\030!@\304\304\325\306\221"
+ 733      F486554E 
+ 733      182140C4 
+ 733      C4D5C691 
+ 734 0036 8ACDE7   		.ascii	"\212\315\347"
+ 735              		.section	.rodata.PingMsg,"a"
+ 736              		.align	2
+ 739              	PingMsg:
+ 740 0000 50494E47 		.ascii	"PING\000"
+ 740      00
+ 741              		.section	.rodata.PongMsg,"a"
+ 742              		.align	2
+ 745              	PongMsg:
+ 746 0000 504F4E47 		.ascii	"PONG\000"
+ 746      00
+ 747              		.text
+ 748              	.Letext0:
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 21
+
+
+ 749              		.file 2 "c:\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\include\\machine\\_defau
+ 750              		.file 3 "c:\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 751              		.file 4 "Drivers/sx126x/system/gpio.h"
+ 752              		.file 5 "Drivers/sx126x/radio/radio.h"
+ 753              		.file 6 "Drivers/sx126x/system/spi.h"
+ 754              		.file 7 "Drivers/sx126x/radio/sx126x/sx126x.h"
+ 755              		.file 8 "c:\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\include\\stdio.h"
+ 756              		.file 9 "<built-in>"
+ 757              		.file 10 "Drivers/sx126x/system/delay.h"
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 22
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 sx126x_driver.c
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:18     .text.sx126x_init:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:26     .text.sx126x_init:00000000 sx126x_init
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:64     .text.sx126x_init:00000024 $d
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:69     .rodata.sx126x_test.str1.4:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:85     .text.sx126x_test:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:92     .text.sx126x_test:00000000 sx126x_test
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:212    .text.sx126x_test:00000098 $d
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:221    .text.sx126x_tx_cw:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:228    .text.sx126x_tx_cw:00000000 sx126x_tx_cw
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:254    .text.sx126x_tx_cw:00000010 $d
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:260    .rodata.sx126x_tx_packet.str1.4:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:267    .text.sx126x_tx_packet:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:274    .text.sx126x_tx_packet:00000000 sx126x_tx_packet
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:404    .text.sx126x_tx_packet:00000064 $d
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:414    .rodata.sx126x_rx_packet.str1.4:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:430    .text.sx126x_rx_packet:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:437    .text.sx126x_rx_packet:00000000 sx126x_rx_packet
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:591    .text.sx126x_rx_packet:00000098 $d
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:602    .text.crc16:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:609    .text.crc16:00000000 crc16
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:730    .data.xorbuf:00000000 xorbuf
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:712    .bss.SnrValue:00000000 SnrValue
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:707    .bss.RssiValue:00000000 RssiValue
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:717    .bss.State:00000000 State
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:702    .bss.Buffer:00000000 Buffer
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:724    .data.BufferSize:00000000 BufferSize
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:745    .rodata.PongMsg:00000000 PongMsg
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:739    .rodata.PingMsg:00000000 PingMsg
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:698    .bss.Buffer:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:708    .bss.RssiValue:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:713    .bss.SnrValue:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:718    .bss.State:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:720    .data.BufferSize:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:727    .data.xorbuf:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:736    .rodata.PingMsg:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s:742    .rodata.PongMsg:00000000 $d
+
+UNDEFINED SYMBOLS
+SpiInit
+SX126xIoInit
+SX126x
+puts
+SX126xWriteRegister
+SX126xReadRegister
+sprintf
+printf
+Radio
+DelayMs
+SX126xGetIrqStatus
+SX126xClearIrqStatus
+HAL_Delay
+GpioToggle
+Led1
+SX126xGetPayload
+putchar
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccGXR2e8.s 			page 23
+
+
+SX126xGetPacketStatus
+Led2

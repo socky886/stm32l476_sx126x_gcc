@@ -1,0 +1,1985 @@
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"sx126x-board.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.SX126xIoInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	SX126xIoInit
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	SX126xIoInit:
+  27              	.LFB0:
+  28              		.file 1 "Drivers/sx126x/boards/NucleoL476/sx126x-board.c"
+   1:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** /*!
+   2:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  * \file      sx1262mbxdas-board.c
+   3:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  *
+   4:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  * \brief     Target board SX1262MBXDAS shield driver implementation
+   5:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  *
+   6:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  * \remark    This target board is only available with the SX126xDVK1xAS
+   7:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  *            development kit.
+   8:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  *
+   9:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  * \copyright Revised BSD License, see section \ref LICENSE.
+  10:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  *
+  11:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  * \code
+  12:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  *                ______                              _
+  13:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  *               / _____)             _              | |
+  14:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  *              ( (____  _____ ____ _| |_ _____  ____| |__
+  15:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  *               \____ \| ___ |    (_   _) ___ |/ ___)  _ \
+  16:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  *               _____) ) ____| | | || |_| ____( (___| | | |
+  17:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  *              (______/|_____)_|_|_| \__)_____)\____)_| |_|
+  18:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  *              (C)2013-2017 Semtech
+  19:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  *
+  20:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  * \endcode
+  21:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  *
+  22:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  * \author    Miguel Luis ( Semtech )
+  23:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  *
+  24:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  * \author    Gregory Cristian ( Semtech )
+  25:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  */
+  26:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** #include <stdlib.h>
+  27:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** #include "utilities.h"
+  28:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** #include "board-config.h"
+  29:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** #include "board.h"
+  30:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** #include "delay.h"
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 2
+
+
+  31:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** #include "radio.h"
+  32:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** #include "sx126x-board.h"
+  33:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+  34:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** #if defined( USE_RADIO_DEBUG )
+  35:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** /*!
+  36:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  * \brief Writes new Tx debug pin state
+  37:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  *
+  38:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  * \param [IN] state Debug pin state
+  39:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  */
+  40:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** static void SX126xDbgPinTxWrite( uint8_t state );
+  41:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+  42:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** /*!
+  43:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  * \brief Writes new Rx debug pin state
+  44:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  *
+  45:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  * \param [IN] state Debug pin state
+  46:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  */
+  47:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** static void SX126xDbgPinRxWrite( uint8_t state );
+  48:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** #endif
+  49:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+  50:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** /*!
+  51:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  * \brief Holds the internal operating mode of the radio
+  52:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  */
+  53:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** static RadioOperatingModes_t OperatingMode;
+  54:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+  55:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** /*!
+  56:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  * Antenna switch GPIO pins objects
+  57:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  */
+  58:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** Gpio_t AntPow;
+  59:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** Gpio_t DeviceSel;
+  60:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+  61:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** /*!
+  62:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  * Debug GPIO pins objects
+  63:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****  */
+  64:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** #if defined( USE_RADIO_DEBUG )
+  65:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** Gpio_t DbgPinTx;
+  66:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** Gpio_t DbgPinRx;
+  67:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** #endif
+  68:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+  69:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xIoInit( void )
+  70:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+  29              		.loc 1 70 1 view -0
+  30              		.cfi_startproc
+  31              		@ args = 0, pretend = 0, frame = 0
+  32              		@ frame_needed = 0, uses_anonymous_args = 0
+  33 0000 70B5     		push	{r4, r5, r6, lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 16
+  36              		.cfi_offset 4, -16
+  37              		.cfi_offset 5, -12
+  38              		.cfi_offset 6, -8
+  39              		.cfi_offset 14, -4
+  40 0002 82B0     		sub	sp, sp, #8
+  41              	.LCFI1:
+  42              		.cfi_def_cfa_offset 24
+  71:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     // GpioInit(&SX126x.Spi.Mosi, RADIO_MOSI, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_DOWN, GPIO
+  72:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     // GpioInit(&SX126x.Spi.Miso, RADIO_MISO, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_DOWN, GPIO
+  73:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     // GpioInit(&SX126x.Spi.Sclk, RADIO_SCLK, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_DOWN, GPIO
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 3
+
+
+  74:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     
+  75:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioInit( &SX126x.Reset, RADIO_RESET, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 1 );
+  43              		.loc 1 75 5 view .LVU1
+  44 0004 134D     		ldr	r5, .L3
+  45 0006 0126     		movs	r6, #1
+  46 0008 0196     		str	r6, [sp, #4]
+  47 000a 0024     		movs	r4, #0
+  48 000c 0094     		str	r4, [sp]
+  49 000e 2346     		mov	r3, r4
+  50 0010 3246     		mov	r2, r6
+  51 0012 2146     		mov	r1, r4
+  52 0014 2846     		mov	r0, r5
+  53 0016 FFF7FEFF 		bl	GpioInit
+  54              	.LVL0:
+  76:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioInit(&SX126x.Spi.Nss, RADIO_NSS, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 1);
+  55              		.loc 1 76 5 view .LVU2
+  56 001a 0196     		str	r6, [sp, #4]
+  57 001c 0094     		str	r4, [sp]
+  58 001e 2346     		mov	r3, r4
+  59 0020 3246     		mov	r2, r6
+  60 0022 0821     		movs	r1, #8
+  61 0024 05F1A400 		add	r0, r5, #164
+  62 0028 FFF7FEFF 		bl	GpioInit
+  63              	.LVL1:
+  77:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioInit(&SX126x.BUSY, RADIO_BUSY, PIN_INPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0);
+  64              		.loc 1 77 5 view .LVU3
+  65 002c 0194     		str	r4, [sp, #4]
+  66 002e 0094     		str	r4, [sp]
+  67 0030 2346     		mov	r3, r4
+  68 0032 2246     		mov	r2, r4
+  69 0034 1321     		movs	r1, #19
+  70 0036 05F11400 		add	r0, r5, #20
+  71 003a FFF7FEFF 		bl	GpioInit
+  72              	.LVL2:
+  78:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioInit(&SX126x.DIO1, RADIO_DIO_1, PIN_INPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0);
+  73              		.loc 1 78 5 view .LVU4
+  74 003e 0194     		str	r4, [sp, #4]
+  75 0040 0094     		str	r4, [sp]
+  76 0042 2346     		mov	r3, r4
+  77 0044 2246     		mov	r2, r4
+  78 0046 1421     		movs	r1, #20
+  79 0048 05F12800 		add	r0, r5, #40
+  80 004c FFF7FEFF 		bl	GpioInit
+  81              	.LVL3:
+  79:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     // GpioInit(&DeviceSel, RADIO_DEVICE_SEL, PIN_INPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0);
+  80:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+  82              		.loc 1 80 1 is_stmt 0 view .LVU5
+  83 0050 02B0     		add	sp, sp, #8
+  84              	.LCFI2:
+  85              		.cfi_def_cfa_offset 16
+  86              		@ sp needed
+  87 0052 70BD     		pop	{r4, r5, r6, pc}
+  88              	.L4:
+  89              		.align	2
+  90              	.L3:
+  91 0054 00000000 		.word	SX126x
+  92              		.cfi_endproc
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 4
+
+
+  93              	.LFE0:
+  95              		.section	.text.SX126xIoIrqInit,"ax",%progbits
+  96              		.align	1
+  97              		.global	SX126xIoIrqInit
+  98              		.syntax unified
+  99              		.thumb
+ 100              		.thumb_func
+ 101              		.fpu fpv4-sp-d16
+ 103              	SX126xIoIrqInit:
+ 104              	.LVL4:
+ 105              	.LFB1:
+  81:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+  82:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xIoIrqInit( DioIrqHandler dioIrq )
+  83:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 106              		.loc 1 83 1 is_stmt 1 view -0
+ 107              		.cfi_startproc
+ 108              		@ args = 0, pretend = 0, frame = 0
+ 109              		@ frame_needed = 0, uses_anonymous_args = 0
+ 110              		.loc 1 83 1 is_stmt 0 view .LVU7
+ 111 0000 08B5     		push	{r3, lr}
+ 112              	.LCFI3:
+ 113              		.cfi_def_cfa_offset 8
+ 114              		.cfi_offset 3, -8
+ 115              		.cfi_offset 14, -4
+ 116 0002 0346     		mov	r3, r0
+  84:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioSetInterrupt( &SX126x.DIO1, IRQ_RISING_EDGE, IRQ_HIGH_PRIORITY, dioIrq );
+ 117              		.loc 1 84 5 is_stmt 1 view .LVU8
+ 118 0004 0322     		movs	r2, #3
+ 119 0006 0121     		movs	r1, #1
+ 120 0008 0148     		ldr	r0, .L7
+ 121              	.LVL5:
+ 122              		.loc 1 84 5 is_stmt 0 view .LVU9
+ 123 000a FFF7FEFF 		bl	GpioSetInterrupt
+ 124              	.LVL6:
+  85:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 125              		.loc 1 85 1 view .LVU10
+ 126 000e 08BD     		pop	{r3, pc}
+ 127              	.L8:
+ 128              		.align	2
+ 129              	.L7:
+ 130 0010 28000000 		.word	SX126x+40
+ 131              		.cfi_endproc
+ 132              	.LFE1:
+ 134              		.section	.text.SX126xIoDeInit,"ax",%progbits
+ 135              		.align	1
+ 136              		.global	SX126xIoDeInit
+ 137              		.syntax unified
+ 138              		.thumb
+ 139              		.thumb_func
+ 140              		.fpu fpv4-sp-d16
+ 142              	SX126xIoDeInit:
+ 143              	.LFB2:
+  86:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+  87:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xIoDeInit( void )
+  88:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 144              		.loc 1 88 1 is_stmt 1 view -0
+ 145              		.cfi_startproc
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 5
+
+
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148 0000 30B5     		push	{r4, r5, lr}
+ 149              	.LCFI4:
+ 150              		.cfi_def_cfa_offset 12
+ 151              		.cfi_offset 4, -12
+ 152              		.cfi_offset 5, -8
+ 153              		.cfi_offset 14, -4
+ 154 0002 83B0     		sub	sp, sp, #12
+ 155              	.LCFI5:
+ 156              		.cfi_def_cfa_offset 24
+  89:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioInit( &SX126x.Spi.Nss, RADIO_NSS, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 1 );
+ 157              		.loc 1 89 5 view .LVU12
+ 158 0004 0E4D     		ldr	r5, .L11
+ 159 0006 0122     		movs	r2, #1
+ 160 0008 0192     		str	r2, [sp, #4]
+ 161 000a 0024     		movs	r4, #0
+ 162 000c 0094     		str	r4, [sp]
+ 163 000e 2346     		mov	r3, r4
+ 164 0010 0821     		movs	r1, #8
+ 165 0012 2846     		mov	r0, r5
+ 166 0014 FFF7FEFF 		bl	GpioInit
+ 167              	.LVL7:
+  90:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioInit( &SX126x.BUSY, RADIO_BUSY, PIN_INPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+ 168              		.loc 1 90 5 view .LVU13
+ 169 0018 0194     		str	r4, [sp, #4]
+ 170 001a 0094     		str	r4, [sp]
+ 171 001c 2346     		mov	r3, r4
+ 172 001e 2246     		mov	r2, r4
+ 173 0020 1321     		movs	r1, #19
+ 174 0022 A5F19000 		sub	r0, r5, #144
+ 175 0026 FFF7FEFF 		bl	GpioInit
+ 176              	.LVL8:
+  91:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioInit( &SX126x.DIO1, RADIO_DIO_1, PIN_INPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+ 177              		.loc 1 91 5 view .LVU14
+ 178 002a 0194     		str	r4, [sp, #4]
+ 179 002c 0094     		str	r4, [sp]
+ 180 002e 2346     		mov	r3, r4
+ 181 0030 2246     		mov	r2, r4
+ 182 0032 1421     		movs	r1, #20
+ 183 0034 A5F17C00 		sub	r0, r5, #124
+ 184 0038 FFF7FEFF 		bl	GpioInit
+ 185              	.LVL9:
+  92:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 186              		.loc 1 92 1 is_stmt 0 view .LVU15
+ 187 003c 03B0     		add	sp, sp, #12
+ 188              	.LCFI6:
+ 189              		.cfi_def_cfa_offset 12
+ 190              		@ sp needed
+ 191 003e 30BD     		pop	{r4, r5, pc}
+ 192              	.L12:
+ 193              		.align	2
+ 194              	.L11:
+ 195 0040 A4000000 		.word	SX126x+164
+ 196              		.cfi_endproc
+ 197              	.LFE2:
+ 199              		.section	.text.SX126xIoDbgInit,"ax",%progbits
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 6
+
+
+ 200              		.align	1
+ 201              		.global	SX126xIoDbgInit
+ 202              		.syntax unified
+ 203              		.thumb
+ 204              		.thumb_func
+ 205              		.fpu fpv4-sp-d16
+ 207              	SX126xIoDbgInit:
+ 208              	.LFB3:
+  93:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+  94:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xIoDbgInit( void )
+  95:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 209              		.loc 1 95 1 is_stmt 1 view -0
+ 210              		.cfi_startproc
+ 211              		@ args = 0, pretend = 0, frame = 0
+ 212              		@ frame_needed = 0, uses_anonymous_args = 0
+ 213              		@ link register save eliminated.
+  96:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** #if defined( USE_RADIO_DEBUG )
+  97:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioInit( &DbgPinTx, RADIO_DBG_PIN_TX, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+  98:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioInit( &DbgPinRx, RADIO_DBG_PIN_RX, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+  99:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** #endif
+ 100:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 214              		.loc 1 100 1 view .LVU17
+ 215 0000 7047     		bx	lr
+ 216              		.cfi_endproc
+ 217              	.LFE3:
+ 219              		.section	.text.SX126xGetBoardTcxoWakeupTime,"ax",%progbits
+ 220              		.align	1
+ 221              		.global	SX126xGetBoardTcxoWakeupTime
+ 222              		.syntax unified
+ 223              		.thumb
+ 224              		.thumb_func
+ 225              		.fpu fpv4-sp-d16
+ 227              	SX126xGetBoardTcxoWakeupTime:
+ 228              	.LFB5:
+ 101:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 102:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xIoTcxoInit( void )
+ 103:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 104:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     CalibrationParams_t calibParam;
+ 105:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 106:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xSetDio3AsTcxoCtrl( TCXO_CTRL_1_7V, SX126xGetBoardTcxoWakeupTime( ) << 6 ); // convert fro
+ 107:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     calibParam.Value = 0x7F;
+ 108:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xCalibrate( calibParam );
+ 109:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 110:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 111:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** uint32_t SX126xGetBoardTcxoWakeupTime( void )
+ 112:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 229              		.loc 1 112 1 view -0
+ 230              		.cfi_startproc
+ 231              		@ args = 0, pretend = 0, frame = 0
+ 232              		@ frame_needed = 0, uses_anonymous_args = 0
+ 233              		@ link register save eliminated.
+ 113:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     return BOARD_TCXO_WAKEUP_TIME;
+ 234              		.loc 1 113 5 view .LVU19
+ 114:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 235              		.loc 1 114 1 is_stmt 0 view .LVU20
+ 236 0000 0520     		movs	r0, #5
+ 237 0002 7047     		bx	lr
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 7
+
+
+ 238              		.cfi_endproc
+ 239              	.LFE5:
+ 241              		.section	.text.SX126xIoTcxoInit,"ax",%progbits
+ 242              		.align	1
+ 243              		.global	SX126xIoTcxoInit
+ 244              		.syntax unified
+ 245              		.thumb
+ 246              		.thumb_func
+ 247              		.fpu fpv4-sp-d16
+ 249              	SX126xIoTcxoInit:
+ 250              	.LFB4:
+ 103:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     CalibrationParams_t calibParam;
+ 251              		.loc 1 103 1 is_stmt 1 view -0
+ 252              		.cfi_startproc
+ 253              		@ args = 0, pretend = 0, frame = 0
+ 254              		@ frame_needed = 0, uses_anonymous_args = 0
+ 255 0000 08B5     		push	{r3, lr}
+ 256              	.LCFI7:
+ 257              		.cfi_def_cfa_offset 8
+ 258              		.cfi_offset 3, -8
+ 259              		.cfi_offset 14, -4
+ 104:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 260              		.loc 1 104 5 view .LVU22
+ 106:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     calibParam.Value = 0x7F;
+ 261              		.loc 1 106 5 view .LVU23
+ 106:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     calibParam.Value = 0x7F;
+ 262              		.loc 1 106 46 is_stmt 0 view .LVU24
+ 263 0002 FFF7FEFF 		bl	SX126xGetBoardTcxoWakeupTime
+ 264              	.LVL10:
+ 106:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     calibParam.Value = 0x7F;
+ 265              		.loc 1 106 5 view .LVU25
+ 266 0006 8101     		lsls	r1, r0, #6
+ 267 0008 0120     		movs	r0, #1
+ 268 000a FFF7FEFF 		bl	SX126xSetDio3AsTcxoCtrl
+ 269              	.LVL11:
+ 107:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xCalibrate( calibParam );
+ 270              		.loc 1 107 5 is_stmt 1 view .LVU26
+ 108:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 271              		.loc 1 108 5 view .LVU27
+ 272 000e 4FF07F00 		mov	r0, #127
+ 273 0012 FFF7FEFF 		bl	SX126xCalibrate
+ 274              	.LVL12:
+ 109:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 275              		.loc 1 109 1 is_stmt 0 view .LVU28
+ 276 0016 08BD     		pop	{r3, pc}
+ 277              		.cfi_endproc
+ 278              	.LFE4:
+ 280              		.section	.text.SX126xIoRfSwitchInit,"ax",%progbits
+ 281              		.align	1
+ 282              		.global	SX126xIoRfSwitchInit
+ 283              		.syntax unified
+ 284              		.thumb
+ 285              		.thumb_func
+ 286              		.fpu fpv4-sp-d16
+ 288              	SX126xIoRfSwitchInit:
+ 289              	.LFB6:
+ 115:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 8
+
+
+ 116:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xIoRfSwitchInit( void )
+ 117:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 290              		.loc 1 117 1 is_stmt 1 view -0
+ 291              		.cfi_startproc
+ 292              		@ args = 0, pretend = 0, frame = 0
+ 293              		@ frame_needed = 0, uses_anonymous_args = 0
+ 294 0000 08B5     		push	{r3, lr}
+ 295              	.LCFI8:
+ 296              		.cfi_def_cfa_offset 8
+ 297              		.cfi_offset 3, -8
+ 298              		.cfi_offset 14, -4
+ 118:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xSetDio2AsRfSwitchCtrl( true );
+ 299              		.loc 1 118 5 view .LVU30
+ 300 0002 0120     		movs	r0, #1
+ 301 0004 FFF7FEFF 		bl	SX126xSetDio2AsRfSwitchCtrl
+ 302              	.LVL13:
+ 119:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 303              		.loc 1 119 1 is_stmt 0 view .LVU31
+ 304 0008 08BD     		pop	{r3, pc}
+ 305              		.cfi_endproc
+ 306              	.LFE6:
+ 308              		.section	.text.SX126xGetOperatingMode,"ax",%progbits
+ 309              		.align	1
+ 310              		.global	SX126xGetOperatingMode
+ 311              		.syntax unified
+ 312              		.thumb
+ 313              		.thumb_func
+ 314              		.fpu fpv4-sp-d16
+ 316              	SX126xGetOperatingMode:
+ 317              	.LFB7:
+ 120:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 121:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** RadioOperatingModes_t SX126xGetOperatingMode( void )
+ 122:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 318              		.loc 1 122 1 is_stmt 1 view -0
+ 319              		.cfi_startproc
+ 320              		@ args = 0, pretend = 0, frame = 0
+ 321              		@ frame_needed = 0, uses_anonymous_args = 0
+ 322              		@ link register save eliminated.
+ 123:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     return OperatingMode;
+ 323              		.loc 1 123 5 view .LVU33
+ 124:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 324              		.loc 1 124 1 is_stmt 0 view .LVU34
+ 325 0000 014B     		ldr	r3, .L20
+ 326 0002 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 327 0004 7047     		bx	lr
+ 328              	.L21:
+ 329 0006 00BF     		.align	2
+ 330              	.L20:
+ 331 0008 00000000 		.word	.LANCHOR0
+ 332              		.cfi_endproc
+ 333              	.LFE7:
+ 335              		.section	.text.SX126xSetOperatingMode,"ax",%progbits
+ 336              		.align	1
+ 337              		.global	SX126xSetOperatingMode
+ 338              		.syntax unified
+ 339              		.thumb
+ 340              		.thumb_func
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 9
+
+
+ 341              		.fpu fpv4-sp-d16
+ 343              	SX126xSetOperatingMode:
+ 344              	.LVL14:
+ 345              	.LFB8:
+ 125:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 126:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xSetOperatingMode( RadioOperatingModes_t mode )
+ 127:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 346              		.loc 1 127 1 is_stmt 1 view -0
+ 347              		.cfi_startproc
+ 348              		@ args = 0, pretend = 0, frame = 0
+ 349              		@ frame_needed = 0, uses_anonymous_args = 0
+ 350              		@ link register save eliminated.
+ 128:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     OperatingMode = mode;
+ 351              		.loc 1 128 5 view .LVU36
+ 352              		.loc 1 128 19 is_stmt 0 view .LVU37
+ 353 0000 014B     		ldr	r3, .L23
+ 354 0002 1870     		strb	r0, [r3]
+ 129:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** #if defined( USE_RADIO_DEBUG )
+ 130:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     switch( mode )
+ 131:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 132:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****         case MODE_TX:
+ 133:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****             SX126xDbgPinTxWrite( 1 );
+ 134:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****             SX126xDbgPinRxWrite( 0 );
+ 135:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****             break;
+ 136:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****         case MODE_RX:
+ 137:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****         case MODE_RX_DC:
+ 138:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****             SX126xDbgPinTxWrite( 0 );
+ 139:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****             SX126xDbgPinRxWrite( 1 );
+ 140:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****             break;
+ 141:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****         default:
+ 142:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****             SX126xDbgPinTxWrite( 0 );
+ 143:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****             SX126xDbgPinRxWrite( 0 );
+ 144:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****             break;
+ 145:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     }
+ 146:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** #endif
+ 147:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 355              		.loc 1 147 1 view .LVU38
+ 356 0004 7047     		bx	lr
+ 357              	.L24:
+ 358 0006 00BF     		.align	2
+ 359              	.L23:
+ 360 0008 00000000 		.word	.LANCHOR0
+ 361              		.cfi_endproc
+ 362              	.LFE8:
+ 364              		.section	.text.SX126xReset,"ax",%progbits
+ 365              		.align	1
+ 366              		.global	SX126xReset
+ 367              		.syntax unified
+ 368              		.thumb
+ 369              		.thumb_func
+ 370              		.fpu fpv4-sp-d16
+ 372              	SX126xReset:
+ 373              	.LFB9:
+ 148:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 149:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xReset( void )
+ 150:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 374              		.loc 1 150 1 is_stmt 1 view -0
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 10
+
+
+ 375              		.cfi_startproc
+ 376              		@ args = 0, pretend = 0, frame = 0
+ 377              		@ frame_needed = 0, uses_anonymous_args = 0
+ 378 0000 30B5     		push	{r4, r5, lr}
+ 379              	.LCFI9:
+ 380              		.cfi_def_cfa_offset 12
+ 381              		.cfi_offset 4, -12
+ 382              		.cfi_offset 5, -8
+ 383              		.cfi_offset 14, -4
+ 384 0002 83B0     		sub	sp, sp, #12
+ 385              	.LCFI10:
+ 386              		.cfi_def_cfa_offset 24
+ 151:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     DelayMs( 10 );
+ 387              		.loc 1 151 5 view .LVU40
+ 388 0004 0A20     		movs	r0, #10
+ 389 0006 FFF7FEFF 		bl	DelayMs
+ 390              	.LVL15:
+ 152:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioInit( &SX126x.Reset, RADIO_RESET, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+ 391              		.loc 1 152 5 view .LVU41
+ 392 000a 0D4D     		ldr	r5, .L27
+ 393 000c 0024     		movs	r4, #0
+ 394 000e 0194     		str	r4, [sp, #4]
+ 395 0010 0094     		str	r4, [sp]
+ 396 0012 2346     		mov	r3, r4
+ 397 0014 0122     		movs	r2, #1
+ 398 0016 2146     		mov	r1, r4
+ 399 0018 2846     		mov	r0, r5
+ 400 001a FFF7FEFF 		bl	GpioInit
+ 401              	.LVL16:
+ 153:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     DelayMs( 20 );
+ 402              		.loc 1 153 5 view .LVU42
+ 403 001e 1420     		movs	r0, #20
+ 404 0020 FFF7FEFF 		bl	DelayMs
+ 405              	.LVL17:
+ 154:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioInit( &SX126x.Reset, RADIO_RESET, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 ); // interna
+ 406              		.loc 1 154 5 view .LVU43
+ 407 0024 0194     		str	r4, [sp, #4]
+ 408 0026 0094     		str	r4, [sp]
+ 409 0028 2346     		mov	r3, r4
+ 410 002a 0322     		movs	r2, #3
+ 411 002c 2146     		mov	r1, r4
+ 412 002e 2846     		mov	r0, r5
+ 413 0030 FFF7FEFF 		bl	GpioInit
+ 414              	.LVL18:
+ 155:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     DelayMs( 10 );
+ 415              		.loc 1 155 5 view .LVU44
+ 416 0034 0A20     		movs	r0, #10
+ 417 0036 FFF7FEFF 		bl	DelayMs
+ 418              	.LVL19:
+ 156:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 419              		.loc 1 156 1 is_stmt 0 view .LVU45
+ 420 003a 03B0     		add	sp, sp, #12
+ 421              	.LCFI11:
+ 422              		.cfi_def_cfa_offset 12
+ 423              		@ sp needed
+ 424 003c 30BD     		pop	{r4, r5, pc}
+ 425              	.L28:
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 11
+
+
+ 426 003e 00BF     		.align	2
+ 427              	.L27:
+ 428 0040 00000000 		.word	SX126x
+ 429              		.cfi_endproc
+ 430              	.LFE9:
+ 432              		.section	.text.SX126xWaitOnBusy,"ax",%progbits
+ 433              		.align	1
+ 434              		.global	SX126xWaitOnBusy
+ 435              		.syntax unified
+ 436              		.thumb
+ 437              		.thumb_func
+ 438              		.fpu fpv4-sp-d16
+ 440              	SX126xWaitOnBusy:
+ 441              	.LFB10:
+ 157:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 158:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xWaitOnBusy( void )
+ 159:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 442              		.loc 1 159 1 is_stmt 1 view -0
+ 443              		.cfi_startproc
+ 444              		@ args = 0, pretend = 0, frame = 0
+ 445              		@ frame_needed = 0, uses_anonymous_args = 0
+ 446 0000 08B5     		push	{r3, lr}
+ 447              	.LCFI12:
+ 448              		.cfi_def_cfa_offset 8
+ 449              		.cfi_offset 3, -8
+ 450              		.cfi_offset 14, -4
+ 451              	.L30:
+ 160:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     while( GpioRead( &SX126x.BUSY ) == 1 )
+ 161:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     ;
+ 452              		.loc 1 161 5 discriminator 1 view .LVU47
+ 160:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     while( GpioRead( &SX126x.BUSY ) == 1 )
+ 453              		.loc 1 160 10 discriminator 1 view .LVU48
+ 160:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     while( GpioRead( &SX126x.BUSY ) == 1 )
+ 454              		.loc 1 160 12 is_stmt 0 discriminator 1 view .LVU49
+ 455 0002 0348     		ldr	r0, .L32
+ 456 0004 FFF7FEFF 		bl	GpioRead
+ 457              	.LVL20:
+ 160:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     while( GpioRead( &SX126x.BUSY ) == 1 )
+ 458              		.loc 1 160 10 discriminator 1 view .LVU50
+ 459 0008 0128     		cmp	r0, #1
+ 460 000a FAD0     		beq	.L30
+ 162:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 461              		.loc 1 162 1 view .LVU51
+ 462 000c 08BD     		pop	{r3, pc}
+ 463              	.L33:
+ 464 000e 00BF     		.align	2
+ 465              	.L32:
+ 466 0010 14000000 		.word	SX126x+20
+ 467              		.cfi_endproc
+ 468              	.LFE10:
+ 470              		.section	.text.SX126xWakeup,"ax",%progbits
+ 471              		.align	1
+ 472              		.global	SX126xWakeup
+ 473              		.syntax unified
+ 474              		.thumb
+ 475              		.thumb_func
+ 476              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 12
+
+
+ 478              	SX126xWakeup:
+ 479              	.LFB11:
+ 163:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 164:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xWakeup( void )
+ 165:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 480              		.loc 1 165 1 is_stmt 1 view -0
+ 481              		.cfi_startproc
+ 482              		@ args = 0, pretend = 0, frame = 0
+ 483              		@ frame_needed = 0, uses_anonymous_args = 0
+ 484 0000 38B5     		push	{r3, r4, r5, lr}
+ 485              	.LCFI13:
+ 486              		.cfi_def_cfa_offset 16
+ 487              		.cfi_offset 3, -16
+ 488              		.cfi_offset 4, -12
+ 489              		.cfi_offset 5, -8
+ 490              		.cfi_offset 14, -4
+ 166:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     CRITICAL_SECTION_BEGIN( );
+ 491              		.loc 1 166 30 view .LVU53
+ 167:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 168:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioWrite( &SX126x.Spi.Nss, 0 );
+ 492              		.loc 1 168 5 view .LVU54
+ 493 0002 0C4C     		ldr	r4, .L36
+ 494 0004 0021     		movs	r1, #0
+ 495 0006 2046     		mov	r0, r4
+ 496 0008 FFF7FEFF 		bl	GpioWrite
+ 497              	.LVL21:
+ 169:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 170:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SpiInOut( &SX126x.Spi, RADIO_GET_STATUS );
+ 498              		.loc 1 170 5 view .LVU55
+ 499 000c A4F14005 		sub	r5, r4, #64
+ 500 0010 C021     		movs	r1, #192
+ 501 0012 2846     		mov	r0, r5
+ 502 0014 FFF7FEFF 		bl	SpiInOut
+ 503              	.LVL22:
+ 171:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SpiInOut( &SX126x.Spi, 0x00 );
+ 504              		.loc 1 171 5 view .LVU56
+ 505 0018 0021     		movs	r1, #0
+ 506 001a 2846     		mov	r0, r5
+ 507 001c FFF7FEFF 		bl	SpiInOut
+ 508              	.LVL23:
+ 172:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 173:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioWrite( &SX126x.Spi.Nss, 1 );
+ 509              		.loc 1 173 5 view .LVU57
+ 510 0020 0121     		movs	r1, #1
+ 511 0022 2046     		mov	r0, r4
+ 512 0024 FFF7FEFF 		bl	GpioWrite
+ 513              	.LVL24:
+ 174:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 175:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     // Wait for chip to be ready.
+ 176:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xWaitOnBusy( );
+ 514              		.loc 1 176 5 view .LVU58
+ 515 0028 FFF7FEFF 		bl	SX126xWaitOnBusy
+ 516              	.LVL25:
+ 177:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 178:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     // Update operating mode context variable
+ 179:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xSetOperatingMode( MODE_STDBY_RC );
+ 517              		.loc 1 179 5 view .LVU59
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 13
+
+
+ 518 002c 0120     		movs	r0, #1
+ 519 002e FFF7FEFF 		bl	SX126xSetOperatingMode
+ 520              	.LVL26:
+ 180:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 181:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     CRITICAL_SECTION_END( );
+ 521              		.loc 1 181 28 view .LVU60
+ 182:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 522              		.loc 1 182 1 is_stmt 0 view .LVU61
+ 523 0032 38BD     		pop	{r3, r4, r5, pc}
+ 524              	.L37:
+ 525              		.align	2
+ 526              	.L36:
+ 527 0034 A4000000 		.word	SX126x+164
+ 528              		.cfi_endproc
+ 529              	.LFE11:
+ 531              		.section	.text.SX126xWriteCommand,"ax",%progbits
+ 532              		.align	1
+ 533              		.global	SX126xWriteCommand
+ 534              		.syntax unified
+ 535              		.thumb
+ 536              		.thumb_func
+ 537              		.fpu fpv4-sp-d16
+ 539              	SX126xWriteCommand:
+ 540              	.LVL27:
+ 541              	.LFB12:
+ 183:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 184:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xWriteCommand( RadioCommands_t command, uint8_t *buffer, uint16_t size )
+ 185:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 542              		.loc 1 185 1 is_stmt 1 view -0
+ 543              		.cfi_startproc
+ 544              		@ args = 0, pretend = 0, frame = 0
+ 545              		@ frame_needed = 0, uses_anonymous_args = 0
+ 546              		.loc 1 185 1 is_stmt 0 view .LVU63
+ 547 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 548              	.LCFI14:
+ 549              		.cfi_def_cfa_offset 24
+ 550              		.cfi_offset 3, -24
+ 551              		.cfi_offset 4, -20
+ 552              		.cfi_offset 5, -16
+ 553              		.cfi_offset 6, -12
+ 554              		.cfi_offset 7, -8
+ 555              		.cfi_offset 14, -4
+ 556 0002 0746     		mov	r7, r0
+ 557 0004 0E46     		mov	r6, r1
+ 558 0006 1546     		mov	r5, r2
+ 186:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xCheckDeviceReady( );
+ 559              		.loc 1 186 5 is_stmt 1 view .LVU64
+ 560 0008 FFF7FEFF 		bl	SX126xCheckDeviceReady
+ 561              	.LVL28:
+ 187:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 188:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioWrite( &SX126x.Spi.Nss, 0 );
+ 562              		.loc 1 188 5 view .LVU65
+ 563 000c 0E4C     		ldr	r4, .L44
+ 564 000e 0021     		movs	r1, #0
+ 565 0010 2046     		mov	r0, r4
+ 566 0012 FFF7FEFF 		bl	GpioWrite
+ 567              	.LVL29:
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 14
+
+
+ 189:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 190:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SpiInOut( &SX126x.Spi, ( uint8_t )command );
+ 568              		.loc 1 190 5 view .LVU66
+ 569 0016 3946     		mov	r1, r7
+ 570 0018 A4F14000 		sub	r0, r4, #64
+ 571 001c FFF7FEFF 		bl	SpiInOut
+ 572              	.LVL30:
+ 191:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 192:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 573              		.loc 1 192 5 view .LVU67
+ 574              	.LBB2:
+ 575              		.loc 1 192 10 view .LVU68
+ 576              		.loc 1 192 19 is_stmt 0 view .LVU69
+ 577 0020 0024     		movs	r4, #0
+ 578              		.loc 1 192 5 view .LVU70
+ 579 0022 05E0     		b	.L39
+ 580              	.LVL31:
+ 581              	.L40:
+ 193:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 194:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****         SpiInOut( &SX126x.Spi, buffer[i] );
+ 582              		.loc 1 194 9 is_stmt 1 discriminator 3 view .LVU71
+ 583 0024 315D     		ldrb	r1, [r6, r4]	@ zero_extendqisi2
+ 584 0026 0948     		ldr	r0, .L44+4
+ 585 0028 FFF7FEFF 		bl	SpiInOut
+ 586              	.LVL32:
+ 192:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 587              		.loc 1 192 36 discriminator 3 view .LVU72
+ 192:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 588              		.loc 1 192 37 is_stmt 0 discriminator 3 view .LVU73
+ 589 002c 0134     		adds	r4, r4, #1
+ 590              	.LVL33:
+ 192:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 591              		.loc 1 192 37 discriminator 3 view .LVU74
+ 592 002e A4B2     		uxth	r4, r4
+ 593              	.LVL34:
+ 594              	.L39:
+ 192:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 595              		.loc 1 192 26 is_stmt 1 discriminator 1 view .LVU75
+ 192:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 596              		.loc 1 192 5 is_stmt 0 discriminator 1 view .LVU76
+ 597 0030 AC42     		cmp	r4, r5
+ 598 0032 F7D3     		bcc	.L40
+ 599              	.LBE2:
+ 195:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     }
+ 196:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 197:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioWrite( &SX126x.Spi.Nss, 1 );
+ 600              		.loc 1 197 5 is_stmt 1 view .LVU77
+ 601 0034 0121     		movs	r1, #1
+ 602 0036 0448     		ldr	r0, .L44
+ 603 0038 FFF7FEFF 		bl	GpioWrite
+ 604              	.LVL35:
+ 198:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 199:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     if( command != RADIO_SET_SLEEP )
+ 605              		.loc 1 199 5 view .LVU78
+ 606              		.loc 1 199 7 is_stmt 0 view .LVU79
+ 607 003c 842F     		cmp	r7, #132
+ 608 003e 00D1     		bne	.L43
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 15
+
+
+ 609              	.L38:
+ 200:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 201:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****         SX126xWaitOnBusy( );
+ 202:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     }
+ 203:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 610              		.loc 1 203 1 view .LVU80
+ 611 0040 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 612              	.LVL36:
+ 613              	.L43:
+ 201:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     }
+ 614              		.loc 1 201 9 is_stmt 1 view .LVU81
+ 615 0042 FFF7FEFF 		bl	SX126xWaitOnBusy
+ 616              	.LVL37:
+ 617              		.loc 1 203 1 is_stmt 0 view .LVU82
+ 618 0046 FBE7     		b	.L38
+ 619              	.L45:
+ 620              		.align	2
+ 621              	.L44:
+ 622 0048 A4000000 		.word	SX126x+164
+ 623 004c 64000000 		.word	SX126x+100
+ 624              		.cfi_endproc
+ 625              	.LFE12:
+ 627              		.section	.text.SX126xReadCommand,"ax",%progbits
+ 628              		.align	1
+ 629              		.global	SX126xReadCommand
+ 630              		.syntax unified
+ 631              		.thumb
+ 632              		.thumb_func
+ 633              		.fpu fpv4-sp-d16
+ 635              	SX126xReadCommand:
+ 636              	.LVL38:
+ 637              	.LFB13:
+ 204:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 205:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** uint8_t SX126xReadCommand( RadioCommands_t command, uint8_t *buffer, uint16_t size )
+ 206:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 638              		.loc 1 206 1 is_stmt 1 view -0
+ 639              		.cfi_startproc
+ 640              		@ args = 0, pretend = 0, frame = 0
+ 641              		@ frame_needed = 0, uses_anonymous_args = 0
+ 642              		.loc 1 206 1 is_stmt 0 view .LVU84
+ 643 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 644              	.LCFI15:
+ 645              		.cfi_def_cfa_offset 24
+ 646              		.cfi_offset 3, -24
+ 647              		.cfi_offset 4, -20
+ 648              		.cfi_offset 5, -16
+ 649              		.cfi_offset 6, -12
+ 650              		.cfi_offset 7, -8
+ 651              		.cfi_offset 14, -4
+ 652 0002 0746     		mov	r7, r0
+ 653 0004 0E46     		mov	r6, r1
+ 654 0006 1546     		mov	r5, r2
+ 207:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     uint8_t status = 0;
+ 655              		.loc 1 207 5 is_stmt 1 view .LVU85
+ 656              	.LVL39:
+ 208:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 209:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xCheckDeviceReady( );
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 16
+
+
+ 657              		.loc 1 209 5 view .LVU86
+ 658 0008 FFF7FEFF 		bl	SX126xCheckDeviceReady
+ 659              	.LVL40:
+ 210:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 211:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioWrite( &SX126x.Spi.Nss, 0 );
+ 660              		.loc 1 211 5 view .LVU87
+ 661 000c 104C     		ldr	r4, .L50
+ 662 000e 0021     		movs	r1, #0
+ 663 0010 2046     		mov	r0, r4
+ 664 0012 FFF7FEFF 		bl	GpioWrite
+ 665              	.LVL41:
+ 212:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 213:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SpiInOut( &SX126x.Spi, ( uint8_t )command );
+ 666              		.loc 1 213 5 view .LVU88
+ 667 0016 403C     		subs	r4, r4, #64
+ 668 0018 3946     		mov	r1, r7
+ 669 001a 2046     		mov	r0, r4
+ 670 001c FFF7FEFF 		bl	SpiInOut
+ 671              	.LVL42:
+ 214:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     status = SpiInOut( &SX126x.Spi, 0x00 );
+ 672              		.loc 1 214 5 view .LVU89
+ 673              		.loc 1 214 14 is_stmt 0 view .LVU90
+ 674 0020 0021     		movs	r1, #0
+ 675 0022 2046     		mov	r0, r4
+ 676 0024 FFF7FEFF 		bl	SpiInOut
+ 677              	.LVL43:
+ 678              		.loc 1 214 12 view .LVU91
+ 679 0028 C7B2     		uxtb	r7, r0
+ 680              	.LVL44:
+ 215:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 681              		.loc 1 215 5 is_stmt 1 view .LVU92
+ 682              	.LBB3:
+ 683              		.loc 1 215 10 view .LVU93
+ 684              		.loc 1 215 19 is_stmt 0 view .LVU94
+ 685 002a 0024     		movs	r4, #0
+ 686              		.loc 1 215 5 view .LVU95
+ 687 002c 06E0     		b	.L47
+ 688              	.LVL45:
+ 689              	.L48:
+ 216:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 217:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****         buffer[i] = SpiInOut( &SX126x.Spi, 0 );
+ 690              		.loc 1 217 9 is_stmt 1 discriminator 3 view .LVU96
+ 691              		.loc 1 217 21 is_stmt 0 discriminator 3 view .LVU97
+ 692 002e 0021     		movs	r1, #0
+ 693 0030 0848     		ldr	r0, .L50+4
+ 694 0032 FFF7FEFF 		bl	SpiInOut
+ 695              	.LVL46:
+ 696              		.loc 1 217 19 discriminator 3 view .LVU98
+ 697 0036 3055     		strb	r0, [r6, r4]
+ 215:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 698              		.loc 1 215 36 is_stmt 1 discriminator 3 view .LVU99
+ 215:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 699              		.loc 1 215 37 is_stmt 0 discriminator 3 view .LVU100
+ 700 0038 0134     		adds	r4, r4, #1
+ 701              	.LVL47:
+ 215:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 702              		.loc 1 215 37 discriminator 3 view .LVU101
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 17
+
+
+ 703 003a A4B2     		uxth	r4, r4
+ 704              	.LVL48:
+ 705              	.L47:
+ 215:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 706              		.loc 1 215 26 is_stmt 1 discriminator 1 view .LVU102
+ 215:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 707              		.loc 1 215 5 is_stmt 0 discriminator 1 view .LVU103
+ 708 003c AC42     		cmp	r4, r5
+ 709 003e F6D3     		bcc	.L48
+ 710              	.LBE3:
+ 218:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     }
+ 219:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 220:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioWrite( &SX126x.Spi.Nss, 1 );
+ 711              		.loc 1 220 5 is_stmt 1 view .LVU104
+ 712 0040 0121     		movs	r1, #1
+ 713 0042 0348     		ldr	r0, .L50
+ 714 0044 FFF7FEFF 		bl	GpioWrite
+ 715              	.LVL49:
+ 221:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 222:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xWaitOnBusy( );
+ 716              		.loc 1 222 5 view .LVU105
+ 717 0048 FFF7FEFF 		bl	SX126xWaitOnBusy
+ 718              	.LVL50:
+ 223:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 224:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     return status;
+ 719              		.loc 1 224 5 view .LVU106
+ 225:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 720              		.loc 1 225 1 is_stmt 0 view .LVU107
+ 721 004c 3846     		mov	r0, r7
+ 722 004e F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 723              	.LVL51:
+ 724              	.L51:
+ 725              		.loc 1 225 1 view .LVU108
+ 726              		.align	2
+ 727              	.L50:
+ 728 0050 A4000000 		.word	SX126x+164
+ 729 0054 64000000 		.word	SX126x+100
+ 730              		.cfi_endproc
+ 731              	.LFE13:
+ 733              		.section	.text.SX126xWriteRegisters,"ax",%progbits
+ 734              		.align	1
+ 735              		.global	SX126xWriteRegisters
+ 736              		.syntax unified
+ 737              		.thumb
+ 738              		.thumb_func
+ 739              		.fpu fpv4-sp-d16
+ 741              	SX126xWriteRegisters:
+ 742              	.LVL52:
+ 743              	.LFB14:
+ 226:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 227:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xWriteRegisters( uint16_t address, uint8_t *buffer, uint16_t size )
+ 228:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 744              		.loc 1 228 1 is_stmt 1 view -0
+ 745              		.cfi_startproc
+ 746              		@ args = 0, pretend = 0, frame = 0
+ 747              		@ frame_needed = 0, uses_anonymous_args = 0
+ 748              		.loc 1 228 1 is_stmt 0 view .LVU110
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 18
+
+
+ 749 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 750              	.LCFI16:
+ 751              		.cfi_def_cfa_offset 24
+ 752              		.cfi_offset 3, -24
+ 753              		.cfi_offset 4, -20
+ 754              		.cfi_offset 5, -16
+ 755              		.cfi_offset 6, -12
+ 756              		.cfi_offset 7, -8
+ 757              		.cfi_offset 14, -4
+ 758 0002 0746     		mov	r7, r0
+ 759 0004 0E46     		mov	r6, r1
+ 760 0006 1546     		mov	r5, r2
+ 229:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xCheckDeviceReady( );
+ 761              		.loc 1 229 5 is_stmt 1 view .LVU111
+ 762 0008 FFF7FEFF 		bl	SX126xCheckDeviceReady
+ 763              	.LVL53:
+ 230:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 231:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioWrite( &SX126x.Spi.Nss, 0 );
+ 764              		.loc 1 231 5 view .LVU112
+ 765 000c 114C     		ldr	r4, .L56
+ 766 000e 0021     		movs	r1, #0
+ 767 0010 2046     		mov	r0, r4
+ 768 0012 FFF7FEFF 		bl	GpioWrite
+ 769              	.LVL54:
+ 232:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     
+ 233:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SpiInOut( &SX126x.Spi, RADIO_WRITE_REGISTER );
+ 770              		.loc 1 233 5 view .LVU113
+ 771 0016 403C     		subs	r4, r4, #64
+ 772 0018 0D21     		movs	r1, #13
+ 773 001a 2046     		mov	r0, r4
+ 774 001c FFF7FEFF 		bl	SpiInOut
+ 775              	.LVL55:
+ 234:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SpiInOut( &SX126x.Spi, ( address & 0xFF00 ) >> 8 );
+ 776              		.loc 1 234 5 view .LVU114
+ 777 0020 390A     		lsrs	r1, r7, #8
+ 778 0022 2046     		mov	r0, r4
+ 779 0024 FFF7FEFF 		bl	SpiInOut
+ 780              	.LVL56:
+ 235:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SpiInOut( &SX126x.Spi, address & 0x00FF );
+ 781              		.loc 1 235 5 view .LVU115
+ 782 0028 F9B2     		uxtb	r1, r7
+ 783 002a 2046     		mov	r0, r4
+ 784 002c FFF7FEFF 		bl	SpiInOut
+ 785              	.LVL57:
+ 236:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     
+ 237:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 786              		.loc 1 237 5 view .LVU116
+ 787              	.LBB4:
+ 788              		.loc 1 237 10 view .LVU117
+ 789              		.loc 1 237 19 is_stmt 0 view .LVU118
+ 790 0030 0024     		movs	r4, #0
+ 791              		.loc 1 237 5 view .LVU119
+ 792 0032 05E0     		b	.L53
+ 793              	.LVL58:
+ 794              	.L54:
+ 238:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 239:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****         SpiInOut( &SX126x.Spi, buffer[i] );
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 19
+
+
+ 795              		.loc 1 239 9 is_stmt 1 discriminator 3 view .LVU120
+ 796 0034 315D     		ldrb	r1, [r6, r4]	@ zero_extendqisi2
+ 797 0036 0848     		ldr	r0, .L56+4
+ 798 0038 FFF7FEFF 		bl	SpiInOut
+ 799              	.LVL59:
+ 237:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 800              		.loc 1 237 36 discriminator 3 view .LVU121
+ 237:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 801              		.loc 1 237 37 is_stmt 0 discriminator 3 view .LVU122
+ 802 003c 0134     		adds	r4, r4, #1
+ 803              	.LVL60:
+ 237:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 804              		.loc 1 237 37 discriminator 3 view .LVU123
+ 805 003e A4B2     		uxth	r4, r4
+ 806              	.LVL61:
+ 807              	.L53:
+ 237:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 808              		.loc 1 237 26 is_stmt 1 discriminator 1 view .LVU124
+ 237:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 809              		.loc 1 237 5 is_stmt 0 discriminator 1 view .LVU125
+ 810 0040 AC42     		cmp	r4, r5
+ 811 0042 F7D3     		bcc	.L54
+ 812              	.LBE4:
+ 240:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     }
+ 241:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 242:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioWrite( &SX126x.Spi.Nss, 1 );
+ 813              		.loc 1 242 5 is_stmt 1 view .LVU126
+ 814 0044 0121     		movs	r1, #1
+ 815 0046 0348     		ldr	r0, .L56
+ 816 0048 FFF7FEFF 		bl	GpioWrite
+ 817              	.LVL62:
+ 243:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 244:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xWaitOnBusy( );
+ 818              		.loc 1 244 5 view .LVU127
+ 819 004c FFF7FEFF 		bl	SX126xWaitOnBusy
+ 820              	.LVL63:
+ 245:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 821              		.loc 1 245 1 is_stmt 0 view .LVU128
+ 822 0050 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 823              	.LVL64:
+ 824              	.L57:
+ 825              		.loc 1 245 1 view .LVU129
+ 826 0052 00BF     		.align	2
+ 827              	.L56:
+ 828 0054 A4000000 		.word	SX126x+164
+ 829 0058 64000000 		.word	SX126x+100
+ 830              		.cfi_endproc
+ 831              	.LFE14:
+ 833              		.section	.text.SX126xWriteRegister,"ax",%progbits
+ 834              		.align	1
+ 835              		.global	SX126xWriteRegister
+ 836              		.syntax unified
+ 837              		.thumb
+ 838              		.thumb_func
+ 839              		.fpu fpv4-sp-d16
+ 841              	SX126xWriteRegister:
+ 842              	.LVL65:
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 20
+
+
+ 843              	.LFB15:
+ 246:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 247:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xWriteRegister( uint16_t address, uint8_t value )
+ 248:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 844              		.loc 1 248 1 is_stmt 1 view -0
+ 845              		.cfi_startproc
+ 846              		@ args = 0, pretend = 0, frame = 8
+ 847              		@ frame_needed = 0, uses_anonymous_args = 0
+ 848              		.loc 1 248 1 is_stmt 0 view .LVU131
+ 849 0000 00B5     		push	{lr}
+ 850              	.LCFI17:
+ 851              		.cfi_def_cfa_offset 4
+ 852              		.cfi_offset 14, -4
+ 853 0002 83B0     		sub	sp, sp, #12
+ 854              	.LCFI18:
+ 855              		.cfi_def_cfa_offset 16
+ 856 0004 8DF80710 		strb	r1, [sp, #7]
+ 249:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xWriteRegisters( address, &value, 1 );
+ 857              		.loc 1 249 5 is_stmt 1 view .LVU132
+ 858 0008 0122     		movs	r2, #1
+ 859 000a 0DF10701 		add	r1, sp, #7
+ 860              	.LVL66:
+ 861              		.loc 1 249 5 is_stmt 0 view .LVU133
+ 862 000e FFF7FEFF 		bl	SX126xWriteRegisters
+ 863              	.LVL67:
+ 250:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 864              		.loc 1 250 1 view .LVU134
+ 865 0012 03B0     		add	sp, sp, #12
+ 866              	.LCFI19:
+ 867              		.cfi_def_cfa_offset 4
+ 868              		@ sp needed
+ 869 0014 5DF804FB 		ldr	pc, [sp], #4
+ 870              		.cfi_endproc
+ 871              	.LFE15:
+ 873              		.section	.text.SX126xReadRegisters,"ax",%progbits
+ 874              		.align	1
+ 875              		.global	SX126xReadRegisters
+ 876              		.syntax unified
+ 877              		.thumb
+ 878              		.thumb_func
+ 879              		.fpu fpv4-sp-d16
+ 881              	SX126xReadRegisters:
+ 882              	.LVL68:
+ 883              	.LFB16:
+ 251:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 252:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xReadRegisters( uint16_t address, uint8_t *buffer, uint16_t size )
+ 253:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 884              		.loc 1 253 1 is_stmt 1 view -0
+ 885              		.cfi_startproc
+ 886              		@ args = 0, pretend = 0, frame = 0
+ 887              		@ frame_needed = 0, uses_anonymous_args = 0
+ 888              		.loc 1 253 1 is_stmt 0 view .LVU136
+ 889 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 890              	.LCFI20:
+ 891              		.cfi_def_cfa_offset 24
+ 892              		.cfi_offset 3, -24
+ 893              		.cfi_offset 4, -20
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 21
+
+
+ 894              		.cfi_offset 5, -16
+ 895              		.cfi_offset 6, -12
+ 896              		.cfi_offset 7, -8
+ 897              		.cfi_offset 14, -4
+ 898 0002 0746     		mov	r7, r0
+ 899 0004 0E46     		mov	r6, r1
+ 900 0006 1546     		mov	r5, r2
+ 254:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xCheckDeviceReady( );
+ 901              		.loc 1 254 5 is_stmt 1 view .LVU137
+ 902 0008 FFF7FEFF 		bl	SX126xCheckDeviceReady
+ 903              	.LVL69:
+ 255:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 256:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioWrite( &SX126x.Spi.Nss, 0 );
+ 904              		.loc 1 256 5 view .LVU138
+ 905 000c 134C     		ldr	r4, .L64
+ 906 000e 0021     		movs	r1, #0
+ 907 0010 2046     		mov	r0, r4
+ 908 0012 FFF7FEFF 		bl	GpioWrite
+ 909              	.LVL70:
+ 257:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 258:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SpiInOut( &SX126x.Spi, RADIO_READ_REGISTER );
+ 910              		.loc 1 258 5 view .LVU139
+ 911 0016 403C     		subs	r4, r4, #64
+ 912 0018 1D21     		movs	r1, #29
+ 913 001a 2046     		mov	r0, r4
+ 914 001c FFF7FEFF 		bl	SpiInOut
+ 915              	.LVL71:
+ 259:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SpiInOut( &SX126x.Spi, ( address & 0xFF00 ) >> 8 );
+ 916              		.loc 1 259 5 view .LVU140
+ 917 0020 390A     		lsrs	r1, r7, #8
+ 918 0022 2046     		mov	r0, r4
+ 919 0024 FFF7FEFF 		bl	SpiInOut
+ 920              	.LVL72:
+ 260:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SpiInOut( &SX126x.Spi, address & 0x00FF );
+ 921              		.loc 1 260 5 view .LVU141
+ 922 0028 F9B2     		uxtb	r1, r7
+ 923 002a 2046     		mov	r0, r4
+ 924 002c FFF7FEFF 		bl	SpiInOut
+ 925              	.LVL73:
+ 261:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SpiInOut( &SX126x.Spi, 0 );
+ 926              		.loc 1 261 5 view .LVU142
+ 927 0030 0021     		movs	r1, #0
+ 928 0032 2046     		mov	r0, r4
+ 929 0034 FFF7FEFF 		bl	SpiInOut
+ 930              	.LVL74:
+ 262:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 931              		.loc 1 262 5 view .LVU143
+ 932              	.LBB5:
+ 933              		.loc 1 262 10 view .LVU144
+ 934              		.loc 1 262 19 is_stmt 0 view .LVU145
+ 935 0038 0024     		movs	r4, #0
+ 936              		.loc 1 262 5 view .LVU146
+ 937 003a 06E0     		b	.L61
+ 938              	.LVL75:
+ 939              	.L62:
+ 263:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 264:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****         buffer[i] = SpiInOut( &SX126x.Spi, 0 );
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 22
+
+
+ 940              		.loc 1 264 9 is_stmt 1 discriminator 3 view .LVU147
+ 941              		.loc 1 264 21 is_stmt 0 discriminator 3 view .LVU148
+ 942 003c 0021     		movs	r1, #0
+ 943 003e 0848     		ldr	r0, .L64+4
+ 944 0040 FFF7FEFF 		bl	SpiInOut
+ 945              	.LVL76:
+ 946              		.loc 1 264 19 discriminator 3 view .LVU149
+ 947 0044 3055     		strb	r0, [r6, r4]
+ 262:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 948              		.loc 1 262 36 is_stmt 1 discriminator 3 view .LVU150
+ 262:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 949              		.loc 1 262 37 is_stmt 0 discriminator 3 view .LVU151
+ 950 0046 0134     		adds	r4, r4, #1
+ 951              	.LVL77:
+ 262:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 952              		.loc 1 262 37 discriminator 3 view .LVU152
+ 953 0048 A4B2     		uxth	r4, r4
+ 954              	.LVL78:
+ 955              	.L61:
+ 262:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 956              		.loc 1 262 26 is_stmt 1 discriminator 1 view .LVU153
+ 262:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 957              		.loc 1 262 5 is_stmt 0 discriminator 1 view .LVU154
+ 958 004a AC42     		cmp	r4, r5
+ 959 004c F6D3     		bcc	.L62
+ 960              	.LBE5:
+ 265:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     }
+ 266:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioWrite( &SX126x.Spi.Nss, 1 );
+ 961              		.loc 1 266 5 is_stmt 1 view .LVU155
+ 962 004e 0121     		movs	r1, #1
+ 963 0050 0248     		ldr	r0, .L64
+ 964 0052 FFF7FEFF 		bl	GpioWrite
+ 965              	.LVL79:
+ 267:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 268:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xWaitOnBusy( );
+ 966              		.loc 1 268 5 view .LVU156
+ 967 0056 FFF7FEFF 		bl	SX126xWaitOnBusy
+ 968              	.LVL80:
+ 269:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 969              		.loc 1 269 1 is_stmt 0 view .LVU157
+ 970 005a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 971              	.LVL81:
+ 972              	.L65:
+ 973              		.loc 1 269 1 view .LVU158
+ 974              		.align	2
+ 975              	.L64:
+ 976 005c A4000000 		.word	SX126x+164
+ 977 0060 64000000 		.word	SX126x+100
+ 978              		.cfi_endproc
+ 979              	.LFE16:
+ 981              		.section	.text.SX126xReadRegister,"ax",%progbits
+ 982              		.align	1
+ 983              		.global	SX126xReadRegister
+ 984              		.syntax unified
+ 985              		.thumb
+ 986              		.thumb_func
+ 987              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 23
+
+
+ 989              	SX126xReadRegister:
+ 990              	.LVL82:
+ 991              	.LFB17:
+ 270:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 271:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** uint8_t SX126xReadRegister( uint16_t address )
+ 272:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 992              		.loc 1 272 1 is_stmt 1 view -0
+ 993              		.cfi_startproc
+ 994              		@ args = 0, pretend = 0, frame = 8
+ 995              		@ frame_needed = 0, uses_anonymous_args = 0
+ 996              		.loc 1 272 1 is_stmt 0 view .LVU160
+ 997 0000 00B5     		push	{lr}
+ 998              	.LCFI21:
+ 999              		.cfi_def_cfa_offset 4
+ 1000              		.cfi_offset 14, -4
+ 1001 0002 83B0     		sub	sp, sp, #12
+ 1002              	.LCFI22:
+ 1003              		.cfi_def_cfa_offset 16
+ 273:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     uint8_t data;
+ 1004              		.loc 1 273 5 is_stmt 1 view .LVU161
+ 274:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xReadRegisters( address, &data, 1 );
+ 1005              		.loc 1 274 5 view .LVU162
+ 1006 0004 0122     		movs	r2, #1
+ 1007 0006 0DF10701 		add	r1, sp, #7
+ 1008 000a FFF7FEFF 		bl	SX126xReadRegisters
+ 1009              	.LVL83:
+ 275:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     return data;
+ 1010              		.loc 1 275 5 view .LVU163
+ 276:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 1011              		.loc 1 276 1 is_stmt 0 view .LVU164
+ 1012 000e 9DF80700 		ldrb	r0, [sp, #7]	@ zero_extendqisi2
+ 1013 0012 03B0     		add	sp, sp, #12
+ 1014              	.LCFI23:
+ 1015              		.cfi_def_cfa_offset 4
+ 1016              		@ sp needed
+ 1017 0014 5DF804FB 		ldr	pc, [sp], #4
+ 1018              		.cfi_endproc
+ 1019              	.LFE17:
+ 1021              		.section	.text.SX126xWriteBuffer,"ax",%progbits
+ 1022              		.align	1
+ 1023              		.global	SX126xWriteBuffer
+ 1024              		.syntax unified
+ 1025              		.thumb
+ 1026              		.thumb_func
+ 1027              		.fpu fpv4-sp-d16
+ 1029              	SX126xWriteBuffer:
+ 1030              	.LVL84:
+ 1031              	.LFB18:
+ 277:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 278:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xWriteBuffer( uint8_t offset, uint8_t *buffer, uint8_t size )
+ 279:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 1032              		.loc 1 279 1 is_stmt 1 view -0
+ 1033              		.cfi_startproc
+ 1034              		@ args = 0, pretend = 0, frame = 0
+ 1035              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1036              		.loc 1 279 1 is_stmt 0 view .LVU166
+ 1037 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 24
+
+
+ 1038              	.LCFI24:
+ 1039              		.cfi_def_cfa_offset 24
+ 1040              		.cfi_offset 3, -24
+ 1041              		.cfi_offset 4, -20
+ 1042              		.cfi_offset 5, -16
+ 1043              		.cfi_offset 6, -12
+ 1044              		.cfi_offset 7, -8
+ 1045              		.cfi_offset 14, -4
+ 1046 0002 0746     		mov	r7, r0
+ 1047 0004 0E46     		mov	r6, r1
+ 1048 0006 1546     		mov	r5, r2
+ 280:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xCheckDeviceReady( );
+ 1049              		.loc 1 280 5 is_stmt 1 view .LVU167
+ 1050 0008 FFF7FEFF 		bl	SX126xCheckDeviceReady
+ 1051              	.LVL85:
+ 281:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 282:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioWrite( &SX126x.Spi.Nss, 0 );
+ 1052              		.loc 1 282 5 view .LVU168
+ 1053 000c 0F4C     		ldr	r4, .L72
+ 1054 000e 0021     		movs	r1, #0
+ 1055 0010 2046     		mov	r0, r4
+ 1056 0012 FFF7FEFF 		bl	GpioWrite
+ 1057              	.LVL86:
+ 283:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 284:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SpiInOut( &SX126x.Spi, RADIO_WRITE_BUFFER );
+ 1058              		.loc 1 284 5 view .LVU169
+ 1059 0016 403C     		subs	r4, r4, #64
+ 1060 0018 0E21     		movs	r1, #14
+ 1061 001a 2046     		mov	r0, r4
+ 1062 001c FFF7FEFF 		bl	SpiInOut
+ 1063              	.LVL87:
+ 285:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SpiInOut( &SX126x.Spi, offset );
+ 1064              		.loc 1 285 5 view .LVU170
+ 1065 0020 3946     		mov	r1, r7
+ 1066 0022 2046     		mov	r0, r4
+ 1067 0024 FFF7FEFF 		bl	SpiInOut
+ 1068              	.LVL88:
+ 286:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 1069              		.loc 1 286 5 view .LVU171
+ 1070              	.LBB6:
+ 1071              		.loc 1 286 10 view .LVU172
+ 1072              		.loc 1 286 19 is_stmt 0 view .LVU173
+ 1073 0028 0024     		movs	r4, #0
+ 1074              		.loc 1 286 5 view .LVU174
+ 1075 002a 05E0     		b	.L69
+ 1076              	.LVL89:
+ 1077              	.L70:
+ 287:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 288:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****         SpiInOut( &SX126x.Spi, buffer[i] );
+ 1078              		.loc 1 288 9 is_stmt 1 discriminator 3 view .LVU175
+ 1079 002c 315D     		ldrb	r1, [r6, r4]	@ zero_extendqisi2
+ 1080 002e 0848     		ldr	r0, .L72+4
+ 1081 0030 FFF7FEFF 		bl	SpiInOut
+ 1082              	.LVL90:
+ 286:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 1083              		.loc 1 286 36 discriminator 3 view .LVU176
+ 286:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 25
+
+
+ 1084              		.loc 1 286 37 is_stmt 0 discriminator 3 view .LVU177
+ 1085 0034 0134     		adds	r4, r4, #1
+ 1086              	.LVL91:
+ 286:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 1087              		.loc 1 286 37 discriminator 3 view .LVU178
+ 1088 0036 A4B2     		uxth	r4, r4
+ 1089              	.LVL92:
+ 1090              	.L69:
+ 286:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 1091              		.loc 1 286 26 is_stmt 1 discriminator 1 view .LVU179
+ 286:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 1092              		.loc 1 286 28 is_stmt 0 discriminator 1 view .LVU180
+ 1093 0038 ABB2     		uxth	r3, r5
+ 286:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 1094              		.loc 1 286 5 discriminator 1 view .LVU181
+ 1095 003a A342     		cmp	r3, r4
+ 1096 003c F6D8     		bhi	.L70
+ 1097              	.LBE6:
+ 289:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     }
+ 290:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioWrite( &SX126x.Spi.Nss, 1 );
+ 1098              		.loc 1 290 5 is_stmt 1 view .LVU182
+ 1099 003e 0121     		movs	r1, #1
+ 1100 0040 0248     		ldr	r0, .L72
+ 1101 0042 FFF7FEFF 		bl	GpioWrite
+ 1102              	.LVL93:
+ 291:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 292:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xWaitOnBusy( );
+ 1103              		.loc 1 292 5 view .LVU183
+ 1104 0046 FFF7FEFF 		bl	SX126xWaitOnBusy
+ 1105              	.LVL94:
+ 293:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 1106              		.loc 1 293 1 is_stmt 0 view .LVU184
+ 1107 004a F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1108              	.LVL95:
+ 1109              	.L73:
+ 1110              		.loc 1 293 1 view .LVU185
+ 1111              		.align	2
+ 1112              	.L72:
+ 1113 004c A4000000 		.word	SX126x+164
+ 1114 0050 64000000 		.word	SX126x+100
+ 1115              		.cfi_endproc
+ 1116              	.LFE18:
+ 1118              		.section	.text.SX126xReadBuffer,"ax",%progbits
+ 1119              		.align	1
+ 1120              		.global	SX126xReadBuffer
+ 1121              		.syntax unified
+ 1122              		.thumb
+ 1123              		.thumb_func
+ 1124              		.fpu fpv4-sp-d16
+ 1126              	SX126xReadBuffer:
+ 1127              	.LVL96:
+ 1128              	.LFB19:
+ 294:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 295:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xReadBuffer( uint8_t offset, uint8_t *buffer, uint8_t size )
+ 296:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 1129              		.loc 1 296 1 is_stmt 1 view -0
+ 1130              		.cfi_startproc
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 26
+
+
+ 1131              		@ args = 0, pretend = 0, frame = 0
+ 1132              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1133              		.loc 1 296 1 is_stmt 0 view .LVU187
+ 1134 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 1135              	.LCFI25:
+ 1136              		.cfi_def_cfa_offset 24
+ 1137              		.cfi_offset 3, -24
+ 1138              		.cfi_offset 4, -20
+ 1139              		.cfi_offset 5, -16
+ 1140              		.cfi_offset 6, -12
+ 1141              		.cfi_offset 7, -8
+ 1142              		.cfi_offset 14, -4
+ 1143 0002 0746     		mov	r7, r0
+ 1144 0004 0E46     		mov	r6, r1
+ 1145 0006 1546     		mov	r5, r2
+ 297:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xCheckDeviceReady( );
+ 1146              		.loc 1 297 5 is_stmt 1 view .LVU188
+ 1147 0008 FFF7FEFF 		bl	SX126xCheckDeviceReady
+ 1148              	.LVL97:
+ 298:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 299:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioWrite( &SX126x.Spi.Nss, 0 );
+ 1149              		.loc 1 299 5 view .LVU189
+ 1150 000c 124C     		ldr	r4, .L78
+ 1151 000e 0021     		movs	r1, #0
+ 1152 0010 2046     		mov	r0, r4
+ 1153 0012 FFF7FEFF 		bl	GpioWrite
+ 1154              	.LVL98:
+ 300:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 301:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SpiInOut( &SX126x.Spi, RADIO_READ_BUFFER );
+ 1155              		.loc 1 301 5 view .LVU190
+ 1156 0016 403C     		subs	r4, r4, #64
+ 1157 0018 1E21     		movs	r1, #30
+ 1158 001a 2046     		mov	r0, r4
+ 1159 001c FFF7FEFF 		bl	SpiInOut
+ 1160              	.LVL99:
+ 302:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SpiInOut( &SX126x.Spi, offset );
+ 1161              		.loc 1 302 5 view .LVU191
+ 1162 0020 3946     		mov	r1, r7
+ 1163 0022 2046     		mov	r0, r4
+ 1164 0024 FFF7FEFF 		bl	SpiInOut
+ 1165              	.LVL100:
+ 303:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SpiInOut( &SX126x.Spi, 0 );
+ 1166              		.loc 1 303 5 view .LVU192
+ 1167 0028 0021     		movs	r1, #0
+ 1168 002a 2046     		mov	r0, r4
+ 1169 002c FFF7FEFF 		bl	SpiInOut
+ 1170              	.LVL101:
+ 304:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 1171              		.loc 1 304 5 view .LVU193
+ 1172              	.LBB7:
+ 1173              		.loc 1 304 10 view .LVU194
+ 1174              		.loc 1 304 19 is_stmt 0 view .LVU195
+ 1175 0030 0024     		movs	r4, #0
+ 1176              		.loc 1 304 5 view .LVU196
+ 1177 0032 06E0     		b	.L75
+ 1178              	.LVL102:
+ 1179              	.L76:
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 27
+
+
+ 305:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     {
+ 306:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****         buffer[i] = SpiInOut( &SX126x.Spi, 0 );
+ 1180              		.loc 1 306 9 is_stmt 1 discriminator 3 view .LVU197
+ 1181              		.loc 1 306 21 is_stmt 0 discriminator 3 view .LVU198
+ 1182 0034 0021     		movs	r1, #0
+ 1183 0036 0948     		ldr	r0, .L78+4
+ 1184 0038 FFF7FEFF 		bl	SpiInOut
+ 1185              	.LVL103:
+ 1186              		.loc 1 306 19 discriminator 3 view .LVU199
+ 1187 003c 3055     		strb	r0, [r6, r4]
+ 304:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 1188              		.loc 1 304 36 is_stmt 1 discriminator 3 view .LVU200
+ 304:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 1189              		.loc 1 304 37 is_stmt 0 discriminator 3 view .LVU201
+ 1190 003e 0134     		adds	r4, r4, #1
+ 1191              	.LVL104:
+ 304:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 1192              		.loc 1 304 37 discriminator 3 view .LVU202
+ 1193 0040 A4B2     		uxth	r4, r4
+ 1194              	.LVL105:
+ 1195              	.L75:
+ 304:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 1196              		.loc 1 304 26 is_stmt 1 discriminator 1 view .LVU203
+ 304:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 1197              		.loc 1 304 28 is_stmt 0 discriminator 1 view .LVU204
+ 1198 0042 ABB2     		uxth	r3, r5
+ 304:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     for( uint16_t i = 0; i < size; i++ )
+ 1199              		.loc 1 304 5 discriminator 1 view .LVU205
+ 1200 0044 A342     		cmp	r3, r4
+ 1201 0046 F5D8     		bhi	.L76
+ 1202              	.LBE7:
+ 307:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     }
+ 308:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioWrite( &SX126x.Spi.Nss, 1 );
+ 1203              		.loc 1 308 5 is_stmt 1 view .LVU206
+ 1204 0048 0121     		movs	r1, #1
+ 1205 004a 0348     		ldr	r0, .L78
+ 1206 004c FFF7FEFF 		bl	GpioWrite
+ 1207              	.LVL106:
+ 309:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 310:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xWaitOnBusy( );
+ 1208              		.loc 1 310 5 view .LVU207
+ 1209 0050 FFF7FEFF 		bl	SX126xWaitOnBusy
+ 1210              	.LVL107:
+ 311:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 1211              		.loc 1 311 1 is_stmt 0 view .LVU208
+ 1212 0054 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 1213              	.LVL108:
+ 1214              	.L79:
+ 1215              		.loc 1 311 1 view .LVU209
+ 1216 0056 00BF     		.align	2
+ 1217              	.L78:
+ 1218 0058 A4000000 		.word	SX126x+164
+ 1219 005c 64000000 		.word	SX126x+100
+ 1220              		.cfi_endproc
+ 1221              	.LFE19:
+ 1223              		.section	.text.SX126xSetRfTxPower,"ax",%progbits
+ 1224              		.align	1
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 28
+
+
+ 1225              		.global	SX126xSetRfTxPower
+ 1226              		.syntax unified
+ 1227              		.thumb
+ 1228              		.thumb_func
+ 1229              		.fpu fpv4-sp-d16
+ 1231              	SX126xSetRfTxPower:
+ 1232              	.LVL109:
+ 1233              	.LFB20:
+ 312:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 313:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xSetRfTxPower( int8_t power )
+ 314:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 1234              		.loc 1 314 1 is_stmt 1 view -0
+ 1235              		.cfi_startproc
+ 1236              		@ args = 0, pretend = 0, frame = 0
+ 1237              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1238              		.loc 1 314 1 is_stmt 0 view .LVU211
+ 1239 0000 08B5     		push	{r3, lr}
+ 1240              	.LCFI26:
+ 1241              		.cfi_def_cfa_offset 8
+ 1242              		.cfi_offset 3, -8
+ 1243              		.cfi_offset 14, -4
+ 315:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     SX126xSetTxParams( power, RADIO_RAMP_40_US );
+ 1244              		.loc 1 315 5 is_stmt 1 view .LVU212
+ 1245 0002 0221     		movs	r1, #2
+ 1246 0004 FFF7FEFF 		bl	SX126xSetTxParams
+ 1247              	.LVL110:
+ 316:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 1248              		.loc 1 316 1 is_stmt 0 view .LVU213
+ 1249 0008 08BD     		pop	{r3, pc}
+ 1250              		.cfi_endproc
+ 1251              	.LFE20:
+ 1253              		.section	.text.SX126xGetDeviceId,"ax",%progbits
+ 1254              		.align	1
+ 1255              		.global	SX126xGetDeviceId
+ 1256              		.syntax unified
+ 1257              		.thumb
+ 1258              		.thumb_func
+ 1259              		.fpu fpv4-sp-d16
+ 1261              	SX126xGetDeviceId:
+ 1262              	.LFB21:
+ 317:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 318:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** uint8_t SX126xGetDeviceId( void )
+ 319:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 1263              		.loc 1 319 1 is_stmt 1 view -0
+ 1264              		.cfi_startproc
+ 1265              		@ args = 0, pretend = 0, frame = 0
+ 1266              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1267              		@ link register save eliminated.
+ 320:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     // if( GpioRead( &DeviceSel ) == 1 )
+ 321:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     // {
+ 322:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     //     return SX1261;
+ 323:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     // }
+ 324:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     // else
+ 325:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     // {
+ 326:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     //     return SX1262;
+ 327:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     // }
+ 328:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     return SX1262;
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 29
+
+
+ 1268              		.loc 1 328 5 view .LVU215
+ 329:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 1269              		.loc 1 329 1 is_stmt 0 view .LVU216
+ 1270 0000 0220     		movs	r0, #2
+ 1271 0002 7047     		bx	lr
+ 1272              		.cfi_endproc
+ 1273              	.LFE21:
+ 1275              		.section	.text.SX126xAntSwOn,"ax",%progbits
+ 1276              		.align	1
+ 1277              		.global	SX126xAntSwOn
+ 1278              		.syntax unified
+ 1279              		.thumb
+ 1280              		.thumb_func
+ 1281              		.fpu fpv4-sp-d16
+ 1283              	SX126xAntSwOn:
+ 1284              	.LFB22:
+ 330:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 331:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xAntSwOn( void )
+ 332:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 1285              		.loc 1 332 1 is_stmt 1 view -0
+ 1286              		.cfi_startproc
+ 1287              		@ args = 0, pretend = 0, frame = 0
+ 1288              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1289 0000 00B5     		push	{lr}
+ 1290              	.LCFI27:
+ 1291              		.cfi_def_cfa_offset 4
+ 1292              		.cfi_offset 14, -4
+ 1293 0002 83B0     		sub	sp, sp, #12
+ 1294              	.LCFI28:
+ 1295              		.cfi_def_cfa_offset 16
+ 333:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioInit( &AntPow, RADIO_ANT_SWITCH_POWER, PIN_OUTPUT, PIN_PUSH_PULL, PIN_PULL_UP, 1 );
+ 1296              		.loc 1 333 5 view .LVU218
+ 1297 0004 0122     		movs	r2, #1
+ 1298 0006 0192     		str	r2, [sp, #4]
+ 1299 0008 0092     		str	r2, [sp]
+ 1300 000a 0023     		movs	r3, #0
+ 1301 000c 0921     		movs	r1, #9
+ 1302 000e 0348     		ldr	r0, .L85
+ 1303 0010 FFF7FEFF 		bl	GpioInit
+ 1304              	.LVL111:
+ 334:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 1305              		.loc 1 334 1 is_stmt 0 view .LVU219
+ 1306 0014 03B0     		add	sp, sp, #12
+ 1307              	.LCFI29:
+ 1308              		.cfi_def_cfa_offset 4
+ 1309              		@ sp needed
+ 1310 0016 5DF804FB 		ldr	pc, [sp], #4
+ 1311              	.L86:
+ 1312 001a 00BF     		.align	2
+ 1313              	.L85:
+ 1314 001c 00000000 		.word	.LANCHOR1
+ 1315              		.cfi_endproc
+ 1316              	.LFE22:
+ 1318              		.section	.text.SX126xAntSwOff,"ax",%progbits
+ 1319              		.align	1
+ 1320              		.global	SX126xAntSwOff
+ 1321              		.syntax unified
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 30
+
+
+ 1322              		.thumb
+ 1323              		.thumb_func
+ 1324              		.fpu fpv4-sp-d16
+ 1326              	SX126xAntSwOff:
+ 1327              	.LFB23:
+ 335:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 336:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** void SX126xAntSwOff( void )
+ 337:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 1328              		.loc 1 337 1 is_stmt 1 view -0
+ 1329              		.cfi_startproc
+ 1330              		@ args = 0, pretend = 0, frame = 0
+ 1331              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1332 0000 00B5     		push	{lr}
+ 1333              	.LCFI30:
+ 1334              		.cfi_def_cfa_offset 4
+ 1335              		.cfi_offset 14, -4
+ 1336 0002 83B0     		sub	sp, sp, #12
+ 1337              	.LCFI31:
+ 1338              		.cfi_def_cfa_offset 16
+ 338:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     GpioInit( &AntPow, RADIO_ANT_SWITCH_POWER, PIN_ANALOGIC, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+ 1339              		.loc 1 338 5 view .LVU221
+ 1340 0004 0023     		movs	r3, #0
+ 1341 0006 0193     		str	r3, [sp, #4]
+ 1342 0008 0093     		str	r3, [sp]
+ 1343 000a 0322     		movs	r2, #3
+ 1344 000c 0921     		movs	r1, #9
+ 1345 000e 0348     		ldr	r0, .L89
+ 1346 0010 FFF7FEFF 		bl	GpioInit
+ 1347              	.LVL112:
+ 339:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 1348              		.loc 1 339 1 is_stmt 0 view .LVU222
+ 1349 0014 03B0     		add	sp, sp, #12
+ 1350              	.LCFI32:
+ 1351              		.cfi_def_cfa_offset 4
+ 1352              		@ sp needed
+ 1353 0016 5DF804FB 		ldr	pc, [sp], #4
+ 1354              	.L90:
+ 1355 001a 00BF     		.align	2
+ 1356              	.L89:
+ 1357 001c 00000000 		.word	.LANCHOR1
+ 1358              		.cfi_endproc
+ 1359              	.LFE23:
+ 1361              		.section	.text.SX126xCheckRfFrequency,"ax",%progbits
+ 1362              		.align	1
+ 1363              		.global	SX126xCheckRfFrequency
+ 1364              		.syntax unified
+ 1365              		.thumb
+ 1366              		.thumb_func
+ 1367              		.fpu fpv4-sp-d16
+ 1369              	SX126xCheckRfFrequency:
+ 1370              	.LVL113:
+ 1371              	.LFB24:
+ 340:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 341:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** bool SX126xCheckRfFrequency( uint32_t frequency )
+ 342:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 1372              		.loc 1 342 1 is_stmt 1 view -0
+ 1373              		.cfi_startproc
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 31
+
+
+ 1374              		@ args = 0, pretend = 0, frame = 0
+ 1375              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1376              		@ link register save eliminated.
+ 343:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     // Implement check. Currently all frequencies are supported
+ 344:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     return true;
+ 1377              		.loc 1 344 5 view .LVU224
+ 345:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 1378              		.loc 1 345 1 is_stmt 0 view .LVU225
+ 1379 0000 0120     		movs	r0, #1
+ 1380              	.LVL114:
+ 1381              		.loc 1 345 1 view .LVU226
+ 1382 0002 7047     		bx	lr
+ 1383              		.cfi_endproc
+ 1384              	.LFE24:
+ 1386              		.section	.text.SX126xGetDio1PinState,"ax",%progbits
+ 1387              		.align	1
+ 1388              		.global	SX126xGetDio1PinState
+ 1389              		.syntax unified
+ 1390              		.thumb
+ 1391              		.thumb_func
+ 1392              		.fpu fpv4-sp-d16
+ 1394              	SX126xGetDio1PinState:
+ 1395              	.LFB25:
+ 346:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** 
+ 347:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** uint32_t SX126xGetDio1PinState( void )
+ 348:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** {
+ 1396              		.loc 1 348 1 is_stmt 1 view -0
+ 1397              		.cfi_startproc
+ 1398              		@ args = 0, pretend = 0, frame = 0
+ 1399              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1400 0000 08B5     		push	{r3, lr}
+ 1401              	.LCFI33:
+ 1402              		.cfi_def_cfa_offset 8
+ 1403              		.cfi_offset 3, -8
+ 1404              		.cfi_offset 14, -4
+ 349:Drivers/sx126x/boards/NucleoL476/sx126x-board.c ****     return GpioRead( &SX126x.DIO1 );
+ 1405              		.loc 1 349 5 view .LVU228
+ 1406              		.loc 1 349 12 is_stmt 0 view .LVU229
+ 1407 0002 0248     		ldr	r0, .L94
+ 1408 0004 FFF7FEFF 		bl	GpioRead
+ 1409              	.LVL115:
+ 350:Drivers/sx126x/boards/NucleoL476/sx126x-board.c **** }
+ 1410              		.loc 1 350 1 view .LVU230
+ 1411 0008 08BD     		pop	{r3, pc}
+ 1412              	.L95:
+ 1413 000a 00BF     		.align	2
+ 1414              	.L94:
+ 1415 000c 28000000 		.word	SX126x+40
+ 1416              		.cfi_endproc
+ 1417              	.LFE25:
+ 1419              		.global	DeviceSel
+ 1420              		.global	AntPow
+ 1421              		.section	.bss.AntPow,"aw",%nobits
+ 1422              		.align	2
+ 1423              		.set	.LANCHOR1,. + 0
+ 1426              	AntPow:
+ 1427 0000 00000000 		.space	20
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 32
+
+
+ 1427      00000000 
+ 1427      00000000 
+ 1427      00000000 
+ 1427      00000000 
+ 1428              		.section	.bss.DeviceSel,"aw",%nobits
+ 1429              		.align	2
+ 1432              	DeviceSel:
+ 1433 0000 00000000 		.space	20
+ 1433      00000000 
+ 1433      00000000 
+ 1433      00000000 
+ 1433      00000000 
+ 1434              		.section	.bss.OperatingMode,"aw",%nobits
+ 1435              		.set	.LANCHOR0,. + 0
+ 1438              	OperatingMode:
+ 1439 0000 00       		.space	1
+ 1440              		.text
+ 1441              	.Letext0:
+ 1442              		.file 2 "c:\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\include\\machine\\_defau
+ 1443              		.file 3 "c:\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 1444              		.file 4 "Drivers/sx126x/system/gpio.h"
+ 1445              		.file 5 "Drivers/sx126x/system/spi.h"
+ 1446              		.file 6 "Drivers/sx126x/radio/sx126x/sx126x.h"
+ 1447              		.file 7 "Drivers/sx126x/boards/sx126x-board.h"
+ 1448              		.file 8 "Drivers/sx126x/system/delay.h"
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 33
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 sx126x-board.c
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:18     .text.SX126xIoInit:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:26     .text.SX126xIoInit:00000000 SX126xIoInit
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:91     .text.SX126xIoInit:00000054 $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:96     .text.SX126xIoIrqInit:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:103    .text.SX126xIoIrqInit:00000000 SX126xIoIrqInit
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:130    .text.SX126xIoIrqInit:00000010 $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:135    .text.SX126xIoDeInit:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:142    .text.SX126xIoDeInit:00000000 SX126xIoDeInit
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:195    .text.SX126xIoDeInit:00000040 $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:200    .text.SX126xIoDbgInit:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:207    .text.SX126xIoDbgInit:00000000 SX126xIoDbgInit
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:220    .text.SX126xGetBoardTcxoWakeupTime:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:227    .text.SX126xGetBoardTcxoWakeupTime:00000000 SX126xGetBoardTcxoWakeupTime
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:242    .text.SX126xIoTcxoInit:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:249    .text.SX126xIoTcxoInit:00000000 SX126xIoTcxoInit
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:281    .text.SX126xIoRfSwitchInit:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:288    .text.SX126xIoRfSwitchInit:00000000 SX126xIoRfSwitchInit
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:309    .text.SX126xGetOperatingMode:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:316    .text.SX126xGetOperatingMode:00000000 SX126xGetOperatingMode
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:331    .text.SX126xGetOperatingMode:00000008 $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:336    .text.SX126xSetOperatingMode:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:343    .text.SX126xSetOperatingMode:00000000 SX126xSetOperatingMode
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:360    .text.SX126xSetOperatingMode:00000008 $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:365    .text.SX126xReset:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:372    .text.SX126xReset:00000000 SX126xReset
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:428    .text.SX126xReset:00000040 $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:433    .text.SX126xWaitOnBusy:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:440    .text.SX126xWaitOnBusy:00000000 SX126xWaitOnBusy
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:466    .text.SX126xWaitOnBusy:00000010 $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:471    .text.SX126xWakeup:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:478    .text.SX126xWakeup:00000000 SX126xWakeup
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:527    .text.SX126xWakeup:00000034 $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:532    .text.SX126xWriteCommand:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:539    .text.SX126xWriteCommand:00000000 SX126xWriteCommand
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:622    .text.SX126xWriteCommand:00000048 $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:628    .text.SX126xReadCommand:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:635    .text.SX126xReadCommand:00000000 SX126xReadCommand
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:728    .text.SX126xReadCommand:00000050 $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:734    .text.SX126xWriteRegisters:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:741    .text.SX126xWriteRegisters:00000000 SX126xWriteRegisters
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:828    .text.SX126xWriteRegisters:00000054 $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:834    .text.SX126xWriteRegister:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:841    .text.SX126xWriteRegister:00000000 SX126xWriteRegister
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:874    .text.SX126xReadRegisters:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:881    .text.SX126xReadRegisters:00000000 SX126xReadRegisters
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:976    .text.SX126xReadRegisters:0000005c $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:982    .text.SX126xReadRegister:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:989    .text.SX126xReadRegister:00000000 SX126xReadRegister
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1022   .text.SX126xWriteBuffer:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1029   .text.SX126xWriteBuffer:00000000 SX126xWriteBuffer
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1113   .text.SX126xWriteBuffer:0000004c $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1119   .text.SX126xReadBuffer:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1126   .text.SX126xReadBuffer:00000000 SX126xReadBuffer
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1218   .text.SX126xReadBuffer:00000058 $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1224   .text.SX126xSetRfTxPower:00000000 $t
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s 			page 34
+
+
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1231   .text.SX126xSetRfTxPower:00000000 SX126xSetRfTxPower
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1254   .text.SX126xGetDeviceId:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1261   .text.SX126xGetDeviceId:00000000 SX126xGetDeviceId
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1276   .text.SX126xAntSwOn:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1283   .text.SX126xAntSwOn:00000000 SX126xAntSwOn
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1314   .text.SX126xAntSwOn:0000001c $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1319   .text.SX126xAntSwOff:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1326   .text.SX126xAntSwOff:00000000 SX126xAntSwOff
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1357   .text.SX126xAntSwOff:0000001c $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1362   .text.SX126xCheckRfFrequency:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1369   .text.SX126xCheckRfFrequency:00000000 SX126xCheckRfFrequency
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1387   .text.SX126xGetDio1PinState:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1394   .text.SX126xGetDio1PinState:00000000 SX126xGetDio1PinState
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1415   .text.SX126xGetDio1PinState:0000000c $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1432   .bss.DeviceSel:00000000 DeviceSel
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1426   .bss.AntPow:00000000 AntPow
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1422   .bss.AntPow:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1429   .bss.DeviceSel:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1438   .bss.OperatingMode:00000000 OperatingMode
+C:\Users\andywei\AppData\Local\Temp\cc6C3nv8.s:1439   .bss.OperatingMode:00000000 $d
+
+UNDEFINED SYMBOLS
+GpioInit
+SX126x
+GpioSetInterrupt
+SX126xSetDio3AsTcxoCtrl
+SX126xCalibrate
+SX126xSetDio2AsRfSwitchCtrl
+DelayMs
+GpioRead
+GpioWrite
+SpiInOut
+SX126xCheckDeviceReady
+SX126xSetTxParams

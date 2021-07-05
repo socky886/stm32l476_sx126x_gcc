@@ -1,0 +1,150 @@
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc0KNtAy.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"delay.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.DelayMs,"ax",%progbits
+  18              		.align	1
+  19              		.global	DelayMs
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	DelayMs:
+  27              	.LVL0:
+  28              	.LFB1:
+  29              		.file 1 "Drivers/sx126x/system/delay.c"
+   1:Drivers/sx126x/system/delay.c **** /*!
+   2:Drivers/sx126x/system/delay.c ****  * \file      delay.c
+   3:Drivers/sx126x/system/delay.c ****  *
+   4:Drivers/sx126x/system/delay.c ****  * \brief     Delay implementation
+   5:Drivers/sx126x/system/delay.c ****  *
+   6:Drivers/sx126x/system/delay.c ****  * \copyright Revised BSD License, see section \ref LICENSE.
+   7:Drivers/sx126x/system/delay.c ****  *
+   8:Drivers/sx126x/system/delay.c ****  * \code
+   9:Drivers/sx126x/system/delay.c ****  *                ______                              _
+  10:Drivers/sx126x/system/delay.c ****  *               / _____)             _              | |
+  11:Drivers/sx126x/system/delay.c ****  *              ( (____  _____ ____ _| |_ _____  ____| |__
+  12:Drivers/sx126x/system/delay.c ****  *               \____ \| ___ |    (_   _) ___ |/ ___)  _ \
+  13:Drivers/sx126x/system/delay.c ****  *               _____) ) ____| | | || |_| ____( (___| | | |
+  14:Drivers/sx126x/system/delay.c ****  *              (______/|_____)_|_|_| \__)_____)\____)_| |_|
+  15:Drivers/sx126x/system/delay.c ****  *              (C)2013-2017 Semtech
+  16:Drivers/sx126x/system/delay.c ****  *
+  17:Drivers/sx126x/system/delay.c ****  * \endcode
+  18:Drivers/sx126x/system/delay.c ****  *
+  19:Drivers/sx126x/system/delay.c ****  * \author    Miguel Luis ( Semtech )
+  20:Drivers/sx126x/system/delay.c ****  *
+  21:Drivers/sx126x/system/delay.c ****  * \author    Gregory Cristian ( Semtech )
+  22:Drivers/sx126x/system/delay.c ****  */
+  23:Drivers/sx126x/system/delay.c **** #include "delay-board.h"
+  24:Drivers/sx126x/system/delay.c **** #include "delay.h"
+  25:Drivers/sx126x/system/delay.c **** 
+  26:Drivers/sx126x/system/delay.c **** void Delay( float s )
+  27:Drivers/sx126x/system/delay.c **** {
+  28:Drivers/sx126x/system/delay.c ****     DelayMs( s * 1000.0f );
+  29:Drivers/sx126x/system/delay.c **** }
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc0KNtAy.s 			page 2
+
+
+  30:Drivers/sx126x/system/delay.c **** 
+  31:Drivers/sx126x/system/delay.c **** void DelayMs( uint32_t ms )
+  32:Drivers/sx126x/system/delay.c **** {
+  30              		.loc 1 32 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 32 1 is_stmt 0 view .LVU1
+  35 0000 08B5     		push	{r3, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 3, -8
+  39              		.cfi_offset 14, -4
+  33:Drivers/sx126x/system/delay.c ****     DelayMsMcu( ms );
+  40              		.loc 1 33 5 is_stmt 1 view .LVU2
+  41 0002 FFF7FEFF 		bl	DelayMsMcu
+  42              	.LVL1:
+  34:Drivers/sx126x/system/delay.c **** }
+  43              		.loc 1 34 1 is_stmt 0 view .LVU3
+  44 0006 08BD     		pop	{r3, pc}
+  45              		.cfi_endproc
+  46              	.LFE1:
+  48              		.section	.text.Delay,"ax",%progbits
+  49              		.align	1
+  50              		.global	Delay
+  51              		.syntax unified
+  52              		.thumb
+  53              		.thumb_func
+  54              		.fpu fpv4-sp-d16
+  56              	Delay:
+  57              	.LVL2:
+  58              	.LFB0:
+  27:Drivers/sx126x/system/delay.c ****     DelayMs( s * 1000.0f );
+  59              		.loc 1 27 1 is_stmt 1 view -0
+  60              		.cfi_startproc
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  27:Drivers/sx126x/system/delay.c ****     DelayMs( s * 1000.0f );
+  63              		.loc 1 27 1 is_stmt 0 view .LVU5
+  64 0000 08B5     		push	{r3, lr}
+  65              	.LCFI1:
+  66              		.cfi_def_cfa_offset 8
+  67              		.cfi_offset 3, -8
+  68              		.cfi_offset 14, -4
+  28:Drivers/sx126x/system/delay.c **** }
+  69              		.loc 1 28 5 is_stmt 1 view .LVU6
+  28:Drivers/sx126x/system/delay.c **** }
+  70              		.loc 1 28 16 is_stmt 0 view .LVU7
+  71 0002 DFED057A 		vldr.32	s15, .L5
+  72 0006 20EE270A 		vmul.f32	s0, s0, s15
+  73              	.LVL3:
+  28:Drivers/sx126x/system/delay.c **** }
+  74              		.loc 1 28 5 view .LVU8
+  75 000a FCEEC07A 		vcvt.u32.f32	s15, s0
+  76 000e 17EE900A 		vmov	r0, s15	@ int
+  77 0012 FFF7FEFF 		bl	DelayMs
+  78              	.LVL4:
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc0KNtAy.s 			page 3
+
+
+  29:Drivers/sx126x/system/delay.c **** 
+  79              		.loc 1 29 1 view .LVU9
+  80 0016 08BD     		pop	{r3, pc}
+  81              	.L6:
+  82              		.align	2
+  83              	.L5:
+  84 0018 00007A44 		.word	1148846080
+  85              		.cfi_endproc
+  86              	.LFE0:
+  88              		.text
+  89              	.Letext0:
+  90              		.file 2 "c:\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\include\\machine\\_defau
+  91              		.file 3 "c:\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\include\\sys\\_stdint.h"
+  92              		.file 4 "Drivers/sx126x/boards/delay-board.h"
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cc0KNtAy.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 delay.c
+C:\Users\andywei\AppData\Local\Temp\cc0KNtAy.s:18     .text.DelayMs:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc0KNtAy.s:26     .text.DelayMs:00000000 DelayMs
+C:\Users\andywei\AppData\Local\Temp\cc0KNtAy.s:49     .text.Delay:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cc0KNtAy.s:56     .text.Delay:00000000 Delay
+C:\Users\andywei\AppData\Local\Temp\cc0KNtAy.s:84     .text.Delay:00000018 $d
+
+UNDEFINED SYMBOLS
+DelayMsMcu

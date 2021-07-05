@@ -1,0 +1,334 @@
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"gpio.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.GpioInit,"ax",%progbits
+  18              		.align	1
+  19              		.global	GpioInit
+  20              		.arch armv7e-m
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  24              		.fpu fpv4-sp-d16
+  26              	GpioInit:
+  27              	.LVL0:
+  28              	.LFB0:
+  29              		.file 1 "Drivers/sx126x/system/gpio.c"
+   1:Drivers/sx126x/system/gpio.c **** /*!
+   2:Drivers/sx126x/system/gpio.c ****  * \file      gpio.c
+   3:Drivers/sx126x/system/gpio.c ****  *
+   4:Drivers/sx126x/system/gpio.c ****  * \brief     GPIO driver implementation
+   5:Drivers/sx126x/system/gpio.c ****  *
+   6:Drivers/sx126x/system/gpio.c ****  * \remark: Relies on the specific board GPIO implementation as well as on
+   7:Drivers/sx126x/system/gpio.c ****  *          IO expander driver implementation if one is available on the target
+   8:Drivers/sx126x/system/gpio.c ****  *          board.
+   9:Drivers/sx126x/system/gpio.c ****  *
+  10:Drivers/sx126x/system/gpio.c ****  * \copyright Revised BSD License, see section \ref LICENSE.
+  11:Drivers/sx126x/system/gpio.c ****  *
+  12:Drivers/sx126x/system/gpio.c ****  * \code
+  13:Drivers/sx126x/system/gpio.c ****  *                ______                              _
+  14:Drivers/sx126x/system/gpio.c ****  *               / _____)             _              | |
+  15:Drivers/sx126x/system/gpio.c ****  *              ( (____  _____ ____ _| |_ _____  ____| |__
+  16:Drivers/sx126x/system/gpio.c ****  *               \____ \| ___ |    (_   _) ___ |/ ___)  _ \
+  17:Drivers/sx126x/system/gpio.c ****  *               _____) ) ____| | | || |_| ____( (___| | | |
+  18:Drivers/sx126x/system/gpio.c ****  *              (______/|_____)_|_|_| \__)_____)\____)_| |_|
+  19:Drivers/sx126x/system/gpio.c ****  *              (C)2013-2017 Semtech
+  20:Drivers/sx126x/system/gpio.c ****  *
+  21:Drivers/sx126x/system/gpio.c ****  * \endcode
+  22:Drivers/sx126x/system/gpio.c ****  *
+  23:Drivers/sx126x/system/gpio.c ****  * \author    Miguel Luis ( Semtech )
+  24:Drivers/sx126x/system/gpio.c ****  *
+  25:Drivers/sx126x/system/gpio.c ****  * \author    Gregory Cristian ( Semtech )
+  26:Drivers/sx126x/system/gpio.c ****  */
+  27:Drivers/sx126x/system/gpio.c **** #include "gpio-board.h"
+  28:Drivers/sx126x/system/gpio.c **** 
+  29:Drivers/sx126x/system/gpio.c **** void GpioInit( Gpio_t *obj, PinNames pin, PinModes mode,  PinConfigs config, PinTypes type, uint32_
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s 			page 2
+
+
+  30:Drivers/sx126x/system/gpio.c **** {
+  30              		.loc 1 30 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 8, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 30 1 is_stmt 0 view .LVU1
+  35 0000 10B5     		push	{r4, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 8
+  38              		.cfi_offset 4, -8
+  39              		.cfi_offset 14, -4
+  40 0002 82B0     		sub	sp, sp, #8
+  41              	.LCFI1:
+  42              		.cfi_def_cfa_offset 16
+  31:Drivers/sx126x/system/gpio.c ****     GpioMcuInit( obj, pin, mode, config, type, value );
+  43              		.loc 1 31 5 is_stmt 1 view .LVU2
+  44 0004 059C     		ldr	r4, [sp, #20]
+  45 0006 0194     		str	r4, [sp, #4]
+  46 0008 9DF81040 		ldrb	r4, [sp, #16]	@ zero_extendqisi2
+  47 000c 0094     		str	r4, [sp]
+  48 000e FFF7FEFF 		bl	GpioMcuInit
+  49              	.LVL1:
+  32:Drivers/sx126x/system/gpio.c **** }
+  50              		.loc 1 32 1 is_stmt 0 view .LVU3
+  51 0012 02B0     		add	sp, sp, #8
+  52              	.LCFI2:
+  53              		.cfi_def_cfa_offset 8
+  54              		@ sp needed
+  55 0014 10BD     		pop	{r4, pc}
+  56              		.loc 1 32 1 view .LVU4
+  57              		.cfi_endproc
+  58              	.LFE0:
+  60              		.section	.text.GpioSetContext,"ax",%progbits
+  61              		.align	1
+  62              		.global	GpioSetContext
+  63              		.syntax unified
+  64              		.thumb
+  65              		.thumb_func
+  66              		.fpu fpv4-sp-d16
+  68              	GpioSetContext:
+  69              	.LVL2:
+  70              	.LFB1:
+  33:Drivers/sx126x/system/gpio.c **** 
+  34:Drivers/sx126x/system/gpio.c **** void GpioSetContext( Gpio_t *obj, void* context )
+  35:Drivers/sx126x/system/gpio.c **** {
+  71              		.loc 1 35 1 is_stmt 1 view -0
+  72              		.cfi_startproc
+  73              		@ args = 0, pretend = 0, frame = 0
+  74              		@ frame_needed = 0, uses_anonymous_args = 0
+  75              		.loc 1 35 1 is_stmt 0 view .LVU6
+  76 0000 08B5     		push	{r3, lr}
+  77              	.LCFI3:
+  78              		.cfi_def_cfa_offset 8
+  79              		.cfi_offset 3, -8
+  80              		.cfi_offset 14, -4
+  36:Drivers/sx126x/system/gpio.c ****     GpioMcuSetContext( obj, context );
+  81              		.loc 1 36 5 is_stmt 1 view .LVU7
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s 			page 3
+
+
+  82 0002 FFF7FEFF 		bl	GpioMcuSetContext
+  83              	.LVL3:
+  37:Drivers/sx126x/system/gpio.c **** }
+  84              		.loc 1 37 1 is_stmt 0 view .LVU8
+  85 0006 08BD     		pop	{r3, pc}
+  86              		.cfi_endproc
+  87              	.LFE1:
+  89              		.section	.text.GpioSetInterrupt,"ax",%progbits
+  90              		.align	1
+  91              		.global	GpioSetInterrupt
+  92              		.syntax unified
+  93              		.thumb
+  94              		.thumb_func
+  95              		.fpu fpv4-sp-d16
+  97              	GpioSetInterrupt:
+  98              	.LVL4:
+  99              	.LFB2:
+  38:Drivers/sx126x/system/gpio.c **** 
+  39:Drivers/sx126x/system/gpio.c **** void GpioSetInterrupt( Gpio_t *obj, IrqModes irqMode, IrqPriorities irqPriority, GpioIrqHandler *ir
+  40:Drivers/sx126x/system/gpio.c **** {
+ 100              		.loc 1 40 1 is_stmt 1 view -0
+ 101              		.cfi_startproc
+ 102              		@ args = 0, pretend = 0, frame = 0
+ 103              		@ frame_needed = 0, uses_anonymous_args = 0
+ 104              		.loc 1 40 1 is_stmt 0 view .LVU10
+ 105 0000 08B5     		push	{r3, lr}
+ 106              	.LCFI4:
+ 107              		.cfi_def_cfa_offset 8
+ 108              		.cfi_offset 3, -8
+ 109              		.cfi_offset 14, -4
+  41:Drivers/sx126x/system/gpio.c ****     GpioMcuSetInterrupt( obj, irqMode, irqPriority, irqHandler );
+ 110              		.loc 1 41 5 is_stmt 1 view .LVU11
+ 111 0002 FFF7FEFF 		bl	GpioMcuSetInterrupt
+ 112              	.LVL5:
+  42:Drivers/sx126x/system/gpio.c **** }
+ 113              		.loc 1 42 1 is_stmt 0 view .LVU12
+ 114 0006 08BD     		pop	{r3, pc}
+ 115              		.cfi_endproc
+ 116              	.LFE2:
+ 118              		.section	.text.GpioRemoveInterrupt,"ax",%progbits
+ 119              		.align	1
+ 120              		.global	GpioRemoveInterrupt
+ 121              		.syntax unified
+ 122              		.thumb
+ 123              		.thumb_func
+ 124              		.fpu fpv4-sp-d16
+ 126              	GpioRemoveInterrupt:
+ 127              	.LVL6:
+ 128              	.LFB3:
+  43:Drivers/sx126x/system/gpio.c **** 
+  44:Drivers/sx126x/system/gpio.c **** void GpioRemoveInterrupt( Gpio_t *obj )
+  45:Drivers/sx126x/system/gpio.c **** {
+ 129              		.loc 1 45 1 is_stmt 1 view -0
+ 130              		.cfi_startproc
+ 131              		@ args = 0, pretend = 0, frame = 0
+ 132              		@ frame_needed = 0, uses_anonymous_args = 0
+ 133              		.loc 1 45 1 is_stmt 0 view .LVU14
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s 			page 4
+
+
+ 134 0000 08B5     		push	{r3, lr}
+ 135              	.LCFI5:
+ 136              		.cfi_def_cfa_offset 8
+ 137              		.cfi_offset 3, -8
+ 138              		.cfi_offset 14, -4
+  46:Drivers/sx126x/system/gpio.c ****     GpioMcuRemoveInterrupt( obj );
+ 139              		.loc 1 46 5 is_stmt 1 view .LVU15
+ 140 0002 FFF7FEFF 		bl	GpioMcuRemoveInterrupt
+ 141              	.LVL7:
+  47:Drivers/sx126x/system/gpio.c **** }
+ 142              		.loc 1 47 1 is_stmt 0 view .LVU16
+ 143 0006 08BD     		pop	{r3, pc}
+ 144              		.cfi_endproc
+ 145              	.LFE3:
+ 147              		.section	.text.GpioWrite,"ax",%progbits
+ 148              		.align	1
+ 149              		.global	GpioWrite
+ 150              		.syntax unified
+ 151              		.thumb
+ 152              		.thumb_func
+ 153              		.fpu fpv4-sp-d16
+ 155              	GpioWrite:
+ 156              	.LVL8:
+ 157              	.LFB4:
+  48:Drivers/sx126x/system/gpio.c **** 
+  49:Drivers/sx126x/system/gpio.c **** void GpioWrite( Gpio_t *obj, uint32_t value )
+  50:Drivers/sx126x/system/gpio.c **** {
+ 158              		.loc 1 50 1 is_stmt 1 view -0
+ 159              		.cfi_startproc
+ 160              		@ args = 0, pretend = 0, frame = 0
+ 161              		@ frame_needed = 0, uses_anonymous_args = 0
+ 162              		.loc 1 50 1 is_stmt 0 view .LVU18
+ 163 0000 08B5     		push	{r3, lr}
+ 164              	.LCFI6:
+ 165              		.cfi_def_cfa_offset 8
+ 166              		.cfi_offset 3, -8
+ 167              		.cfi_offset 14, -4
+  51:Drivers/sx126x/system/gpio.c ****     GpioMcuWrite( obj, value );
+ 168              		.loc 1 51 5 is_stmt 1 view .LVU19
+ 169 0002 FFF7FEFF 		bl	GpioMcuWrite
+ 170              	.LVL9:
+  52:Drivers/sx126x/system/gpio.c **** }
+ 171              		.loc 1 52 1 is_stmt 0 view .LVU20
+ 172 0006 08BD     		pop	{r3, pc}
+ 173              		.cfi_endproc
+ 174              	.LFE4:
+ 176              		.section	.text.GpioToggle,"ax",%progbits
+ 177              		.align	1
+ 178              		.global	GpioToggle
+ 179              		.syntax unified
+ 180              		.thumb
+ 181              		.thumb_func
+ 182              		.fpu fpv4-sp-d16
+ 184              	GpioToggle:
+ 185              	.LVL10:
+ 186              	.LFB5:
+  53:Drivers/sx126x/system/gpio.c **** 
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s 			page 5
+
+
+  54:Drivers/sx126x/system/gpio.c **** void GpioToggle( Gpio_t *obj )
+  55:Drivers/sx126x/system/gpio.c **** {
+ 187              		.loc 1 55 1 is_stmt 1 view -0
+ 188              		.cfi_startproc
+ 189              		@ args = 0, pretend = 0, frame = 0
+ 190              		@ frame_needed = 0, uses_anonymous_args = 0
+ 191              		.loc 1 55 1 is_stmt 0 view .LVU22
+ 192 0000 08B5     		push	{r3, lr}
+ 193              	.LCFI7:
+ 194              		.cfi_def_cfa_offset 8
+ 195              		.cfi_offset 3, -8
+ 196              		.cfi_offset 14, -4
+  56:Drivers/sx126x/system/gpio.c ****     GpioMcuToggle( obj );
+ 197              		.loc 1 56 5 is_stmt 1 view .LVU23
+ 198 0002 FFF7FEFF 		bl	GpioMcuToggle
+ 199              	.LVL11:
+  57:Drivers/sx126x/system/gpio.c **** }
+ 200              		.loc 1 57 1 is_stmt 0 view .LVU24
+ 201 0006 08BD     		pop	{r3, pc}
+ 202              		.cfi_endproc
+ 203              	.LFE5:
+ 205              		.section	.text.GpioRead,"ax",%progbits
+ 206              		.align	1
+ 207              		.global	GpioRead
+ 208              		.syntax unified
+ 209              		.thumb
+ 210              		.thumb_func
+ 211              		.fpu fpv4-sp-d16
+ 213              	GpioRead:
+ 214              	.LVL12:
+ 215              	.LFB6:
+  58:Drivers/sx126x/system/gpio.c **** 
+  59:Drivers/sx126x/system/gpio.c **** uint32_t GpioRead( Gpio_t *obj )
+  60:Drivers/sx126x/system/gpio.c **** {
+ 216              		.loc 1 60 1 is_stmt 1 view -0
+ 217              		.cfi_startproc
+ 218              		@ args = 0, pretend = 0, frame = 0
+ 219              		@ frame_needed = 0, uses_anonymous_args = 0
+ 220              		.loc 1 60 1 is_stmt 0 view .LVU26
+ 221 0000 08B5     		push	{r3, lr}
+ 222              	.LCFI8:
+ 223              		.cfi_def_cfa_offset 8
+ 224              		.cfi_offset 3, -8
+ 225              		.cfi_offset 14, -4
+  61:Drivers/sx126x/system/gpio.c ****     return GpioMcuRead( obj );
+ 226              		.loc 1 61 5 is_stmt 1 view .LVU27
+ 227              		.loc 1 61 12 is_stmt 0 view .LVU28
+ 228 0002 FFF7FEFF 		bl	GpioMcuRead
+ 229              	.LVL13:
+  62:Drivers/sx126x/system/gpio.c **** }
+ 230              		.loc 1 62 1 view .LVU29
+ 231 0006 08BD     		pop	{r3, pc}
+ 232              		.cfi_endproc
+ 233              	.LFE6:
+ 235              		.text
+ 236              	.Letext0:
+ 237              		.file 2 "c:\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\include\\machine\\_defau
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s 			page 6
+
+
+ 238              		.file 3 "c:\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\include\\sys\\_stdint.h"
+ 239              		.file 4 "Drivers/sx126x/system/gpio.h"
+ 240              		.file 5 "Drivers/sx126x/boards/gpio-board.h"
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 gpio.c
+C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s:18     .text.GpioInit:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s:26     .text.GpioInit:00000000 GpioInit
+C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s:61     .text.GpioSetContext:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s:68     .text.GpioSetContext:00000000 GpioSetContext
+C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s:90     .text.GpioSetInterrupt:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s:97     .text.GpioSetInterrupt:00000000 GpioSetInterrupt
+C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s:119    .text.GpioRemoveInterrupt:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s:126    .text.GpioRemoveInterrupt:00000000 GpioRemoveInterrupt
+C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s:148    .text.GpioWrite:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s:155    .text.GpioWrite:00000000 GpioWrite
+C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s:177    .text.GpioToggle:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s:184    .text.GpioToggle:00000000 GpioToggle
+C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s:206    .text.GpioRead:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccOopRcC.s:213    .text.GpioRead:00000000 GpioRead
+
+UNDEFINED SYMBOLS
+GpioMcuInit
+GpioMcuSetContext
+GpioMcuSetInterrupt
+GpioMcuRemoveInterrupt
+GpioMcuWrite
+GpioMcuToggle
+GpioMcuRead
