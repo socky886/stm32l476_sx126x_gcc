@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
   27:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
   28:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****                    ##### Backup Domain Reset #####
   29:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****  ===============================================================================
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 2
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 2
 
 
   30:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   [..] The backup domain reset sets all RTC registers and the RCC_BDCR register
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
   84:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   [..] The system can also wake up from low power modes without depending
   85:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****        on an external interrupt (Auto-wakeup mode), by using the RTC alarm
   86:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****        or the RTC wakeup events.
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 3
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 3
 
 
   87:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   [..] The RTC provides a programmable time base for waking up from the
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  141:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  142:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   [..]
  143:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   By default, after the @ref HAL_RTC_Init() and when the state is HAL_RTC_STATE_RESET,
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 4
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 4
 
 
  144:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   all callbacks are set to the corresponding weak functions :
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  198:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** /* Private macro -------------------------------------------------------------*/
  199:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** /* Private variables ---------------------------------------------------------*/
  200:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** /* Private function prototypes -----------------------------------------------*/
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 5
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 5
 
 
  201:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** /* Exported functions --------------------------------------------------------*/
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  255:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     assert_param(IS_RTC_HOUR_FORMAT(hrtc->Init.HourFormat));
  256:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     assert_param(IS_RTC_ASYNCH_PREDIV(hrtc->Init.AsynchPrediv));
  257:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     assert_param(IS_RTC_SYNCH_PREDIV(hrtc->Init.SynchPrediv));
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 6
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 6
 
 
  258:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     assert_param(IS_RTC_OUTPUT(hrtc->Init.OutPut));
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  312:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     }
  313:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** #endif /* #if (USE_HAL_RTC_REGISTER_CALLBACKS == 1) */
  314:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 7
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 7
 
 
  315:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** #if defined(STM32L412xx) || defined(STM32L422xx) || defined (STM32L4P5xx) || defined (STM32L4Q5xx)
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  369:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  370:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   return status;
  371:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** }
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 8
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 8
 
 
  372:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  426:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****         hrtc->Instance->TAMPCR = 0x00000000U;
  427:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  428:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****         /* Reset Option register */
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 9
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 9
 
 
  429:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****         hrtc->Instance->OR = 0x00000000U;
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  483:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   {
  484:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     return HAL_ERROR;
  485:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   }
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 10
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 10
 
 
  486:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  540:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       default :
  541:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****         /* Return error status */
  542:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****         status =  HAL_ERROR;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 11
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 11
 
 
  543:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****         break;
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  597:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** {
  598:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   HAL_StatusTypeDef status = HAL_OK;
  599:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 12
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 12
 
 
  600:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   /* Process locked */
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  654:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****         /* Return error status */
  655:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****         status =  HAL_ERROR;
  656:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****         break;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 13
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 13
 
 
  657:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     }
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
   37 0000 7047     		bx	lr
   38              		.cfi_endproc
   39              	.LFE134:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 14
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 14
 
 
   41              		.section	.text.HAL_RTC_MspDeInit,"ax",%progbits
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  728:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****  ===============================================================================
  729:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****                  ##### RTC Time and Date functions #####
  730:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****  ===============================================================================
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 15
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 15
 
 
  731:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  785:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****         if (READ_BIT(RTC->CR, RTC_CR_FMT) != 0U)
  786:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****         {
  787:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****           assert_param(IS_RTC_HOUR12(sTime->Hours));
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 16
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 16
 
 
  788:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****           assert_param(IS_RTC_HOURFORMAT12(sTime->TimeFormat));
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  842:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   if (status == HAL_OK)
  843:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   {
  844:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     hrtc->State = HAL_RTC_STATE_READY;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 17
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 17
 
 
  845:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   }
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  899:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     sTime->Minutes = (uint8_t)((tmpreg & (RTC_TR_MNT | RTC_TR_MNU)) >> RTC_TR_MNU_Pos);
  900:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     sTime->Seconds = (uint8_t)((tmpreg & (RTC_TR_ST | RTC_TR_SU)) >> RTC_TR_SU_Pos);
  901:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     sTime->TimeFormat = (uint8_t)((tmpreg & (RTC_TR_PM)) >> RTC_TR_PM_Pos);
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 18
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 18
 
 
  902:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  956:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   }
  957:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   else
  958:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   {
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 19
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 19
 
 
  959:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     assert_param(IS_RTC_YEAR(RTC_Bcd2ToByte(sDate->Year)));
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1013:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
 1014:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   UNUSED(hrtc);
 1015:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   /* Check the parameters */
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 20
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 20
 
 
 1016:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   assert_param(IS_RTC_FORMAT(Format));
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1070:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** HAL_StatusTypeDef HAL_RTC_SetAlarm(RTC_HandleTypeDef *hrtc, RTC_AlarmTypeDef *sAlarm, uint32_t Form
 1071:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** {
 1072:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   uint32_t tmpreg = 0, binaryMode;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 21
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 21
 
 
 1073:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1127:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       }
 1128:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       else
 1129:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       {
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 22
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 22
 
 
 1130:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****         assert_param(IS_RTC_ALARM_DATE_WEEKDAY_WEEKDAY(sAlarm->AlarmDateWeekDay));
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1184:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     /* In case of interrupt mode is used, the interrupt source must disabled */
 1185:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     CLEAR_BIT(RTC->CR, (RTC_CR_ALRAE | RTC_CR_ALRAIE));
 1186:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 23
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 23
 
 
 1187:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     /* Clear flag alarm A */
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1241:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
 1242:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** /**
 1243:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   * @brief  Set the specified RTC Alarm with Interrupt.
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 24
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 24
 
 
 1244:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   * @param  hrtc RTC handle
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1298:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     {
 1299:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       if (READ_BIT(RTC->CR, RTC_CR_FMT) != 0U)
 1300:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       {
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 25
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 25
 
 
 1301:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****         assert_param(IS_RTC_HOUR12(sAlarm->AlarmTime.Hours));
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1355:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       tmpreg = (((uint32_t)(sAlarm->AlarmTime.Hours) << RTC_ALRMAR_HU_Pos) | \
 1356:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****                 ((uint32_t)(sAlarm->AlarmTime.Minutes) << RTC_ALRMAR_MNU_Pos) | \
 1357:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****                 ((uint32_t)(sAlarm->AlarmTime.Seconds) << RTC_ALRMAR_SU_Pos) | \
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 26
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 26
 
 
 1358:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****                 ((uint32_t)(sAlarm->AlarmTime.TimeFormat) << RTC_ALRMAR_PM_Pos) | \
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1412:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     SET_BIT(RTC->CR, RTC_CR_ALRBE | RTC_CR_ALRBIE);
 1413:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   }
 1414:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 27
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 27
 
 
 1415:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   /* RTC Alarm Interrupt Configuration: EXTI configuration */
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1469:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****         assert_param(IS_RTC_HOURFORMAT12(sTime->TimeFormat));
 1470:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       }
 1471:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       else
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 28
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 28
 
 
 1472:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       {
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1526:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   __HAL_UNLOCK(hrtc);
 1527:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
 1528:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   return status;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 29
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 29
 
 
 1529:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** }
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1583:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   return HAL_OK;
 1584:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** }
 1585:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 30
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 30
 
 
 1586:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** /**
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1640:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   __HAL_RTC_WRITEPROTECTION_DISABLE(hrtc);
 1641:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
 1642:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   /* Enter Initialization mode */
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 31
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 31
 
 
 1643:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   status = RTC_EnterInitMode(hrtc);
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1697:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   if (Format == RTC_FORMAT_BIN)
 1698:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   {
 1699:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     /* Convert the date structure parameters to Binary format */
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 32
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 32
 
 
 1700:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     sDate->Year = (uint8_t)RTC_Bcd2ToByte(sDate->Year);
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1754:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     {
 1755:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       assert_param(IS_RTC_HOUR12(sAlarm->AlarmTime.Hours));
 1756:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       assert_param(IS_RTC_HOURFORMAT12(sAlarm->AlarmTime.TimeFormat));
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 33
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 33
 
 
 1757:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     }
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1811:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****               ((uint32_t)(sAlarm->AlarmTime.Seconds) << RTC_ALRMAR_SU_Pos) | \
 1812:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****               ((uint32_t)(sAlarm->AlarmTime.TimeFormat) << RTC_ALRMAR_PM_Pos) | \
 1813:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****               ((uint32_t)(sAlarm->AlarmDateWeekDay) << RTC_ALRMAR_DU_Pos) | \
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 34
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 34
 
 
 1814:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****               ((uint32_t)sAlarm->AlarmDateWeekDaySel) | \
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1868:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
 1869:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** #if defined (RTC_FLAG_ALRBWF)
 1870:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     uint32_t tickstart = HAL_GetTick();
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 35
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 35
 
 
 1871:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     /* Wait till RTC ALRBWF flag is set and if Time out is reached exit */
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1925:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   /* Check the parameters */
 1926:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   assert_param(IS_RTC_FORMAT(Format));
 1927:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   assert_param(IS_RTC_ALARM(sAlarm->Alarm));
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 36
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 36
 
 
 1928:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   assert_param(IS_RTC_ALARM_MASK(sAlarm->AlarmMask));
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1982:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
 1983:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     assert_param(IS_RTC_MINUTES(RTC_Bcd2ToByte(sAlarm->AlarmTime.Minutes)));
 1984:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     assert_param(IS_RTC_SECONDS(RTC_Bcd2ToByte(sAlarm->AlarmTime.Seconds)));
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 37
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 37
 
 
 1985:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 2039:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
 2040:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     hrtc->Instance->ALRMAR = (uint32_t)tmpreg;
 2041:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     /* Configure the Alarm A Sub Second register */
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 38
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 38
 
 
 2042:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     hrtc->Instance->ALRMASSR = subsecondtmpreg;
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 2096:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
 2097:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   return HAL_OK;
 2098:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** }
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 39
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 39
 
 
 2099:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  104 001a CA22     		movs	r2, #202
  105 001c 5A62     		str	r2, [r3, #36]
  106              		.loc 1 2122 3 discriminator 2 view .LVU17
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 40
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 40
 
 
  107 001e 0368     		ldr	r3, [r0]
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  125 003c 9360     		str	r3, [r2, #8]
 2159:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
 2160:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** #if defined (RTC_FLAG_ALRBWF)
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 41
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 41
 
 
 2161:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     uint32_t tickstart = HAL_GetTick();
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 2175:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****         return HAL_TIMEOUT;
  166              		.loc 1 2175 9 view .LVU42
  167              		.loc 1 2175 16 is_stmt 0 view .LVU43
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 42
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 42
 
 
  168 006c 2AE0     		b	.L4
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 2140:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  209              		.loc 1 2140 9 is_stmt 1 view .LVU58
 2140:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 43
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 43
 
 
  210              		.loc 1 2140 9 view .LVU59
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  244 00c0 84F82000 		strb	r0, [r4, #32]
  245              		.loc 1 2186 3 view .LVU76
 2187:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 44
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 44
 
 
 2188:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   return HAL_OK;
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 2216:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     sAlarm->Alarm = RTC_ALARM_A;
 2217:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
 2218:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     tmpreg = (uint32_t)(hrtc->Instance->ALRMAR);
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 45
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 45
 
 
 2219:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     subsecondtmpreg = (uint32_t)((hrtc->Instance->ALRMASSR) & RTC_ALRMASSR_SS);
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 2273:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
 2274:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   if ((tmp & RTC_MISR_ALRAMF) != 0u)
 2275:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   {
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 46
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 46
 
 
 2276:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     /* Clear the AlarmA interrupt pending bit */
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 2330:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** #else
 2331:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       HAL_RTCEx_AlarmBEventCallback(hrtc);
 2332:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** #endif
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 47
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 47
 
 
 2333:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     }
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  304 0002 0446     		mov	r4, r0
 2268:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  305              		.loc 1 2268 3 is_stmt 1 view .LVU86
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 48
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 48
 
 
  306 0004 154B     		ldr	r3, .L21
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  345              	.L19:
 2309:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  346              		.loc 1 2309 7 is_stmt 1 view .LVU102
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 49
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 49
 
 
  347 0038 DA68     		ldr	r2, [r3, #12]
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  390 0000 70B5     		push	{r4, r5, r6, lr}
  391              	.LCFI2:
  392              		.cfi_def_cfa_offset 16
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 50
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 50
 
 
  393              		.cfi_offset 4, -16
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  436              		.loc 1 2374 9 is_stmt 1 view .LVU125
  437              		.loc 1 2374 16 is_stmt 0 view .LVU126
  438 0030 08E0     		b	.L27
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 51
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 51
 
 
  439              	.L30:
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 2400:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     This subsection provides functions allowing to
 2401:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       (+) Wait for RTC Time and Date Synchronization
 2402:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 52
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 52
 
 
 2403:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** @endverbatim
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  494              	.LVL25:
  495              		.loc 1 2432 15 view .LVU142
  496 0012 0546     		mov	r5, r0
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 53
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 53
 
 
  497              	.LVL26:
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  536              		.fpu fpv4-sp-d16
  538              	HAL_RTC_GetState:
  539              	.LVL28:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 54
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 54
 
 
  540              	.LFB148:
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 2479:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** /**
 2480:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   * @}
 2481:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   */
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 55
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 55
 
 
 2482:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 2521:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   if ((hrtc->Instance->ISR & RTC_ISR_INITF) == 0U)
  581              		.loc 1 2521 3 view .LVU164
  582              		.loc 1 2521 12 is_stmt 0 view .LVU165
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 56
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 56
 
 
  583 0002 0368     		ldr	r3, [r0]
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 2528:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     {
  612              		.loc 1 2528 5 is_stmt 1 view .LVU177
 2500:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 57
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 57
 
 
  613              		.loc 1 2500 21 is_stmt 0 view .LVU178
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 2542:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** /**
 2543:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   * @brief  Exit the RTC Initialization mode.
 2544:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   * @param  hrtc RTC handle
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 58
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 58
 
 
 2545:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   * @retval HAL status
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  691 0020 84F82130 		strb	r3, [r4, #33]
 2565:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       status = HAL_TIMEOUT;
  692              		.loc 1 2565 7 is_stmt 1 view .LVU202
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 59
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 59
 
 
  693              	.LVL42:
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  730              		.loc 1 2582 1 view .LVU214
  731              		.align	2
  732              	.L52:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 60
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 60
 
 
  733 004c 00280040 		.word	1073752064
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  305:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     {
  775              		.loc 1 305 13 is_stmt 0 view .LVU229
  776 0008 90F82130 		ldrb	r3, [r0, #33]	@ zero_extendqisi2
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 61
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 61
 
 
  305:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     {
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  311:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     }
  815              		.loc 1 311 7 is_stmt 0 view .LVU246
  816 0032 ECE7     		b	.L56
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 62
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 62
 
 
  817              	.LVL53:
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  342:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  854              		.loc 1 342 11 is_stmt 0 view .LVU264
  855 005a 2268     		ldr	r2, [r4]
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 63
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 63
 
 
  342:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  363:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  893              		.loc 1 363 9 view .LVU282
  894 0088 2368     		ldr	r3, [r4]
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 64
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 64
 
 
  895 008a FF22     		movs	r2, #255
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  381:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  943              		.loc 1 381 3 is_stmt 1 view .LVU291
  944              	.LVL59:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 65
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 65
 
 
  384:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   {
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  981              		.loc 1 402 11 is_stmt 0 view .LVU309
  982 002a 2268     		ldr	r2, [r4]
  402:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       hrtc->Instance->CR &= 0x00000000U;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 66
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 66
 
 
  983              		.loc 1 402 26 view .LVU310
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  410:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       hrtc->Instance->ALRMASSR = 0x00000000U;
  1019              		.loc 1 410 7 is_stmt 1 view .LVU329
  410:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       hrtc->Instance->ALRMASSR = 0x00000000U;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 67
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 67
 
 
  1020              		.loc 1 410 11 is_stmt 0 view .LVU330
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  433:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  1056              		.loc 1 433 9 is_stmt 1 view .LVU349
  433:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 68
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 68
 
 
  1057              		.loc 1 433 9 view .LVU350
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  1100              		.thumb_func
  1101              		.fpu fpv4-sp-d16
  1103              	RTC_ByteToBcd2:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 69
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 69
 
 
  1104              	.LVL68:
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  1136              		.loc 1 2602 11 is_stmt 0 view .LVU376
  1137 000e 1B01     		lsls	r3, r3, #4
  1138              	.LVL73:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 70
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 70
 
 
  1139              		.loc 1 2602 11 view .LVU377
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1453:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  1185              		.loc 1 1453 3 is_stmt 1 discriminator 2 view .LVU389
  1186 0010 0123     		movs	r3, #1
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 71
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 71
 
 
  1187 0012 80F82030 		strb	r3, [r0, #32]
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  1223 003a 01D1     		bne	.L77
 1473:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****         assert_param(IS_RTC_HOUR24(sTime->Hours));
  1224              		.loc 1 1473 9 is_stmt 1 view .LVU408
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 72
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 72
 
 
 1473:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****         assert_param(IS_RTC_HOUR24(sTime->Hours));
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1505:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  1263              		.loc 1 1505 26 view .LVU425
  1264 0062 00F07F30 		and	r0, r0, #2139062143
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 73
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 73
 
 
  1265              	.LVL84:
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  1302              		.loc 1 1518 3 view .LVU442
 1520:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   {
  1303              		.loc 1 1520 3 view .LVU443
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 74
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 74
 
 
 1520:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   {
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  1339 00ae 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
 1499:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****                 ((uint32_t)(sTime->Seconds) << RTC_TR_SU_Pos) | \
  1340              		.loc 1 1499 34 view .LVU463
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 75
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 75
 
 
  1341 00b0 6878     		ldrb	r0, [r5, #1]	@ zero_extendqisi2
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  1387              		@ args = 0, pretend = 0, frame = 0
  1388              		@ frame_needed = 0, uses_anonymous_args = 0
 1598:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   HAL_StatusTypeDef status;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 76
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 76
 
 
  1389              		.loc 1 1598 3 view .LVU474
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  1427 0028 0A33     		adds	r3, r3, #10
 1611:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   }
  1428              		.loc 1 1611 18 view .LVU491
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 77
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 77
 
 
  1429 002a 4B70     		strb	r3, [r1, #1]
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1640:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  1466              		.loc 1 1640 3 view .LVU509
  1467 004e 2368     		ldr	r3, [r4]
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 78
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 78
 
 
  1468 0050 CA22     		movs	r2, #202
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1665:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  1505              		.loc 1 1665 1 is_stmt 0 view .LVU527
  1506 0076 70BD     		pop	{r4, r5, r6, pc}
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 79
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 79
 
 
  1507              	.LVL99:
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  1543              		.loc 1 1647 24 view .LVU545
  1544 0098 5D60     		str	r5, [r3, #4]
 1650:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   }
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 80
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 80
 
 
  1545              		.loc 1 1650 5 is_stmt 1 view .LVU546
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  1594              		.cfi_offset 14, -4
 1736:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  1595              		.loc 1 1736 3 is_stmt 1 view .LVU554
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 81
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 81
 
 
 1739:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   assert_param(IS_RTC_ALARM(sAlarm->Alarm));
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  1630              		.loc 1 1760 36 is_stmt 0 view .LVU574
  1631 002a 0023     		movs	r3, #0
  1632 002c CB70     		strb	r3, [r1, #3]
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 82
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 82
 
 
  1633              	.L102:
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1777:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****               ((uint32_t)RTC_ByteToBcd2(sAlarm->AlarmDateWeekDay) << RTC_ALRMAR_DU_Pos) | \
  1670              		.loc 1 1777 79 view .LVU592
  1671 0058 47EA0067 		orr	r7, r7, r0, lsl #24
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 83
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 83
 
 
 1778:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****               ((uint32_t)sAlarm->AlarmDateWeekDaySel) | \
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  1710              		.loc 1 1865 5 view .LVU608
  1711 0086 2268     		ldr	r2, [r4]
  1712 0088 D368     		ldr	r3, [r2, #12]
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 84
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 84
 
 
  1713 008a DBB2     		uxtb	r3, r3
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1879:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  1752              		.loc 1 1879 21 is_stmt 0 view .LVU624
  1753 00be 0320     		movs	r0, #3
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 85
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 85
 
 
  1754 00c0 84F82100 		strb	r0, [r4, #33]
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  1789 00de 3602     		lsls	r6, r6, #8
 1809:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****               ((uint32_t)(sAlarm->AlarmTime.Minutes) << RTC_ALRMAR_MNU_Pos) | \
  1790              		.loc 1 1809 74 view .LVU644
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 86
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 86
 
 
  1791 00e0 46EA0346 		orr	r6, r6, r3, lsl #16
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  1831 0118 9368     		ldr	r3, [r2, #8]
  1832 011a 23F48053 		bic	r3, r3, #4096
  1833 011e 9360     		str	r3, [r2, #8]
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 87
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 87
 
 
 1835:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     /* Wait till RTC ALRAWF flag is set and if Time out is reached exit */
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  1871 014a 84F82030 		strb	r3, [r4, #32]
 1847:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  1872              		.loc 1 1847 9 view .LVU676
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 88
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 88
 
 
 1849:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       }
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1897:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  1912              		.loc 1 1897 3 is_stmt 1 view .LVU692
 1897:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 89
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 89
 
 
  1913              		.loc 1 1897 3 view .LVU693
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  1957              		.loc 1 1922 1 is_stmt 0 view .LVU705
  1958 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
  1959              	.LCFI14:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 90
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 90
 
 
  1960              		.cfi_def_cfa_offset 24
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  1996              		.loc 1 1940 24 view .LVU723
  1997 0022 9B68     		ldr	r3, [r3, #8]
 1940:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     {
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 91
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 91
 
 
  1998              		.loc 1 1940 8 view .LVU724
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  2035 004a E878     		ldrb	r0, [r5, #3]	@ zero_extendqisi2
 1964:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****               ((uint32_t)(sAlarm->AlarmTime.TimeFormat) << RTC_ALRMAR_PM_Pos) | \
  2036              		.loc 1 1964 90 view .LVU742
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 92
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 92
 
 
  2037 004c 47EA8057 		orr	r7, r7, r0, lsl #22
@@ -5518,7 +5518,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  2075 007a 3CD0     		beq	.L130
  2076              	.LBB7:
 2051:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 93
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 93
 
 
  2077              		.loc 1 2051 5 is_stmt 1 view .LVU759
@@ -5578,7 +5578,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  2117              		.loc 1 2064 9 view .LVU773
 2066:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  2118              		.loc 1 2066 9 view .LVU774
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 94
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 94
 
 
 2066:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
@@ -5638,7 +5638,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  2154 00d2 6E78     		ldrb	r6, [r5, #1]	@ zero_extendqisi2
 1998:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****               ((uint32_t)(sAlarm->AlarmTime.Seconds) << RTC_ALRMAR_SU_Pos) | \
  2155              		.loc 1 1998 54 view .LVU794
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 95
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 95
 
 
  2156 00d4 3602     		lsls	r6, r6, #8
@@ -5698,7 +5698,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 2021:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     /* Wait till RTC ALRAWF flag is set and if Time out is reached exit */
  2196              		.loc 1 2021 5 view .LVU809
 2021:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     /* Wait till RTC ALRAWF flag is set and if Time out is reached exit */
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 96
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 96
 
 
  2197              		.loc 1 2021 26 is_stmt 0 view .LVU810
@@ -5758,7 +5758,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 2035:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       }
  2235              		.loc 1 2035 9 view .LVU827
 2035:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****       }
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 97
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 97
 
 
  2236              		.loc 1 2035 16 is_stmt 0 view .LVU828
@@ -5818,7 +5818,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  2276 0168 2268     		ldr	r2, [r4]
  2277 016a 9368     		ldr	r3, [r2, #8]
  2278 016c 43F40053 		orr	r3, r3, #8192
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 98
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 98
 
 
  2279 0170 9360     		str	r3, [r2, #8]
@@ -5878,7 +5878,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  2318              		.loc 1 1934 3 view .LVU857
  2319 019a FCE7     		b	.L117
  2320              	.L134:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 99
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 99
 
 
  2321              		.align	2
@@ -5938,7 +5938,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  2366              		.thumb
  2367              		.thumb_func
  2368              		.fpu fpv4-sp-d16
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 100
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 100
 
 
  2370              	HAL_RTC_GetTime:
@@ -5998,7 +5998,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  2408              	.LVL156:
 1569:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   sTime->Minutes = (uint8_t)((tmpreg & (RTC_TR_MNT | RTC_TR_MNU)) >> RTC_TR_MNU_Pos);
  2409              		.loc 1 1569 3 is_stmt 1 view .LVU883
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 101
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 101
 
 
 1569:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   sTime->Minutes = (uint8_t)((tmpreg & (RTC_TR_MNT | RTC_TR_MNU)) >> RTC_TR_MNU_Pos);
@@ -6058,7 +6058,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 1579:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     sTime->Seconds = (uint8_t)RTC_Bcd2ToByte(sTime->Seconds);
  2446              		.loc 1 1579 20 view .LVU902
  2447 003e 6070     		strb	r0, [r4, #1]
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 102
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 102
 
 
 1580:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   }
@@ -6118,7 +6118,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  2492              		.loc 1 1688 41 view .LVU914
  2493 0004 5B68     		ldr	r3, [r3, #4]
  2494              	.LVL164:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 103
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 103
 
 
 1691:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   sDate->Month = (uint8_t)((datetmpreg & (RTC_DR_MT | RTC_DR_MU)) >> RTC_DR_MU_Pos);
@@ -6178,7 +6178,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  2530 002a FFF7FEFF 		bl	RTC_Bcd2ToByte
  2531              	.LVL168:
 1701:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     sDate->Date = (uint8_t)RTC_Bcd2ToByte(sDate->Date);
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 104
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 104
 
 
  2532              		.loc 1 1701 18 view .LVU934
@@ -6238,7 +6238,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  2576              		.loc 1 2213 6 is_stmt 0 view .LVU946
  2577 0004 B2F5807F 		cmp	r2, #256
  2578 0008 33D0     		beq	.L147
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 105
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 105
 
 
 2233:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
@@ -6298,7 +6298,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  2614              		.loc 1 2242 5 is_stmt 1 view .LVU965
 2242:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     sAlarm->AlarmTime.SubSeconds = (uint32_t) subsecondtmpreg;
  2615              		.loc 1 2242 36 is_stmt 0 view .LVU966
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 106
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 106
 
 
  2616 002c C2F38050 		ubfx	r0, r2, #22, #1
@@ -6358,7 +6358,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 2252:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****     sAlarm->AlarmTime.Seconds = RTC_Bcd2ToByte(sAlarm->AlarmTime.Seconds);
  2652              		.loc 1 2252 33 is_stmt 0 view .LVU985
  2653 0052 6078     		ldrb	r0, [r4, #1]	@ zero_extendqisi2
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 107
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 107
 
 
  2654 0054 FFF7FEFF 		bl	RTC_Bcd2ToByte
@@ -6418,7 +6418,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
 2219:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c **** 
  2692              		.loc 1 2219 21 view .LVU1002
  2693 007a C1F30E01 		ubfx	r1, r1, #0, #15
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 108
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 108
 
 
  2694              	.LVL187:
@@ -6478,7 +6478,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  2728              		.loc 1 2228 33 view .LVU1022
  2729 00a4 2162     		str	r1, [r4, #32]
 2229:Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rtc.c ****   }
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 109
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 109
 
 
  2730              		.loc 1 2229 5 is_stmt 1 view .LVU1023
@@ -6501,57 +6501,57 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 1
  2746              		.file 6 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rtc.h"
  2747              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal.h"
  2748              		.file 8 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_rtc_ex.h"
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s 			page 110
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\cczOMdah.s 			page 110
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32l4xx_hal_rtc.c
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:18     .text.HAL_RTC_MspInit:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:26     .text.HAL_RTC_MspInit:00000000 HAL_RTC_MspInit
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:42     .text.HAL_RTC_MspDeInit:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:49     .text.HAL_RTC_MspDeInit:00000000 HAL_RTC_MspDeInit
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:64     .text.HAL_RTC_DeactivateAlarm:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:71     .text.HAL_RTC_DeactivateAlarm:00000000 HAL_RTC_DeactivateAlarm
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:262    .text.HAL_RTC_AlarmAEventCallback:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:269    .text.HAL_RTC_AlarmAEventCallback:00000000 HAL_RTC_AlarmAEventCallback
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:284    .text.HAL_RTC_AlarmIRQHandler:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:291    .text.HAL_RTC_AlarmIRQHandler:00000000 HAL_RTC_AlarmIRQHandler
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:370    .text.HAL_RTC_AlarmIRQHandler:0000005c $d
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:375    .text.HAL_RTC_PollForAlarmAEvent:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:382    .text.HAL_RTC_PollForAlarmAEvent:00000000 HAL_RTC_PollForAlarmAEvent
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:460    .text.HAL_RTC_WaitForSynchro:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:467    .text.HAL_RTC_WaitForSynchro:00000000 HAL_RTC_WaitForSynchro
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:531    .text.HAL_RTC_GetState:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:538    .text.HAL_RTC_GetState:00000000 HAL_RTC_GetState
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:556    .text.RTC_EnterInitMode:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:563    .text.RTC_EnterInitMode:00000000 RTC_EnterInitMode
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:647    .text.RTC_ExitInitMode:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:654    .text.RTC_ExitInitMode:00000000 RTC_ExitInitMode
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:733    .text.RTC_ExitInitMode:0000004c $d
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:738    .text.HAL_RTC_Init:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:745    .text.HAL_RTC_Init:00000000 HAL_RTC_Init
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:921    .text.HAL_RTC_DeInit:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:928    .text.HAL_RTC_DeInit:00000000 HAL_RTC_DeInit
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:1091   .text.HAL_RTC_DeInit:00000090 $d
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:1096   .text.RTC_ByteToBcd2:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:1103   .text.RTC_ByteToBcd2:00000000 RTC_ByteToBcd2
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:1150   .text.HAL_RTC_SetTime:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:1157   .text.HAL_RTC_SetTime:00000000 HAL_RTC_SetTime
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:1375   .text.HAL_RTC_SetDate:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:1382   .text.HAL_RTC_SetDate:00000000 HAL_RTC_SetDate
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:1571   .text.HAL_RTC_SetAlarm:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:1578   .text.HAL_RTC_SetAlarm:00000000 HAL_RTC_SetAlarm
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:1943   .text.HAL_RTC_SetAlarm_IT:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:1950   .text.HAL_RTC_SetAlarm_IT:00000000 HAL_RTC_SetAlarm_IT
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:2323   .text.HAL_RTC_SetAlarm_IT:0000019c $d
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:2328   .text.RTC_Bcd2ToByte:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:2335   .text.RTC_Bcd2ToByte:00000000 RTC_Bcd2ToByte
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:2363   .text.HAL_RTC_GetTime:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:2370   .text.HAL_RTC_GetTime:00000000 HAL_RTC_GetTime
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:2465   .text.HAL_RTC_GetDate:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:2472   .text.HAL_RTC_GetDate:00000000 HAL_RTC_GetDate
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:2551   .text.HAL_RTC_GetAlarm:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccTH5wMP.s:2558   .text.HAL_RTC_GetAlarm:00000000 HAL_RTC_GetAlarm
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:18     .text.HAL_RTC_MspInit:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:26     .text.HAL_RTC_MspInit:00000000 HAL_RTC_MspInit
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:42     .text.HAL_RTC_MspDeInit:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:49     .text.HAL_RTC_MspDeInit:00000000 HAL_RTC_MspDeInit
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:64     .text.HAL_RTC_DeactivateAlarm:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:71     .text.HAL_RTC_DeactivateAlarm:00000000 HAL_RTC_DeactivateAlarm
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:262    .text.HAL_RTC_AlarmAEventCallback:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:269    .text.HAL_RTC_AlarmAEventCallback:00000000 HAL_RTC_AlarmAEventCallback
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:284    .text.HAL_RTC_AlarmIRQHandler:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:291    .text.HAL_RTC_AlarmIRQHandler:00000000 HAL_RTC_AlarmIRQHandler
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:370    .text.HAL_RTC_AlarmIRQHandler:0000005c $d
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:375    .text.HAL_RTC_PollForAlarmAEvent:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:382    .text.HAL_RTC_PollForAlarmAEvent:00000000 HAL_RTC_PollForAlarmAEvent
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:460    .text.HAL_RTC_WaitForSynchro:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:467    .text.HAL_RTC_WaitForSynchro:00000000 HAL_RTC_WaitForSynchro
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:531    .text.HAL_RTC_GetState:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:538    .text.HAL_RTC_GetState:00000000 HAL_RTC_GetState
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:556    .text.RTC_EnterInitMode:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:563    .text.RTC_EnterInitMode:00000000 RTC_EnterInitMode
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:647    .text.RTC_ExitInitMode:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:654    .text.RTC_ExitInitMode:00000000 RTC_ExitInitMode
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:733    .text.RTC_ExitInitMode:0000004c $d
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:738    .text.HAL_RTC_Init:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:745    .text.HAL_RTC_Init:00000000 HAL_RTC_Init
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:921    .text.HAL_RTC_DeInit:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:928    .text.HAL_RTC_DeInit:00000000 HAL_RTC_DeInit
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:1091   .text.HAL_RTC_DeInit:00000090 $d
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:1096   .text.RTC_ByteToBcd2:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:1103   .text.RTC_ByteToBcd2:00000000 RTC_ByteToBcd2
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:1150   .text.HAL_RTC_SetTime:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:1157   .text.HAL_RTC_SetTime:00000000 HAL_RTC_SetTime
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:1375   .text.HAL_RTC_SetDate:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:1382   .text.HAL_RTC_SetDate:00000000 HAL_RTC_SetDate
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:1571   .text.HAL_RTC_SetAlarm:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:1578   .text.HAL_RTC_SetAlarm:00000000 HAL_RTC_SetAlarm
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:1943   .text.HAL_RTC_SetAlarm_IT:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:1950   .text.HAL_RTC_SetAlarm_IT:00000000 HAL_RTC_SetAlarm_IT
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:2323   .text.HAL_RTC_SetAlarm_IT:0000019c $d
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:2328   .text.RTC_Bcd2ToByte:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:2335   .text.RTC_Bcd2ToByte:00000000 RTC_Bcd2ToByte
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:2363   .text.HAL_RTC_GetTime:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:2370   .text.HAL_RTC_GetTime:00000000 HAL_RTC_GetTime
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:2465   .text.HAL_RTC_GetDate:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:2472   .text.HAL_RTC_GetDate:00000000 HAL_RTC_GetDate
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:2551   .text.HAL_RTC_GetAlarm:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\cczOMdah.s:2558   .text.HAL_RTC_GetAlarm:00000000 HAL_RTC_GetAlarm
 
 UNDEFINED SYMBOLS
 HAL_GetTick

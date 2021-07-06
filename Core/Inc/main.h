@@ -83,7 +83,6 @@ void Error_Handler(void);
 #define BUSY_GPIO_Port GPIOB
 #define DIO1_Pin GPIO_PIN_4
 #define DIO1_GPIO_Port GPIOB
-#define DIO1_EXTI_IRQn EXTI4_IRQn
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

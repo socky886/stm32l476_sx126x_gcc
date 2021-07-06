@@ -81,19 +81,36 @@ extern Gpio_t Led2;
 extern SX126x_t SX126x;
 uint8_t xorbuf[]={0xff,0xe1 ,0x1d ,0x9a ,0xed ,0x85 ,0x33 ,0x24 ,0xea ,0x7a ,0xd2 ,0x39 ,0x70 ,0x97 ,0x57 ,0x0a ,0x54 ,0x7d ,0x2d ,0xd8 ,0x6d ,0x0d ,0xba ,0x8f ,0x67 ,0x59 ,0xc7 ,0xa2 ,0xbf ,0x34 ,0xca ,0x18 ,0x30 ,0x53 ,0x93 ,0xdf ,0x92 ,0xec ,0xa7 ,0x15 ,0x8a ,0xdc ,0xf4 ,0x86 ,0x55 ,0x4e ,0x18 ,0x21 ,0x40 ,0xc4 ,0xc4 ,0xd5 ,0xc6 ,0x91 ,0x8a ,0xcd ,0xe7 };
 
+static void sx126x_io_init(void)
+{
+    GpioInit(&SX126x.Spi.Mosi, RADIO_MOSI, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0); //PIN_PULL_DOWN
+    GpioInit(&SX126x.Spi.Miso, RADIO_MISO, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0);
+    GpioInit(&SX126x.Spi.Sclk, RADIO_SCLK, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 1);
+
+    GpioInit( &SX126x.Reset, RADIO_RESET, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 1 );
+    GpioInit(&SX126x.Spi.Nss, RADIO_NSS, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 1);
+    GpioInit(&SX126x.BUSY, RADIO_BUSY, PIN_INPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0);
+    GpioInit(&SX126x.DIO1, RADIO_DIO_1, PIN_INPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0);
+
+}
+static void sx126x_io_test(void)
+{
+
+}
 /**
  * @brief 
  * 
  */
 void sx126x_init(void)
 {
+    sx126x_io_init();
+    return ;
+
     // GpioInit(&Led1, LED_1, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0);
     // GpioInit(&Led2, LED_2, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0);
-    
-
      SpiInit( &SX126x.Spi, SPI_1, RADIO_MOSI, RADIO_MISO, RADIO_SCLK, NC );
     SX126xIoInit();
-    return ;
+    // return;
     Radio.Init(0);
 
     Radio.SetChannel(RF_FREQUENCY);

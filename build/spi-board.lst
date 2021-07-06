@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccqy1hQM.s 			page 1
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -17,17 +17,17 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccqy1hQM.s 			page 1
   14              		.text
   15              	.Ltext0:
   16              		.cfi_sections	.debug_frame
-  17              		.section	.text.SpiInit,"ax",%progbits
+  17              		.section	.text.SpiDeInit,"ax",%progbits
   18              		.align	1
-  19              		.global	SpiInit
+  19              		.global	SpiDeInit
   20              		.arch armv7e-m
   21              		.syntax unified
   22              		.thumb
   23              		.thumb_func
   24              		.fpu fpv4-sp-d16
-  26              	SpiInit:
+  26              	SpiDeInit:
   27              	.LVL0:
-  28              	.LFB132:
+  28              	.LFB133:
   29              		.file 1 "Drivers/sx126x/boards/NucleoL476/spi-board.c"
    1:Drivers/sx126x/boards/NucleoL476/spi-board.c **** /*!
    2:Drivers/sx126x/boards/NucleoL476/spi-board.c ****  * \file      spi-board.c
@@ -58,306 +58,1006 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccqy1hQM.s 			page 1
   27:Drivers/sx126x/boards/NucleoL476/spi-board.c **** #include "spi-board.h"
   28:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
   29:Drivers/sx126x/boards/NucleoL476/spi-board.c **** static SPI_HandleTypeDef SpiHandle[2];
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccqy1hQM.s 			page 2
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 2
 
 
-  30:Drivers/sx126x/boards/NucleoL476/spi-board.c **** extern SPI_HandleTypeDef hspi1;
-  31:Drivers/sx126x/boards/NucleoL476/spi-board.c **** void SpiInit( Spi_t *obj, SpiId_t spiId, PinNames mosi, PinNames miso, PinNames sclk, PinNames nss 
-  32:Drivers/sx126x/boards/NucleoL476/spi-board.c **** {
-  30              		.loc 1 32 1 view -0
-  31              		.cfi_startproc
-  32              		@ args = 8, pretend = 0, frame = 0
-  33              		@ frame_needed = 0, uses_anonymous_args = 0
-  34              		.loc 1 32 1 is_stmt 0 view .LVU1
-  35 0000 F0B5     		push	{r4, r5, r6, r7, lr}
-  36              	.LCFI0:
-  37              		.cfi_def_cfa_offset 20
-  38              		.cfi_offset 4, -20
-  39              		.cfi_offset 5, -16
-  40              		.cfi_offset 6, -12
-  41              		.cfi_offset 7, -8
-  42              		.cfi_offset 14, -4
-  43 0002 83B0     		sub	sp, sp, #12
-  44              	.LCFI1:
-  45              		.cfi_def_cfa_offset 32
-  46 0004 0546     		mov	r5, r0
-  47 0006 1146     		mov	r1, r2
-  48              	.LVL1:
-  49              		.loc 1 32 1 view .LVU2
-  50 0008 1F46     		mov	r7, r3
-  33:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // CRITICAL_SECTION_BEGIN( );
-  34:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
-  35:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // obj->SpiId = spiId;
+  30:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+  31:Drivers/sx126x/boards/NucleoL476/spi-board.c **** extern SPI_HandleTypeDef hspi1;
+  32:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+  33:Drivers/sx126x/boards/NucleoL476/spi-board.c **** void SpiInit( Spi_t *obj, SpiId_t spiId, PinNames mosi, PinNames miso, PinNames sclk, PinNames nss 
+  34:Drivers/sx126x/boards/NucleoL476/spi-board.c **** {
+  35:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     CRITICAL_SECTION_BEGIN( );
   36:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
-  37:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // if( spiId == SPI_1 )
-  38:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // {
-  39:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     //     __HAL_RCC_SPI1_FORCE_RESET( );
-  40:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     //     __HAL_RCC_SPI1_RELEASE_RESET( );
-  41:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     //     __HAL_RCC_SPI1_CLK_ENABLE( );
-  42:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
-  43:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     //     SpiHandle[spiId].Instance = ( SPI_TypeDef* )SPI1_BASE;
+  37:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     obj->SpiId = spiId;
+  38:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+  39:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     if( spiId == SPI_1 )
+  40:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     {
+  41:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         __HAL_RCC_SPI1_FORCE_RESET( );
+  42:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         __HAL_RCC_SPI1_RELEASE_RESET( );
+  43:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         __HAL_RCC_SPI1_CLK_ENABLE( );
   44:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
-  45:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         // GpioInit( &obj->Mosi, mosi, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_DOWN, GPIO_AF5_SP
-  46:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         // GpioInit( &obj->Miso, miso, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_DOWN, GPIO_AF5_SP
-  47:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         // GpioInit( &obj->Sclk, sclk, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_DOWN, GPIO_AF5_SP
-  48:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         // GpioInit( &obj->Nss, nss, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_UP, GPIO_AF5_SPI1 )
-  49:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
-  50:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     GpioInit(&obj->Mosi, mosi, PIN_OUTPUT, PIN_PUSH_PULL, PIN_PULL_DOWN, 0);
-  51              		.loc 1 50 5 is_stmt 1 view .LVU3
-  52 000a 0024     		movs	r4, #0
-  53 000c 0194     		str	r4, [sp, #4]
-  54 000e 0226     		movs	r6, #2
-  55 0010 0096     		str	r6, [sp]
-  56 0012 2346     		mov	r3, r4
-  57              	.LVL2:
-  58              		.loc 1 50 5 is_stmt 0 view .LVU4
-  59 0014 0122     		movs	r2, #1
-  60              	.LVL3:
-  61              		.loc 1 50 5 view .LVU5
-  62 0016 0430     		adds	r0, r0, #4
-  63              	.LVL4:
-  64              		.loc 1 50 5 view .LVU6
-  65 0018 FFF7FEFF 		bl	GpioInit
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccqy1hQM.s 			page 3
+  45:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         SpiHandle[spiId].Instance = ( SPI_TypeDef* )SPI1_BASE;
+  46:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+  47:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         // GpioInit( &obj->Mosi, mosi, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_DOWN, GPIO_AF5_SP
+  48:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         // GpioInit( &obj->Miso, miso, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_DOWN, GPIO_AF5_SP
+  49:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         // GpioInit( &obj->Sclk, sclk, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_DOWN, GPIO_AF5_SP
+  50:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         // GpioInit( &obj->Nss, nss, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_UP, GPIO_AF5_SPI1 )
+  51:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+  52:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         GpioInit( &obj->Mosi, mosi, PIN_OUTPUT, PIN_PUSH_PULL, PIN_PULL_DOWN, 0 );
+  53:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         GpioInit( &obj->Miso, miso, PIN_OUTPUT, PIN_PUSH_PULL, PIN_PULL_DOWN, 0 );
+  54:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         GpioInit( &obj->Sclk, sclk, PIN_OUTPUT, PIN_PUSH_PULL, PIN_PULL_DOWN, 0 );
+  55:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+  56:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     else
+  57:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     {
+  58:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         __HAL_RCC_SPI2_FORCE_RESET( );
+  59:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         __HAL_RCC_SPI2_RELEASE_RESET( );
+  60:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         __HAL_RCC_SPI2_CLK_ENABLE( );
+  61:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+  62:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         SpiHandle[spiId].Instance = ( SPI_TypeDef* )SPI2_BASE;
+  63:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+  64:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         GpioInit( &obj->Mosi, mosi, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_DOWN, GPIO_AF5_SPI2 
+  65:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         GpioInit( &obj->Miso, miso, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_DOWN, GPIO_AF5_SPI2 
+  66:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         GpioInit( &obj->Sclk, sclk, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_DOWN, GPIO_AF5_SPI2 
+  67:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         GpioInit( &obj->Nss, nss, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_UP, GPIO_AF5_SPI2 );
+  68:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+  69:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+  70:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     if( nss == NC )
+  71:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     {
+  72:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         SpiHandle[spiId].Init.NSS = SPI_NSS_SOFT;
+  73:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         SpiFormat( obj, 8, SPI_POLARITY_LOW, SPI_PHASE_1EDGE, 0 );
+  74:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+  75:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     else
+  76:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     {
+  77:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         SpiFormat( obj, 8, SPI_POLARITY_LOW, SPI_PHASE_1EDGE, 1 );
+  78:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+  79:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     SpiFrequency( obj, 10000000 );
+  80:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+  81:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     HAL_SPI_Init( &SpiHandle[spiId] );
+  82:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+  83:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     CRITICAL_SECTION_END( );
+  84:Drivers/sx126x/boards/NucleoL476/spi-board.c **** }
+  85:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+  86:Drivers/sx126x/boards/NucleoL476/spi-board.c **** void SpiDeInit( Spi_t *obj )
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 3
 
 
-  66              	.LVL5:
-  51:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     GpioInit(&obj->Miso, miso, PIN_OUTPUT, PIN_PUSH_PULL, PIN_PULL_DOWN, 0);
-  67              		.loc 1 51 5 is_stmt 1 view .LVU7
-  68 001c 0194     		str	r4, [sp, #4]
-  69 001e 0096     		str	r6, [sp]
-  70 0020 2346     		mov	r3, r4
-  71 0022 0122     		movs	r2, #1
-  72 0024 3946     		mov	r1, r7
-  73 0026 05F11800 		add	r0, r5, #24
-  74 002a FFF7FEFF 		bl	GpioInit
-  75              	.LVL6:
-  52:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     GpioInit(&obj->Sclk, sclk, PIN_OUTPUT, PIN_PUSH_PULL, PIN_PULL_DOWN, 0);
-  76              		.loc 1 52 5 view .LVU8
-  77 002e 0194     		str	r4, [sp, #4]
-  78 0030 0096     		str	r6, [sp]
-  79 0032 2346     		mov	r3, r4
-  80 0034 0122     		movs	r2, #1
-  81 0036 9DF92010 		ldrsb	r1, [sp, #32]
-  82 003a 05F12C00 		add	r0, r5, #44
-  83 003e FFF7FEFF 		bl	GpioInit
-  84              	.LVL7:
-  53:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
-  54:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // }
-  55:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // else
-  56:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // {
-  57:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     //     __HAL_RCC_SPI2_FORCE_RESET( );
-  58:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     //     __HAL_RCC_SPI2_RELEASE_RESET( );
-  59:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     //     __HAL_RCC_SPI2_CLK_ENABLE( );
-  60:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
-  61:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     //     SpiHandle[spiId].Instance = ( SPI_TypeDef* )SPI2_BASE;
-  62:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
-  63:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     //     GpioInit( &obj->Mosi, mosi, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_DOWN, GPIO_AF5_SP
-  64:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     //     GpioInit( &obj->Miso, miso, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_DOWN, GPIO_AF5_SP
-  65:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     //     GpioInit( &obj->Sclk, sclk, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_DOWN, GPIO_AF5_SP
-  66:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     //     GpioInit( &obj->Nss, nss, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_UP, GPIO_AF5_SPI2 )
-  67:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // }
-  68:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
-  69:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // if( nss == NC )
-  70:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // {
-  71:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     //     SpiHandle[spiId].Init.NSS = SPI_NSS_SOFT;
-  72:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     //     SpiFormat( obj, 8, SPI_POLARITY_LOW, SPI_PHASE_1EDGE, 0 );
-  73:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // }
-  74:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // else
-  75:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // {
-  76:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     //     SpiFormat( obj, 8, SPI_POLARITY_LOW, SPI_PHASE_1EDGE, 1 );
-  77:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // }
-  78:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // SpiFrequency( obj, 10000000 );
+  87:Drivers/sx126x/boards/NucleoL476/spi-board.c **** {
+  30              		.loc 1 87 1 view -0
+  31              		.cfi_startproc
+  32              		@ args = 0, pretend = 0, frame = 0
+  33              		@ frame_needed = 0, uses_anonymous_args = 0
+  34              		.loc 1 87 1 is_stmt 0 view .LVU1
+  35 0000 30B5     		push	{r4, r5, lr}
+  36              	.LCFI0:
+  37              		.cfi_def_cfa_offset 12
+  38              		.cfi_offset 4, -12
+  39              		.cfi_offset 5, -8
+  40              		.cfi_offset 14, -4
+  41 0002 83B0     		sub	sp, sp, #12
+  42              	.LCFI1:
+  43              		.cfi_def_cfa_offset 24
+  44 0004 0446     		mov	r4, r0
+  88:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     HAL_SPI_DeInit( &SpiHandle[obj->SpiId] );
+  45              		.loc 1 88 5 is_stmt 1 view .LVU2
+  46              		.loc 1 88 35 is_stmt 0 view .LVU3
+  47 0006 0278     		ldrb	r2, [r0]	@ zero_extendqisi2
+  48              		.loc 1 88 5 view .LVU4
+  49 0008 164B     		ldr	r3, .L3
+  50 000a 6420     		movs	r0, #100
+  51              	.LVL1:
+  52              		.loc 1 88 5 view .LVU5
+  53 000c 00FB0230 		mla	r0, r0, r2, r3
+  54 0010 FFF7FEFF 		bl	HAL_SPI_DeInit
+  55              	.LVL2:
+  89:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+  90:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     GpioInit( &obj->Mosi, obj->Mosi.pin, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+  56              		.loc 1 90 5 is_stmt 1 view .LVU6
+  57 0014 2046     		mov	r0, r4
+  58 0016 0025     		movs	r5, #0
+  59 0018 0195     		str	r5, [sp, #4]
+  60 001a 0095     		str	r5, [sp]
+  61 001c 2B46     		mov	r3, r5
+  62 001e 0122     		movs	r2, #1
+  63 0020 10F9041F 		ldrsb	r1, [r0, #4]!
+  64 0024 FFF7FEFF 		bl	GpioInit
+  65              	.LVL3:
+  91:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     GpioInit( &obj->Miso, obj->Miso.pin, PIN_OUTPUT, PIN_PUSH_PULL, PIN_PULL_DOWN, 0 );
+  66              		.loc 1 91 5 view .LVU7
+  67 0028 2046     		mov	r0, r4
+  68 002a 0195     		str	r5, [sp, #4]
+  69 002c 0223     		movs	r3, #2
+  70 002e 0093     		str	r3, [sp]
+  71 0030 2B46     		mov	r3, r5
+  72 0032 0122     		movs	r2, #1
+  73 0034 10F9181F 		ldrsb	r1, [r0, #24]!
+  74 0038 FFF7FEFF 		bl	GpioInit
+  75              	.LVL4:
+  92:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     GpioInit( &obj->Sclk, obj->Sclk.pin, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
+  76              		.loc 1 92 5 view .LVU8
+  77 003c 2046     		mov	r0, r4
+  78 003e 0195     		str	r5, [sp, #4]
+  79 0040 0095     		str	r5, [sp]
+  80 0042 2B46     		mov	r3, r5
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 4
+
+
+  81 0044 0122     		movs	r2, #1
+  82 0046 10F92C1F 		ldrsb	r1, [r0, #44]!
+  83 004a FFF7FEFF 		bl	GpioInit
+  84              	.LVL5:
+  93:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     GpioInit( &obj->Nss, obj->Nss.pin, PIN_OUTPUT, PIN_PUSH_PULL, PIN_PULL_UP, 1 );
+  85              		.loc 1 93 5 view .LVU9
+  86 004e 2046     		mov	r0, r4
+  87 0050 0122     		movs	r2, #1
+  88 0052 0192     		str	r2, [sp, #4]
+  89 0054 0092     		str	r2, [sp]
+  90 0056 2B46     		mov	r3, r5
+  91 0058 10F9401F 		ldrsb	r1, [r0, #64]!
+  92 005c FFF7FEFF 		bl	GpioInit
+  93              	.LVL6:
+  94:Drivers/sx126x/boards/NucleoL476/spi-board.c **** }
+  94              		.loc 1 94 1 is_stmt 0 view .LVU10
+  95 0060 03B0     		add	sp, sp, #12
+  96              	.LCFI2:
+  97              		.cfi_def_cfa_offset 12
+  98              		@ sp needed
+  99 0062 30BD     		pop	{r4, r5, pc}
+ 100              	.LVL7:
+ 101              	.L4:
+ 102              		.loc 1 94 1 view .LVU11
+ 103              		.align	2
+ 104              	.L3:
+ 105 0064 00000000 		.word	.LANCHOR0
+ 106              		.cfi_endproc
+ 107              	.LFE133:
+ 109              		.section	.text.SpiFormat,"ax",%progbits
+ 110              		.align	1
+ 111              		.global	SpiFormat
+ 112              		.syntax unified
+ 113              		.thumb
+ 114              		.thumb_func
+ 115              		.fpu fpv4-sp-d16
+ 117              	SpiFormat:
+ 118              	.LVL8:
+ 119              	.LFB134:
+  95:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+  96:Drivers/sx126x/boards/NucleoL476/spi-board.c **** void SpiFormat( Spi_t *obj, int8_t bits, int8_t cpol, int8_t cpha, int8_t slave )
+  97:Drivers/sx126x/boards/NucleoL476/spi-board.c **** {
+ 120              		.loc 1 97 1 is_stmt 1 view -0
+ 121              		.cfi_startproc
+ 122              		@ args = 4, pretend = 0, frame = 0
+ 123              		@ frame_needed = 0, uses_anonymous_args = 0
+ 124              		.loc 1 97 1 is_stmt 0 view .LVU13
+ 125 0000 30B5     		push	{r4, r5, lr}
+ 126              	.LCFI3:
+ 127              		.cfi_def_cfa_offset 12
+ 128              		.cfi_offset 4, -12
+ 129              		.cfi_offset 5, -8
+ 130              		.cfi_offset 14, -4
+ 131 0002 9DF90C40 		ldrsb	r4, [sp, #12]
+  98:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     SpiHandle[obj->SpiId].Init.Direction = SPI_DIRECTION_2LINES;
+ 132              		.loc 1 98 5 is_stmt 1 view .LVU14
+ 133              		.loc 1 98 18 is_stmt 0 view .LVU15
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 5
+
+
+ 134 0006 90F800C0 		ldrb	ip, [r0]	@ zero_extendqisi2
+ 135              		.loc 1 98 42 view .LVU16
+ 136 000a 254D     		ldr	r5, .L12
+ 137 000c 4FF0640E 		mov	lr, #100
+ 138 0010 0EFB0C5C 		mla	ip, lr, ip, r5
+ 139 0014 0025     		movs	r5, #0
+ 140 0016 CCF80850 		str	r5, [ip, #8]
+  99:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     if( bits == 8 )
+ 141              		.loc 1 99 5 is_stmt 1 view .LVU17
+ 142              		.loc 1 99 7 is_stmt 0 view .LVU18
+ 143 001a 0829     		cmp	r1, #8
+ 144 001c 30D0     		beq	.L11
+ 100:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     {
+ 101:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         SpiHandle[obj->SpiId].Init.DataSize = SPI_DATASIZE_8BIT;
+ 102:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+ 103:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     else
+ 104:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     {
+ 105:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         SpiHandle[obj->SpiId].Init.DataSize = SPI_DATASIZE_16BIT;
+ 145              		.loc 1 105 9 is_stmt 1 view .LVU19
+ 146              		.loc 1 105 22 is_stmt 0 view .LVU20
+ 147 001e 0578     		ldrb	r5, [r0]	@ zero_extendqisi2
+ 148              		.loc 1 105 45 view .LVU21
+ 149 0020 1F49     		ldr	r1, .L12
+ 150              	.LVL9:
+ 151              		.loc 1 105 45 view .LVU22
+ 152 0022 4FF0640C 		mov	ip, #100
+ 153 0026 0CFB0511 		mla	r1, ip, r5, r1
+ 154 002a 4FF47065 		mov	r5, #3840
+ 155 002e CD60     		str	r5, [r1, #12]
+ 156              	.L7:
+ 106:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+ 107:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     SpiHandle[obj->SpiId].Init.CLKPolarity = cpol;
+ 157              		.loc 1 107 5 is_stmt 1 view .LVU23
+ 158              		.loc 1 107 18 is_stmt 0 view .LVU24
+ 159 0030 90F800E0 		ldrb	lr, [r0]	@ zero_extendqisi2
+ 160              		.loc 1 107 44 view .LVU25
+ 161 0034 1A49     		ldr	r1, .L12
+ 162 0036 4FF0640C 		mov	ip, #100
+ 163 003a 0CFB0E1E 		mla	lr, ip, lr, r1
+ 164 003e CEF81020 		str	r2, [lr, #16]
+ 108:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     SpiHandle[obj->SpiId].Init.CLKPhase = cpha;
+ 165              		.loc 1 108 5 is_stmt 1 view .LVU26
+ 166              		.loc 1 108 18 is_stmt 0 view .LVU27
+ 167 0042 0278     		ldrb	r2, [r0]	@ zero_extendqisi2
+ 168              	.LVL10:
+ 169              		.loc 1 108 41 view .LVU28
+ 170 0044 0CFB0212 		mla	r2, ip, r2, r1
+ 171 0048 5361     		str	r3, [r2, #20]
+ 109:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     SpiHandle[obj->SpiId].Init.FirstBit = SPI_FIRSTBIT_MSB;
+ 172              		.loc 1 109 5 is_stmt 1 view .LVU29
+ 173              		.loc 1 109 18 is_stmt 0 view .LVU30
+ 174 004a 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 175              	.LVL11:
+ 176              		.loc 1 109 41 view .LVU31
+ 177 004c 0CFB0313 		mla	r3, ip, r3, r1
+ 178 0050 0022     		movs	r2, #0
+ 179 0052 1A62     		str	r2, [r3, #32]
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 6
+
+
+ 110:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     SpiHandle[obj->SpiId].Init.TIMode = SPI_TIMODE_DISABLE;
+ 180              		.loc 1 110 5 is_stmt 1 view .LVU32
+ 181              		.loc 1 110 18 is_stmt 0 view .LVU33
+ 182 0054 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 183              		.loc 1 110 39 view .LVU34
+ 184 0056 0CFB0313 		mla	r3, ip, r3, r1
+ 185 005a 5A62     		str	r2, [r3, #36]
+ 111:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     SpiHandle[obj->SpiId].Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
+ 186              		.loc 1 111 5 is_stmt 1 view .LVU35
+ 187              		.loc 1 111 18 is_stmt 0 view .LVU36
+ 188 005c 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 189              		.loc 1 111 47 view .LVU37
+ 190 005e 0CFB0313 		mla	r3, ip, r3, r1
+ 191 0062 9A62     		str	r2, [r3, #40]
+ 112:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     SpiHandle[obj->SpiId].Init.CRCPolynomial = 7;
+ 192              		.loc 1 112 5 is_stmt 1 view .LVU38
+ 193              		.loc 1 112 18 is_stmt 0 view .LVU39
+ 194 0064 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 195              		.loc 1 112 46 view .LVU40
+ 196 0066 0CFB0311 		mla	r1, ip, r3, r1
+ 197 006a 0723     		movs	r3, #7
+ 198 006c CB62     		str	r3, [r1, #44]
+ 113:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 114:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     if( slave == 0 )
+ 199              		.loc 1 114 5 is_stmt 1 view .LVU41
+ 200              		.loc 1 114 7 is_stmt 0 view .LVU42
+ 201 006e 7CB9     		cbnz	r4, .L8
+ 115:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     {
+ 116:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         SpiHandle[obj->SpiId].Init.Mode = SPI_MODE_MASTER;
+ 202              		.loc 1 116 9 is_stmt 1 view .LVU43
+ 203              		.loc 1 116 22 is_stmt 0 view .LVU44
+ 204 0070 0278     		ldrb	r2, [r0]	@ zero_extendqisi2
+ 205              		.loc 1 116 41 view .LVU45
+ 206 0072 0B4B     		ldr	r3, .L12
+ 207 0074 0CFB0233 		mla	r3, ip, r2, r3
+ 208 0078 4FF48272 		mov	r2, #260
+ 209 007c 5A60     		str	r2, [r3, #4]
+ 210              	.L5:
+ 117:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+ 118:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     else
+ 119:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     {
+ 120:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         SpiHandle[obj->SpiId].Init.Mode = SPI_MODE_SLAVE;
+ 121:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+ 122:Drivers/sx126x/boards/NucleoL476/spi-board.c **** }
+ 211              		.loc 1 122 1 view .LVU46
+ 212 007e 30BD     		pop	{r4, r5, pc}
+ 213              	.LVL12:
+ 214              	.L11:
+ 101:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+ 215              		.loc 1 101 9 is_stmt 1 view .LVU47
+ 101:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+ 216              		.loc 1 101 22 is_stmt 0 view .LVU48
+ 217 0080 0578     		ldrb	r5, [r0]	@ zero_extendqisi2
+ 101:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+ 218              		.loc 1 101 45 view .LVU49
+ 219 0082 0749     		ldr	r1, .L12
+ 220              	.LVL13:
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 7
+
+
+ 101:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+ 221              		.loc 1 101 45 view .LVU50
+ 222 0084 0EFB0511 		mla	r1, lr, r5, r1
+ 223 0088 4FF4E065 		mov	r5, #1792
+ 224 008c CD60     		str	r5, [r1, #12]
+ 225 008e CFE7     		b	.L7
+ 226              	.LVL14:
+ 227              	.L8:
+ 120:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+ 228              		.loc 1 120 9 is_stmt 1 view .LVU51
+ 120:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+ 229              		.loc 1 120 22 is_stmt 0 view .LVU52
+ 230 0090 0278     		ldrb	r2, [r0]	@ zero_extendqisi2
+ 120:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+ 231              		.loc 1 120 41 view .LVU53
+ 232 0092 034B     		ldr	r3, .L12
+ 233 0094 6421     		movs	r1, #100
+ 234 0096 01FB0233 		mla	r3, r1, r2, r3
+ 235 009a 0022     		movs	r2, #0
+ 236 009c 5A60     		str	r2, [r3, #4]
+ 237              		.loc 1 122 1 view .LVU54
+ 238 009e EEE7     		b	.L5
+ 239              	.L13:
+ 240              		.align	2
+ 241              	.L12:
+ 242 00a0 00000000 		.word	.LANCHOR0
+ 243              		.cfi_endproc
+ 244              	.LFE134:
+ 246              		.section	.text.SpiFrequency,"ax",%progbits
+ 247              		.align	1
+ 248              		.global	SpiFrequency
+ 249              		.syntax unified
+ 250              		.thumb
+ 251              		.thumb_func
+ 252              		.fpu fpv4-sp-d16
+ 254              	SpiFrequency:
+ 255              	.LVL15:
+ 256              	.LFB135:
+ 123:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 124:Drivers/sx126x/boards/NucleoL476/spi-board.c **** void SpiFrequency( Spi_t *obj, uint32_t hz )
+ 125:Drivers/sx126x/boards/NucleoL476/spi-board.c **** {
+ 257              		.loc 1 125 1 is_stmt 1 view -0
+ 258              		.cfi_startproc
+ 259              		@ args = 0, pretend = 0, frame = 0
+ 260              		@ frame_needed = 0, uses_anonymous_args = 0
+ 261              		@ link register save eliminated.
+ 126:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     uint32_t divisor = 0;
+ 262              		.loc 1 126 5 view .LVU56
+ 127:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     uint32_t sysClkTmp = SystemCoreClock;
+ 263              		.loc 1 127 5 view .LVU57
+ 264              		.loc 1 127 14 is_stmt 0 view .LVU58
+ 265 0000 0E4B     		ldr	r3, .L24
+ 266 0002 1A68     		ldr	r2, [r3]
+ 267              	.LVL16:
+ 128:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     uint32_t baudRate;
+ 268              		.loc 1 128 5 is_stmt 1 view .LVU59
+ 129:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 8
+
+
+ 130:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     while( sysClkTmp > hz )
+ 269              		.loc 1 130 5 view .LVU60
+ 126:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     uint32_t sysClkTmp = SystemCoreClock;
+ 270              		.loc 1 126 14 is_stmt 0 view .LVU61
+ 271 0004 0023     		movs	r3, #0
+ 272              	.LVL17:
+ 273              	.L15:
+ 274              		.loc 1 130 10 is_stmt 1 view .LVU62
+ 275 0006 8A42     		cmp	r2, r1
+ 276 0008 03D9     		bls	.L16
+ 131:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     {
+ 132:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         divisor++;
+ 277              		.loc 1 132 9 view .LVU63
+ 278              		.loc 1 132 16 is_stmt 0 view .LVU64
+ 279 000a 0133     		adds	r3, r3, #1
+ 280              	.LVL18:
+ 133:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         sysClkTmp = ( sysClkTmp >> 1 );
+ 281              		.loc 1 133 9 is_stmt 1 view .LVU65
+ 282              		.loc 1 133 19 is_stmt 0 view .LVU66
+ 283 000c 5208     		lsrs	r2, r2, #1
+ 284              	.LVL19:
+ 134:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 135:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         if( divisor >= 7 )
+ 285              		.loc 1 135 9 is_stmt 1 view .LVU67
+ 286              		.loc 1 135 11 is_stmt 0 view .LVU68
+ 287 000e 062B     		cmp	r3, #6
+ 288 0010 F9D9     		bls	.L15
+ 289              	.L16:
+ 136:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         {
+ 137:Drivers/sx126x/boards/NucleoL476/spi-board.c ****             break;
+ 138:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         }
+ 139:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+ 140:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 141:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     baudRate =( ( ( divisor & 0x4 ) == 0 ) ? 0x0 : SPI_CR1_BR_2 ) |
+ 290              		.loc 1 141 5 is_stmt 1 view .LVU69
+ 291              		.loc 1 141 50 is_stmt 0 view .LVU70
+ 292 0012 13F00402 		ands	r2, r3, #4
+ 293              	.LVL20:
+ 294              		.loc 1 141 50 view .LVU71
+ 295 0016 00D0     		beq	.L18
+ 296              		.loc 1 141 50 view .LVU72
+ 297 0018 2022     		movs	r2, #32
+ 298              	.L18:
+ 142:Drivers/sx126x/boards/NucleoL476/spi-board.c ****               ( ( ( divisor & 0x2 ) == 0 ) ? 0x0 : SPI_CR1_BR_1 ) |
+ 299              		.loc 1 142 50 view .LVU73
+ 300 001a 13F00201 		ands	r1, r3, #2
+ 301              	.LVL21:
+ 302              		.loc 1 142 50 view .LVU74
+ 303 001e 00D0     		beq	.L19
+ 304 0020 1021     		movs	r1, #16
+ 305              	.L19:
+ 141:Drivers/sx126x/boards/NucleoL476/spi-board.c ****               ( ( ( divisor & 0x2 ) == 0 ) ? 0x0 : SPI_CR1_BR_1 ) |
+ 306              		.loc 1 141 67 view .LVU75
+ 307 0022 0A43     		orrs	r2, r2, r1
+ 143:Drivers/sx126x/boards/NucleoL476/spi-board.c ****               ( ( ( divisor & 0x1 ) == 0 ) ? 0x0 : SPI_CR1_BR_0 );
+ 308              		.loc 1 143 50 view .LVU76
+ 309 0024 13F00103 		ands	r3, r3, #1
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 9
+
+
+ 310              	.LVL22:
+ 311              		.loc 1 143 50 view .LVU77
+ 312 0028 00D0     		beq	.L20
+ 313 002a 0823     		movs	r3, #8
+ 314              	.L20:
+ 141:Drivers/sx126x/boards/NucleoL476/spi-board.c ****               ( ( ( divisor & 0x2 ) == 0 ) ? 0x0 : SPI_CR1_BR_1 ) |
+ 315              		.loc 1 141 14 view .LVU78
+ 316 002c 1343     		orrs	r3, r3, r2
+ 317              	.LVL23:
+ 144:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 145:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     SpiHandle[obj->SpiId].Init.BaudRatePrescaler = baudRate;
+ 318              		.loc 1 145 5 is_stmt 1 view .LVU79
+ 319              		.loc 1 145 18 is_stmt 0 view .LVU80
+ 320 002e 0178     		ldrb	r1, [r0]	@ zero_extendqisi2
+ 321              		.loc 1 145 50 view .LVU81
+ 322 0030 034A     		ldr	r2, .L24+4
+ 323 0032 6420     		movs	r0, #100
+ 324              	.LVL24:
+ 325              		.loc 1 145 50 view .LVU82
+ 326 0034 00FB0122 		mla	r2, r0, r1, r2
+ 327 0038 D361     		str	r3, [r2, #28]
+ 146:Drivers/sx126x/boards/NucleoL476/spi-board.c **** }
+ 328              		.loc 1 146 1 view .LVU83
+ 329 003a 7047     		bx	lr
+ 330              	.L25:
+ 331              		.align	2
+ 332              	.L24:
+ 333 003c 00000000 		.word	SystemCoreClock
+ 334 0040 00000000 		.word	.LANCHOR0
+ 335              		.cfi_endproc
+ 336              	.LFE135:
+ 338              		.section	.text.SpiInit,"ax",%progbits
+ 339              		.align	1
+ 340              		.global	SpiInit
+ 341              		.syntax unified
+ 342              		.thumb
+ 343              		.thumb_func
+ 344              		.fpu fpv4-sp-d16
+ 346              	SpiInit:
+ 347              	.LVL25:
+ 348              	.LFB132:
+  34:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     CRITICAL_SECTION_BEGIN( );
+ 349              		.loc 1 34 1 is_stmt 1 view -0
+ 350              		.cfi_startproc
+ 351              		@ args = 8, pretend = 0, frame = 8
+ 352              		@ frame_needed = 0, uses_anonymous_args = 0
+  34:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     CRITICAL_SECTION_BEGIN( );
+ 353              		.loc 1 34 1 is_stmt 0 view .LVU85
+ 354 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 355              	.LCFI4:
+ 356              		.cfi_def_cfa_offset 32
+ 357              		.cfi_offset 4, -32
+ 358              		.cfi_offset 5, -28
+ 359              		.cfi_offset 6, -24
+ 360              		.cfi_offset 7, -20
+ 361              		.cfi_offset 8, -16
+ 362              		.cfi_offset 9, -12
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 10
+
+
+ 363              		.cfi_offset 10, -8
+ 364              		.cfi_offset 14, -4
+ 365 0004 84B0     		sub	sp, sp, #16
+ 366              	.LCFI5:
+ 367              		.cfi_def_cfa_offset 48
+ 368 0006 0446     		mov	r4, r0
+ 369 0008 0D46     		mov	r5, r1
+ 370 000a 1146     		mov	r1, r2
+ 371              	.LVL26:
+  34:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     CRITICAL_SECTION_BEGIN( );
+ 372              		.loc 1 34 1 view .LVU86
+ 373 000c 1F46     		mov	r7, r3
+ 374 000e 9DF93090 		ldrsb	r9, [sp, #48]
+ 375 0012 9DF93480 		ldrsb	r8, [sp, #52]
+  35:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 376              		.loc 1 35 30 is_stmt 1 view .LVU87
+  37:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 377              		.loc 1 37 5 view .LVU88
+  37:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 378              		.loc 1 37 16 is_stmt 0 view .LVU89
+ 379 0016 0570     		strb	r5, [r0]
+  39:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     {
+ 380              		.loc 1 39 5 is_stmt 1 view .LVU90
+  39:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     {
+ 381              		.loc 1 39 7 is_stmt 0 view .LVU91
+ 382 0018 002D     		cmp	r5, #0
+ 383 001a 4ED1     		bne	.L27
+  41:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         __HAL_RCC_SPI1_RELEASE_RESET( );
+ 384              		.loc 1 41 9 is_stmt 1 view .LVU92
+ 385 001c 504B     		ldr	r3, .L33
+ 386              	.LVL27:
+  41:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         __HAL_RCC_SPI1_RELEASE_RESET( );
+ 387              		.loc 1 41 9 is_stmt 0 view .LVU93
+ 388 001e 1A6C     		ldr	r2, [r3, #64]
+ 389              	.LVL28:
+  41:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         __HAL_RCC_SPI1_RELEASE_RESET( );
+ 390              		.loc 1 41 9 view .LVU94
+ 391 0020 42F48052 		orr	r2, r2, #4096
+ 392 0024 1A64     		str	r2, [r3, #64]
+ 393              	.LVL29:
+  42:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         __HAL_RCC_SPI1_CLK_ENABLE( );
+ 394              		.loc 1 42 9 is_stmt 1 view .LVU95
+ 395 0026 1A6C     		ldr	r2, [r3, #64]
+ 396 0028 22F48052 		bic	r2, r2, #4096
+ 397 002c 1A64     		str	r2, [r3, #64]
+  43:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 398              		.loc 1 43 9 view .LVU96
+ 399              	.LBB2:
+  43:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 400              		.loc 1 43 9 view .LVU97
+  43:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 401              		.loc 1 43 9 view .LVU98
+ 402 002e 1A6E     		ldr	r2, [r3, #96]
+ 403 0030 42F48052 		orr	r2, r2, #4096
+ 404 0034 1A66     		str	r2, [r3, #96]
+  43:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 405              		.loc 1 43 9 view .LVU99
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 11
+
+
+ 406 0036 1B6E     		ldr	r3, [r3, #96]
+ 407 0038 03F48053 		and	r3, r3, #4096
+ 408 003c 0293     		str	r3, [sp, #8]
+  43:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 409              		.loc 1 43 9 view .LVU100
+ 410 003e 029B     		ldr	r3, [sp, #8]
+ 411              	.LBE2:
+  43:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 412              		.loc 1 43 9 view .LVU101
+  45:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 413              		.loc 1 45 9 view .LVU102
+  45:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 414              		.loc 1 45 35 is_stmt 0 view .LVU103
+ 415 0040 6423     		movs	r3, #100
+ 416 0042 05FB03F3 		mul	r3, r5, r3
+ 417 0046 474A     		ldr	r2, .L33+4
+ 418 0048 4748     		ldr	r0, .L33+8
+ 419              	.LVL30:
+  45:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 420              		.loc 1 45 35 view .LVU104
+ 421 004a D050     		str	r0, [r2, r3]
+  52:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         GpioInit( &obj->Miso, miso, PIN_OUTPUT, PIN_PUSH_PULL, PIN_PULL_DOWN, 0 );
+ 422              		.loc 1 52 9 is_stmt 1 view .LVU105
+ 423 004c 0026     		movs	r6, #0
+ 424 004e 0196     		str	r6, [sp, #4]
+ 425 0050 4FF0020A 		mov	r10, #2
+ 426 0054 CDF800A0 		str	r10, [sp]
+ 427 0058 3346     		mov	r3, r6
+ 428 005a 0122     		movs	r2, #1
+ 429 005c 201D     		adds	r0, r4, #4
+ 430 005e FFF7FEFF 		bl	GpioInit
+ 431              	.LVL31:
+  53:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         GpioInit( &obj->Sclk, sclk, PIN_OUTPUT, PIN_PUSH_PULL, PIN_PULL_DOWN, 0 );
+ 432              		.loc 1 53 9 view .LVU106
+ 433 0062 0196     		str	r6, [sp, #4]
+ 434 0064 CDF800A0 		str	r10, [sp]
+ 435 0068 3346     		mov	r3, r6
+ 436 006a 0122     		movs	r2, #1
+ 437 006c 3946     		mov	r1, r7
+ 438 006e 04F11800 		add	r0, r4, #24
+ 439 0072 FFF7FEFF 		bl	GpioInit
+ 440              	.LVL32:
+  54:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+ 441              		.loc 1 54 9 view .LVU107
+ 442 0076 0196     		str	r6, [sp, #4]
+ 443 0078 CDF800A0 		str	r10, [sp]
+ 444 007c 3346     		mov	r3, r6
+ 445 007e 0122     		movs	r2, #1
+ 446 0080 4946     		mov	r1, r9
+ 447 0082 04F12C00 		add	r0, r4, #44
+ 448 0086 FFF7FEFF 		bl	GpioInit
+ 449              	.LVL33:
+ 450              	.L28:
+  70:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     {
+ 451              		.loc 1 70 5 view .LVU108
+  70:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     {
+ 452              		.loc 1 70 7 is_stmt 0 view .LVU109
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 12
+
+
+ 453 008a B8F1FF3F 		cmp	r8, #-1
+ 454 008e 57D0     		beq	.L32
+  77:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+ 455              		.loc 1 77 9 is_stmt 1 view .LVU110
+ 456 0090 0123     		movs	r3, #1
+ 457 0092 0093     		str	r3, [sp]
+ 458 0094 0023     		movs	r3, #0
+ 459 0096 1A46     		mov	r2, r3
+ 460 0098 0821     		movs	r1, #8
+ 461 009a 2046     		mov	r0, r4
+ 462 009c FFF7FEFF 		bl	SpiFormat
+ 463              	.LVL34:
+ 464              	.L30:
   79:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
-  80:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // HAL_SPI_Init( &SpiHandle[spiId] );
+ 465              		.loc 1 79 5 view .LVU111
+ 466 00a0 3249     		ldr	r1, .L33+12
+ 467 00a2 2046     		mov	r0, r4
+ 468 00a4 FFF7FEFF 		bl	SpiFrequency
+ 469              	.LVL35:
   81:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
-  82:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // CRITICAL_SECTION_END( );
+ 470              		.loc 1 81 5 view .LVU112
+ 471 00a8 2E4B     		ldr	r3, .L33+4
+ 472 00aa 6420     		movs	r0, #100
+ 473 00ac 00FB0530 		mla	r0, r0, r5, r3
+ 474 00b0 FFF7FEFF 		bl	HAL_SPI_Init
+ 475              	.LVL36:
   83:Drivers/sx126x/boards/NucleoL476/spi-board.c **** }
-  85              		.loc 1 83 1 is_stmt 0 view .LVU9
-  86 0042 03B0     		add	sp, sp, #12
-  87              	.LCFI2:
-  88              		.cfi_def_cfa_offset 20
-  89              		@ sp needed
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccqy1hQM.s 			page 4
-
-
-  90 0044 F0BD     		pop	{r4, r5, r6, r7, pc}
-  91              		.loc 1 83 1 view .LVU10
-  92              		.cfi_endproc
-  93              	.LFE132:
-  95              		.section	.text.SpiInOut,"ax",%progbits
-  96              		.align	1
-  97              		.global	SpiInOut
-  98              		.syntax unified
-  99              		.thumb
- 100              		.thumb_func
- 101              		.fpu fpv4-sp-d16
- 103              	SpiInOut:
- 104              	.LVL8:
- 105              	.LFB133:
+ 476              		.loc 1 83 28 view .LVU113
   84:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
-  85:Drivers/sx126x/boards/NucleoL476/spi-board.c **** // void SpiDeInit( Spi_t *obj )
-  86:Drivers/sx126x/boards/NucleoL476/spi-board.c **** // {
-  87:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     HAL_SPI_DeInit( &SpiHandle[obj->SpiId] );
-  88:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
-  89:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     GpioInit( &obj->Mosi, obj->Mosi.pin, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
-  90:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     GpioInit( &obj->Miso, obj->Miso.pin, PIN_OUTPUT, PIN_PUSH_PULL, PIN_PULL_DOWN, 0 );
-  91:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     GpioInit( &obj->Sclk, obj->Sclk.pin, PIN_OUTPUT, PIN_PUSH_PULL, PIN_NO_PULL, 0 );
-  92:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     GpioInit( &obj->Nss, obj->Nss.pin, PIN_OUTPUT, PIN_PUSH_PULL, PIN_PULL_UP, 1 );
-  93:Drivers/sx126x/boards/NucleoL476/spi-board.c **** // }
-  94:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
-  95:Drivers/sx126x/boards/NucleoL476/spi-board.c **** // void SpiFormat( Spi_t *obj, int8_t bits, int8_t cpol, int8_t cpha, int8_t slave )
-  96:Drivers/sx126x/boards/NucleoL476/spi-board.c **** // {
-  97:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     SpiHandle[obj->SpiId].Init.Direction = SPI_DIRECTION_2LINES;
-  98:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     if( bits == 8 )
-  99:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     {
- 100:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //         SpiHandle[obj->SpiId].Init.DataSize = SPI_DATASIZE_8BIT;
- 101:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     }
- 102:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     else
- 103:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     {
- 104:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //         SpiHandle[obj->SpiId].Init.DataSize = SPI_DATASIZE_16BIT;
- 105:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     }
- 106:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     SpiHandle[obj->SpiId].Init.CLKPolarity = cpol;
- 107:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     SpiHandle[obj->SpiId].Init.CLKPhase = cpha;
- 108:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     SpiHandle[obj->SpiId].Init.FirstBit = SPI_FIRSTBIT_MSB;
- 109:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     SpiHandle[obj->SpiId].Init.TIMode = SPI_TIMODE_DISABLE;
- 110:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     SpiHandle[obj->SpiId].Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
- 111:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     SpiHandle[obj->SpiId].Init.CRCPolynomial = 7;
- 112:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
- 113:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     if( slave == 0 )
- 114:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     {
- 115:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //         SpiHandle[obj->SpiId].Init.Mode = SPI_MODE_MASTER;
- 116:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     }
- 117:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     else
- 118:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     {
- 119:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //         SpiHandle[obj->SpiId].Init.Mode = SPI_MODE_SLAVE;
- 120:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     }
- 121:Drivers/sx126x/boards/NucleoL476/spi-board.c **** // }
- 122:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
- 123:Drivers/sx126x/boards/NucleoL476/spi-board.c **** // void SpiFrequency( Spi_t *obj, uint32_t hz )
- 124:Drivers/sx126x/boards/NucleoL476/spi-board.c **** // {
- 125:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     uint32_t divisor = 0;
- 126:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     uint32_t sysClkTmp = SystemCoreClock;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccqy1hQM.s 			page 5
+ 477              		.loc 1 84 1 is_stmt 0 view .LVU114
+ 478 00b4 04B0     		add	sp, sp, #16
+ 479              	.LCFI6:
+ 480              		.cfi_remember_state
+ 481              		.cfi_def_cfa_offset 32
+ 482              		@ sp needed
+ 483 00b6 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 484              	.LVL37:
+ 485              	.L27:
+ 486              	.LCFI7:
+ 487              		.cfi_restore_state
+  58:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         __HAL_RCC_SPI2_RELEASE_RESET( );
+ 488              		.loc 1 58 9 is_stmt 1 view .LVU115
+ 489 00ba 294B     		ldr	r3, .L33
+ 490              	.LVL38:
+  58:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         __HAL_RCC_SPI2_RELEASE_RESET( );
+ 491              		.loc 1 58 9 is_stmt 0 view .LVU116
+ 492 00bc 9A6B     		ldr	r2, [r3, #56]
+ 493              	.LVL39:
+  58:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         __HAL_RCC_SPI2_RELEASE_RESET( );
+ 494              		.loc 1 58 9 view .LVU117
+ 495 00be 42F48042 		orr	r2, r2, #16384
+ 496 00c2 9A63     		str	r2, [r3, #56]
+ 497              	.LVL40:
+  59:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         __HAL_RCC_SPI2_CLK_ENABLE( );
+ 498              		.loc 1 59 9 is_stmt 1 view .LVU118
+ 499 00c4 9A6B     		ldr	r2, [r3, #56]
+ 500 00c6 22F48042 		bic	r2, r2, #16384
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 13
 
 
- 127:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     uint32_t baudRate;
- 128:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
- 129:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     while( sysClkTmp > hz )
- 130:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     {
- 131:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //         divisor++;
- 132:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //         sysClkTmp = ( sysClkTmp >> 1 );
- 133:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
- 134:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //         if( divisor >= 7 )
- 135:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //         {
- 136:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //             break;
- 137:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //         }
- 138:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     }
- 139:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
- 140:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     baudRate =( ( ( divisor & 0x4 ) == 0 ) ? 0x0 : SPI_CR1_BR_2 ) |
- 141:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //               ( ( ( divisor & 0x2 ) == 0 ) ? 0x0 : SPI_CR1_BR_1 ) |
- 142:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //               ( ( ( divisor & 0x1 ) == 0 ) ? 0x0 : SPI_CR1_BR_0 );
- 143:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
- 144:Drivers/sx126x/boards/NucleoL476/spi-board.c **** //     SpiHandle[obj->SpiId].Init.BaudRatePrescaler = baudRate;
- 145:Drivers/sx126x/boards/NucleoL476/spi-board.c **** // }
- 146:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
- 147:Drivers/sx126x/boards/NucleoL476/spi-board.c **** uint16_t SpiInOut( Spi_t *obj, uint16_t outData )
- 148:Drivers/sx126x/boards/NucleoL476/spi-board.c **** {
- 106              		.loc 1 148 1 is_stmt 1 view -0
- 107              		.cfi_startproc
- 108              		@ args = 0, pretend = 0, frame = 16
- 109              		@ frame_needed = 0, uses_anonymous_args = 0
- 110              		.loc 1 148 1 is_stmt 0 view .LVU12
- 111 0000 00B5     		push	{lr}
- 112              	.LCFI3:
- 113              		.cfi_def_cfa_offset 4
- 114              		.cfi_offset 14, -4
- 115 0002 87B0     		sub	sp, sp, #28
- 116              	.LCFI4:
- 117              		.cfi_def_cfa_offset 32
- 118 0004 ADF80E10 		strh	r1, [sp, #14]	@ movhi
- 149:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     uint8_t rxData = 0;
- 119              		.loc 1 149 5 is_stmt 1 view .LVU13
- 120              		.loc 1 149 13 is_stmt 0 view .LVU14
- 121 0008 0023     		movs	r3, #0
- 122 000a 8DF81730 		strb	r3, [sp, #23]
- 150:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
- 151:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     if( ( obj == NULL ) || ( SpiHandle[obj->SpiId].Instance ) == NULL )
- 123              		.loc 1 151 5 is_stmt 1 view .LVU15
- 152:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     {
- 153:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         assert_param( LMN_STATUS_ERROR );
- 124              		.loc 1 153 9 view .LVU16
- 154:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
- 155:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
- 156:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     __HAL_SPI_ENABLE( &hspi1 );
- 125              		.loc 1 156 5 view .LVU17
- 126 000e 0A48     		ldr	r0, .L5
- 127              	.LVL9:
- 128              		.loc 1 156 5 is_stmt 0 view .LVU18
- 129 0010 0268     		ldr	r2, [r0]
- 130 0012 1368     		ldr	r3, [r2]
- 131 0014 43F04003 		orr	r3, r3, #64
- 132 0018 1360     		str	r3, [r2]
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccqy1hQM.s 			page 6
+ 501 00ca 9A63     		str	r2, [r3, #56]
+  60:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 502              		.loc 1 60 9 view .LVU119
+ 503              	.LBB3:
+  60:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 504              		.loc 1 60 9 view .LVU120
+  60:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 505              		.loc 1 60 9 view .LVU121
+ 506 00cc 9A6D     		ldr	r2, [r3, #88]
+ 507 00ce 42F48042 		orr	r2, r2, #16384
+ 508 00d2 9A65     		str	r2, [r3, #88]
+  60:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 509              		.loc 1 60 9 view .LVU122
+ 510 00d4 9B6D     		ldr	r3, [r3, #88]
+ 511 00d6 03F48043 		and	r3, r3, #16384
+ 512 00da 0393     		str	r3, [sp, #12]
+  60:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 513              		.loc 1 60 9 view .LVU123
+ 514 00dc 039B     		ldr	r3, [sp, #12]
+ 515              	.LBE3:
+  60:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 516              		.loc 1 60 9 view .LVU124
+  62:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 517              		.loc 1 62 9 view .LVU125
+  62:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 518              		.loc 1 62 35 is_stmt 0 view .LVU126
+ 519 00de 6423     		movs	r3, #100
+ 520 00e0 05FB03F3 		mul	r3, r5, r3
+ 521 00e4 1F4A     		ldr	r2, .L33+4
+ 522 00e6 2248     		ldr	r0, .L33+16
+ 523              	.LVL41:
+  62:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 524              		.loc 1 62 35 view .LVU127
+ 525 00e8 D050     		str	r0, [r2, r3]
+  64:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         GpioInit( &obj->Miso, miso, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_DOWN, GPIO_AF5_SPI2 
+ 526              		.loc 1 64 9 is_stmt 1 view .LVU128
+ 527 00ea 4FF0050A 		mov	r10, #5
+ 528 00ee CDF804A0 		str	r10, [sp, #4]
+ 529 00f2 0226     		movs	r6, #2
+ 530 00f4 0096     		str	r6, [sp]
+ 531 00f6 0023     		movs	r3, #0
+ 532 00f8 3246     		mov	r2, r6
+ 533 00fa 201D     		adds	r0, r4, #4
+ 534 00fc FFF7FEFF 		bl	GpioInit
+ 535              	.LVL42:
+  65:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         GpioInit( &obj->Sclk, sclk, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_DOWN, GPIO_AF5_SPI2 
+ 536              		.loc 1 65 9 view .LVU129
+ 537 0100 CDF804A0 		str	r10, [sp, #4]
+ 538 0104 0096     		str	r6, [sp]
+ 539 0106 0023     		movs	r3, #0
+ 540 0108 3246     		mov	r2, r6
+ 541 010a 3946     		mov	r1, r7
+ 542 010c 04F11800 		add	r0, r4, #24
+ 543 0110 FFF7FEFF 		bl	GpioInit
+ 544              	.LVL43:
+  66:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         GpioInit( &obj->Nss, nss, PIN_ALTERNATE_FCT, PIN_PUSH_PULL, PIN_PULL_UP, GPIO_AF5_SPI2 );
+ 545              		.loc 1 66 9 view .LVU130
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 14
 
 
- 157:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
- 158:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     CRITICAL_SECTION_BEGIN( );
- 133              		.loc 1 158 30 is_stmt 1 view .LVU19
- 159:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
- 160:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     HAL_SPI_TransmitReceive( &hspi1, ( uint8_t* )&outData, &rxData, 1, HAL_MAX_DELAY );
- 134              		.loc 1 160 5 view .LVU20
- 135 001a 4FF0FF33 		mov	r3, #-1
- 136 001e 0093     		str	r3, [sp]
- 137 0020 0123     		movs	r3, #1
- 138 0022 0DF11702 		add	r2, sp, #23
- 139 0026 0DF10E01 		add	r1, sp, #14
- 140              	.LVL10:
- 141              		.loc 1 160 5 is_stmt 0 view .LVU21
- 142 002a FFF7FEFF 		bl	HAL_SPI_TransmitReceive
- 143              	.LVL11:
- 161:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
- 162:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     CRITICAL_SECTION_END( );
- 144              		.loc 1 162 28 is_stmt 1 view .LVU22
+ 546 0114 CDF804A0 		str	r10, [sp, #4]
+ 547 0118 0096     		str	r6, [sp]
+ 548 011a 0023     		movs	r3, #0
+ 549 011c 3246     		mov	r2, r6
+ 550 011e 4946     		mov	r1, r9
+ 551 0120 04F12C00 		add	r0, r4, #44
+ 552 0124 FFF7FEFF 		bl	GpioInit
+ 553              	.LVL44:
+  67:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+ 554              		.loc 1 67 9 view .LVU131
+ 555 0128 CDF804A0 		str	r10, [sp, #4]
+ 556 012c 0123     		movs	r3, #1
+ 557 012e 0093     		str	r3, [sp]
+ 558 0130 0023     		movs	r3, #0
+ 559 0132 3246     		mov	r2, r6
+ 560 0134 4146     		mov	r1, r8
+ 561 0136 04F14000 		add	r0, r4, #64
+ 562 013a FFF7FEFF 		bl	GpioInit
+ 563              	.LVL45:
+ 564 013e A4E7     		b	.L28
+ 565              	.L32:
+  72:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         SpiFormat( obj, 8, SPI_POLARITY_LOW, SPI_PHASE_1EDGE, 0 );
+ 566              		.loc 1 72 9 view .LVU132
+  72:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         SpiFormat( obj, 8, SPI_POLARITY_LOW, SPI_PHASE_1EDGE, 0 );
+ 567              		.loc 1 72 35 is_stmt 0 view .LVU133
+ 568 0140 084B     		ldr	r3, .L33+4
+ 569 0142 6422     		movs	r2, #100
+ 570 0144 02FB0533 		mla	r3, r2, r5, r3
+ 571 0148 4FF40072 		mov	r2, #512
+ 572 014c 9A61     		str	r2, [r3, #24]
+  73:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+ 573              		.loc 1 73 9 is_stmt 1 view .LVU134
+ 574 014e 0022     		movs	r2, #0
+ 575 0150 0092     		str	r2, [sp]
+ 576 0152 1346     		mov	r3, r2
+ 577 0154 0821     		movs	r1, #8
+ 578 0156 2046     		mov	r0, r4
+ 579 0158 FFF7FEFF 		bl	SpiFormat
+ 580              	.LVL46:
+ 581 015c A0E7     		b	.L30
+ 582              	.L34:
+ 583 015e 00BF     		.align	2
+ 584              	.L33:
+ 585 0160 00100240 		.word	1073876992
+ 586 0164 00000000 		.word	.LANCHOR0
+ 587 0168 00300140 		.word	1073819648
+ 588 016c 80969800 		.word	10000000
+ 589 0170 00380040 		.word	1073756160
+ 590              		.cfi_endproc
+ 591              	.LFE132:
+ 593              		.section	.text.SpiInOut,"ax",%progbits
+ 594              		.align	1
+ 595              		.global	SpiInOut
+ 596              		.syntax unified
+ 597              		.thumb
+ 598              		.thumb_func
+ 599              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 15
+
+
+ 601              	SpiInOut:
+ 602              	.LVL47:
+ 603              	.LFB136:
+ 147:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 148:Drivers/sx126x/boards/NucleoL476/spi-board.c **** uint16_t SpiInOut( Spi_t *obj, uint16_t outData )
+ 149:Drivers/sx126x/boards/NucleoL476/spi-board.c **** {
+ 604              		.loc 1 149 1 view -0
+ 605              		.cfi_startproc
+ 606              		@ args = 0, pretend = 0, frame = 16
+ 607              		@ frame_needed = 0, uses_anonymous_args = 0
+ 608              		.loc 1 149 1 is_stmt 0 view .LVU136
+ 609 0000 00B5     		push	{lr}
+ 610              	.LCFI8:
+ 611              		.cfi_def_cfa_offset 4
+ 612              		.cfi_offset 14, -4
+ 613 0002 87B0     		sub	sp, sp, #28
+ 614              	.LCFI9:
+ 615              		.cfi_def_cfa_offset 32
+ 616 0004 ADF80E10 		strh	r1, [sp, #14]	@ movhi
+ 150:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     uint8_t rxData = 0;
+ 617              		.loc 1 150 5 is_stmt 1 view .LVU137
+ 618              		.loc 1 150 13 is_stmt 0 view .LVU138
+ 619 0008 0023     		movs	r3, #0
+ 620 000a 8DF81730 		strb	r3, [sp, #23]
+ 151:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 152:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // if( ( obj == NULL ) || ( SpiHandle[obj->SpiId].Instance ) == NULL )
+ 153:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // {
+ 154:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     //     assert_param( LMN_STATUS_ERROR );
+ 155:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // }
+ 156:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 157:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // __HAL_SPI_ENABLE( &SpiHandle[obj->SpiId] );
+ 158:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 159:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // CRITICAL_SECTION_BEGIN( );
+ 160:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 161:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // HAL_SPI_TransmitReceive( &SpiHandle[obj->SpiId], ( uint8_t* )&outData, &rxData, 1, HAL_MAX_D
+ 162:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     HAL_SPI_TransmitReceive( &hspi1, ( uint8_t* )&outData, &rxData, 1, HAL_MAX_DELAY );
+ 621              		.loc 1 162 5 is_stmt 1 view .LVU139
+ 622 000e 4FF0FF33 		mov	r3, #-1
+ 623 0012 0093     		str	r3, [sp]
+ 624 0014 0123     		movs	r3, #1
+ 625 0016 0DF11702 		add	r2, sp, #23
+ 626 001a 0DF10E01 		add	r1, sp, #14
+ 627              	.LVL48:
+ 628              		.loc 1 162 5 is_stmt 0 view .LVU140
+ 629 001e 0448     		ldr	r0, .L37
+ 630              	.LVL49:
+ 631              		.loc 1 162 5 view .LVU141
+ 632 0020 FFF7FEFF 		bl	HAL_SPI_TransmitReceive
+ 633              	.LVL50:
  163:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
- 164:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     return( rxData );
- 145              		.loc 1 164 5 view .LVU23
- 165:Drivers/sx126x/boards/NucleoL476/spi-board.c **** }
- 146              		.loc 1 165 1 is_stmt 0 view .LVU24
- 147 002e 9DF81700 		ldrb	r0, [sp, #23]	@ zero_extendqisi2
- 148 0032 07B0     		add	sp, sp, #28
- 149              	.LCFI5:
- 150              		.cfi_def_cfa_offset 4
- 151              		@ sp needed
- 152 0034 5DF804FB 		ldr	pc, [sp], #4
- 153              	.L6:
- 154              		.align	2
- 155              	.L5:
- 156 0038 00000000 		.word	hspi1
- 157              		.cfi_endproc
- 158              	.LFE133:
- 160              		.text
- 161              	.Letext0:
- 162              		.file 2 "c:\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\include\\machine\\_defau
- 163              		.file 3 "c:\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\include\\sys\\_stdint.h"
- 164              		.file 4 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
- 165              		.file 5 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
- 166              		.file 6 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
- 167              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_spi.h"
- 168              		.file 8 "Drivers/sx126x/system/gpio.h"
- 169              		.file 9 "Drivers/sx126x/system/spi.h"
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccqy1hQM.s 			page 7
+ 164:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     // CRITICAL_SECTION_END( );
+ 165:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 166:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     return( rxData );
+ 634              		.loc 1 166 5 is_stmt 1 view .LVU142
+ 167:Drivers/sx126x/boards/NucleoL476/spi-board.c **** }
+ 635              		.loc 1 167 1 is_stmt 0 view .LVU143
+ 636 0024 9DF81700 		ldrb	r0, [sp, #23]	@ zero_extendqisi2
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 16
+
+
+ 637 0028 07B0     		add	sp, sp, #28
+ 638              	.LCFI10:
+ 639              		.cfi_def_cfa_offset 4
+ 640              		@ sp needed
+ 641 002a 5DF804FB 		ldr	pc, [sp], #4
+ 642              	.L38:
+ 643 002e 00BF     		.align	2
+ 644              	.L37:
+ 645 0030 00000000 		.word	hspi1
+ 646              		.cfi_endproc
+ 647              	.LFE136:
+ 649              		.section	.text.SpiInOut1,"ax",%progbits
+ 650              		.align	1
+ 651              		.global	SpiInOut1
+ 652              		.syntax unified
+ 653              		.thumb
+ 654              		.thumb_func
+ 655              		.fpu fpv4-sp-d16
+ 657              	SpiInOut1:
+ 658              	.LVL51:
+ 659              	.LFB137:
+ 168:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 169:Drivers/sx126x/boards/NucleoL476/spi-board.c **** uint16_t SpiInOut1( Spi_t *obj, uint16_t outData )
+ 170:Drivers/sx126x/boards/NucleoL476/spi-board.c **** {
+ 660              		.loc 1 170 1 is_stmt 1 view -0
+ 661              		.cfi_startproc
+ 662              		@ args = 0, pretend = 0, frame = 16
+ 663              		@ frame_needed = 0, uses_anonymous_args = 0
+ 664              		.loc 1 170 1 is_stmt 0 view .LVU145
+ 665 0000 10B5     		push	{r4, lr}
+ 666              	.LCFI11:
+ 667              		.cfi_def_cfa_offset 8
+ 668              		.cfi_offset 4, -8
+ 669              		.cfi_offset 14, -4
+ 670 0002 86B0     		sub	sp, sp, #24
+ 671              	.LCFI12:
+ 672              		.cfi_def_cfa_offset 32
+ 673 0004 ADF80E10 		strh	r1, [sp, #14]	@ movhi
+ 171:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     uint8_t rxData = 0;
+ 674              		.loc 1 171 5 is_stmt 1 view .LVU146
+ 675              		.loc 1 171 13 is_stmt 0 view .LVU147
+ 676 0008 0023     		movs	r3, #0
+ 677 000a 8DF81730 		strb	r3, [sp, #23]
+ 172:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 173:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     if( ( obj == NULL ) || ( SpiHandle[obj->SpiId].Instance ) == NULL )
+ 678              		.loc 1 173 5 is_stmt 1 view .LVU148
+ 174:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     {
+ 175:Drivers/sx126x/boards/NucleoL476/spi-board.c ****         assert_param( LMN_STATUS_ERROR );
+ 679              		.loc 1 175 9 view .LVU149
+ 176:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     }
+ 177:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 178:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     __HAL_SPI_ENABLE( &SpiHandle[obj->SpiId] );
+ 680              		.loc 1 178 5 view .LVU150
+ 681 000e 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 682 0010 0D4C     		ldr	r4, .L41
+ 683 0012 4FF0640C 		mov	ip, #100
+ 684 0016 0CFB03F3 		mul	r3, ip, r3
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 17
+
+
+ 685 001a E258     		ldr	r2, [r4, r3]
+ 686 001c 1368     		ldr	r3, [r2]
+ 687 001e 43F04003 		orr	r3, r3, #64
+ 688 0022 1360     		str	r3, [r2]
+ 179:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 180:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     CRITICAL_SECTION_BEGIN( );
+ 689              		.loc 1 180 30 view .LVU151
+ 181:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 182:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     HAL_SPI_TransmitReceive( &SpiHandle[obj->SpiId], ( uint8_t* )&outData, &rxData, 1, HAL_MAX_DELA
+ 690              		.loc 1 182 5 view .LVU152
+ 691              		.loc 1 182 44 is_stmt 0 view .LVU153
+ 692 0024 0078     		ldrb	r0, [r0]	@ zero_extendqisi2
+ 693              	.LVL52:
+ 694              		.loc 1 182 5 view .LVU154
+ 695 0026 4FF0FF33 		mov	r3, #-1
+ 696 002a 0093     		str	r3, [sp]
+ 697 002c 0123     		movs	r3, #1
+ 698 002e 0DF11702 		add	r2, sp, #23
+ 699 0032 0DF10E01 		add	r1, sp, #14
+ 700              	.LVL53:
+ 701              		.loc 1 182 5 view .LVU155
+ 702 0036 0CFB0040 		mla	r0, ip, r0, r4
+ 703 003a FFF7FEFF 		bl	HAL_SPI_TransmitReceive
+ 704              	.LVL54:
+ 183:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 184:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     CRITICAL_SECTION_END( );
+ 705              		.loc 1 184 28 is_stmt 1 view .LVU156
+ 185:Drivers/sx126x/boards/NucleoL476/spi-board.c **** 
+ 186:Drivers/sx126x/boards/NucleoL476/spi-board.c ****     return( rxData );
+ 706              		.loc 1 186 5 view .LVU157
+ 187:Drivers/sx126x/boards/NucleoL476/spi-board.c **** }
+ 707              		.loc 1 187 1 is_stmt 0 view .LVU158
+ 708 003e 9DF81700 		ldrb	r0, [sp, #23]	@ zero_extendqisi2
+ 709 0042 06B0     		add	sp, sp, #24
+ 710              	.LCFI13:
+ 711              		.cfi_def_cfa_offset 8
+ 712              		@ sp needed
+ 713 0044 10BD     		pop	{r4, pc}
+ 714              	.L42:
+ 715 0046 00BF     		.align	2
+ 716              	.L41:
+ 717 0048 00000000 		.word	.LANCHOR0
+ 718              		.cfi_endproc
+ 719              	.LFE137:
+ 721              		.section	.bss.SpiHandle,"aw",%nobits
+ 722              		.align	2
+ 723              		.set	.LANCHOR0,. + 0
+ 726              	SpiHandle:
+ 727 0000 00000000 		.space	200
+ 727      00000000 
+ 727      00000000 
+ 727      00000000 
+ 727      00000000 
+ 728              		.text
+ 729              	.Letext0:
+ 730              		.file 2 "c:\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\include\\machine\\_defau
+ 731              		.file 3 "c:\\gnu arm embedded toolchain\\10 2020-q4-major\\arm-none-eabi\\include\\sys\\_stdint.h"
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 18
+
+
+ 732              		.file 4 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/stm32l476xx.h"
+ 733              		.file 5 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_def.h"
+ 734              		.file 6 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_dma.h"
+ 735              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_spi.h"
+ 736              		.file 8 "Drivers/sx126x/system/gpio.h"
+ 737              		.file 9 "Drivers/sx126x/system/spi.h"
+ 738              		.file 10 "Drivers/CMSIS/Device/ST/STM32L4xx/Include/system_stm32l4xx.h"
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s 			page 19
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 spi-board.c
-C:\Users\andywei\AppData\Local\Temp\ccqy1hQM.s:18     .text.SpiInit:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccqy1hQM.s:26     .text.SpiInit:00000000 SpiInit
-C:\Users\andywei\AppData\Local\Temp\ccqy1hQM.s:96     .text.SpiInOut:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccqy1hQM.s:103    .text.SpiInOut:00000000 SpiInOut
-C:\Users\andywei\AppData\Local\Temp\ccqy1hQM.s:156    .text.SpiInOut:00000038 $d
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:18     .text.SpiDeInit:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:26     .text.SpiDeInit:00000000 SpiDeInit
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:105    .text.SpiDeInit:00000064 $d
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:110    .text.SpiFormat:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:117    .text.SpiFormat:00000000 SpiFormat
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:242    .text.SpiFormat:000000a0 $d
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:247    .text.SpiFrequency:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:254    .text.SpiFrequency:00000000 SpiFrequency
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:333    .text.SpiFrequency:0000003c $d
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:339    .text.SpiInit:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:346    .text.SpiInit:00000000 SpiInit
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:585    .text.SpiInit:00000160 $d
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:594    .text.SpiInOut:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:601    .text.SpiInOut:00000000 SpiInOut
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:645    .text.SpiInOut:00000030 $d
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:650    .text.SpiInOut1:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:657    .text.SpiInOut1:00000000 SpiInOut1
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:717    .text.SpiInOut1:00000048 $d
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:722    .bss.SpiHandle:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccMW6bQf.s:726    .bss.SpiHandle:00000000 SpiHandle
 
 UNDEFINED SYMBOLS
+HAL_SPI_DeInit
 GpioInit
+SystemCoreClock
+HAL_SPI_Init
 HAL_SPI_TransmitReceive
 hspi1

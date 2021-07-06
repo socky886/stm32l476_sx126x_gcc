@@ -7,5 +7,6 @@ void sx126x_tx_cw(void);
 void sx126x_tx_packet(void);
 void sx126x_rx_packet(void);
 unsigned int crc16(unsigned char *data, unsigned char length);
-
+static void sx126x_io_init(void);
+static void sx126x_io_test(void);
 #endif

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
   28:Drivers/sx126x/radio/sx126x/radio.c **** #include "radio.h"
   29:Drivers/sx126x/radio/sx126x/radio.c **** #include "sx126x.h"
   30:Drivers/sx126x/radio/sx126x/radio.c **** #include "sx126x-board.h"
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 2
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 2
 
 
   31:Drivers/sx126x/radio/sx126x/radio.c **** #include "board.h"
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
   85:Drivers/sx126x/radio/sx126x/radio.c **** uint32_t RadioRandom( void );
   86:Drivers/sx126x/radio/sx126x/radio.c **** 
   87:Drivers/sx126x/radio/sx126x/radio.c **** /*!
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 3
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 3
 
 
   88:Drivers/sx126x/radio/sx126x/radio.c ****  * \brief Sets the reception parameters
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  142:Drivers/sx126x/radio/sx126x/radio.c ****  * \param [IN] bandwidth    Sets the bandwidth (LoRa only)
  143:Drivers/sx126x/radio/sx126x/radio.c ****  *                          FSK : 0
  144:Drivers/sx126x/radio/sx126x/radio.c ****  *                          LoRa: [0: 125 kHz, 1: 250 kHz,
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 4
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 4
 
 
  145:Drivers/sx126x/radio/sx126x/radio.c ****  *                                 2: 500 kHz, 3: Reserved]
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  199:Drivers/sx126x/radio/sx126x/radio.c ****  *                          LoRa: [1: 4/5, 2: 4/6, 3: 4/7, 4: 4/8]
  200:Drivers/sx126x/radio/sx126x/radio.c ****  * \param [IN] preambleLen  Sets the Preamble length
  201:Drivers/sx126x/radio/sx126x/radio.c ****  *                          FSK : Number of bytes
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 5
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 5
 
 
  202:Drivers/sx126x/radio/sx126x/radio.c ****  *                          LoRa: Length in symbols (the hardware adds 4 more symbols)
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  256:Drivers/sx126x/radio/sx126x/radio.c ****  *
  257:Drivers/sx126x/radio/sx126x/radio.c ****  * \retval rssiValue Current RSSI value in [dBm]
  258:Drivers/sx126x/radio/sx126x/radio.c ****  */
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 6
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 6
 
 
  259:Drivers/sx126x/radio/sx126x/radio.c **** int16_t RadioRssi( RadioModems_t modem );
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  313:Drivers/sx126x/radio/sx126x/radio.c ****  * \brief Gets the time required for the board plus radio to get out of sleep.[ms]
  314:Drivers/sx126x/radio/sx126x/radio.c ****  *
  315:Drivers/sx126x/radio/sx126x/radio.c ****  * \retval time Radio plus board wakeup time in ms.
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 7
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 7
 
 
  316:Drivers/sx126x/radio/sx126x/radio.c ****  */
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  370:Drivers/sx126x/radio/sx126x/radio.c ****     RadioWriteBuffer,
  371:Drivers/sx126x/radio/sx126x/radio.c ****     RadioReadBuffer,
  372:Drivers/sx126x/radio/sx126x/radio.c ****     RadioSetMaxPayloadLength,
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 8
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 8
 
 
  373:Drivers/sx126x/radio/sx126x/radio.c ****     RadioSetPublicNetwork,
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  427:Drivers/sx126x/radio/sx126x/radio.c **** 
  428:Drivers/sx126x/radio/sx126x/radio.c **** uint32_t TxTimeout = 0;
  429:Drivers/sx126x/radio/sx126x/radio.c **** uint32_t RxTimeout = 0;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 9
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 9
 
 
  430:Drivers/sx126x/radio/sx126x/radio.c **** 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  484:Drivers/sx126x/radio/sx126x/radio.c ****  * Radio hardware and global parameters
  485:Drivers/sx126x/radio/sx126x/radio.c ****  */
  486:Drivers/sx126x/radio/sx126x/radio.c **** SX126x_t SX126x;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 10
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 10
 
 
  487:Drivers/sx126x/radio/sx126x/radio.c **** 
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
   58 0010 094A     		ldr	r2, .L8
   59 0012 52F83320 		ldr	r2, [r2, r3, lsl #3]
   60              		.loc 1 511 11 view .LVU12
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 11
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 11
 
 
   61 0016 8A42     		cmp	r2, r1
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  109              	.LFB9:
  519:Drivers/sx126x/radio/sx126x/radio.c **** 
  520:Drivers/sx126x/radio/sx126x/radio.c **** void RadioInit( RadioEvents_t *events )
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 12
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 12
 
 
  521:Drivers/sx126x/radio/sx126x/radio.c **** {
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  575:Drivers/sx126x/radio/sx126x/radio.c ****             RadioSetPublicNetwork( RadioPublicNetwork.Current );
  576:Drivers/sx126x/radio/sx126x/radio.c ****         }
  577:Drivers/sx126x/radio/sx126x/radio.c ****         break;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 13
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 13
 
 
  578:Drivers/sx126x/radio/sx126x/radio.c ****     }
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  632:Drivers/sx126x/radio/sx126x/radio.c ****     SX126xSetDioIrqParams( IRQ_RADIO_NONE, IRQ_RADIO_NONE, IRQ_RADIO_NONE, IRQ_RADIO_NONE );
  633:Drivers/sx126x/radio/sx126x/radio.c **** 
  634:Drivers/sx126x/radio/sx126x/radio.c ****     rnd = SX126xGetRandom( );
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 14
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 14
 
 
  635:Drivers/sx126x/radio/sx126x/radio.c **** 
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  689:Drivers/sx126x/radio/sx126x/radio.c ****             RadioStandby( );
  690:Drivers/sx126x/radio/sx126x/radio.c ****             RadioSetModem( ( SX126x.ModulationParams.PacketType == PACKET_TYPE_GFSK ) ? MODEM_FSK :
  691:Drivers/sx126x/radio/sx126x/radio.c ****             SX126xSetModulationParams( &SX126x.ModulationParams );
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 15
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 15
 
 
  692:Drivers/sx126x/radio/sx126x/radio.c ****             SX126xSetPacketParams( &SX126x.PacketParams );
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  746:Drivers/sx126x/radio/sx126x/radio.c **** 
  747:Drivers/sx126x/radio/sx126x/radio.c ****             // WORKAROUND - Optimizing the Inverted IQ Operation, see DS_SX1261-2_V1.2 datasheet ch
  748:Drivers/sx126x/radio/sx126x/radio.c ****             if( SX126x.PacketParams.Params.LoRa.InvertIQ == LORA_IQ_INVERTED )
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 16
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 16
 
 
  749:Drivers/sx126x/radio/sx126x/radio.c ****             {
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  803:Drivers/sx126x/radio/sx126x/radio.c ****             SX126xSetSyncWord( ( uint8_t[] ){ 0xC1, 0x94, 0xC1, 0x00, 0x00, 0x00, 0x00, 0x00 } );
  804:Drivers/sx126x/radio/sx126x/radio.c ****             SX126xSetWhiteningSeed( 0x01FF );
  805:Drivers/sx126x/radio/sx126x/radio.c ****             break;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 17
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 17
 
 
  806:Drivers/sx126x/radio/sx126x/radio.c **** 
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  860:Drivers/sx126x/radio/sx126x/radio.c ****     {
  861:Drivers/sx126x/radio/sx126x/radio.c ****         SX126xWriteRegister( REG_TX_MODULATION, SX126xReadRegister( REG_TX_MODULATION ) | ( 1 << 2 
  862:Drivers/sx126x/radio/sx126x/radio.c ****     }
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 18
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 18
 
 
  863:Drivers/sx126x/radio/sx126x/radio.c ****     // WORKAROUND END
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  150 000d 1C       		.byte	(.L18-.L14)/2
  151 000e 1E       		.byte	(.L17-.L14)/2
  152 000f 06       		.byte	(.L12-.L14)/2
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 19
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 19
 
 
  153 0010 08       		.byte	(.L16-.L14)/2
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  888:Drivers/sx126x/radio/sx126x/radio.c ****     case LORA_BW_020:
  175              		.loc 1 888 9 view .LVU38
  887:Drivers/sx126x/radio/sx126x/radio.c ****         break;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 20
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 20
 
 
  176              		.loc 1 887 23 is_stmt 0 view .LVU39
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  214              	.LVL23:
  900:Drivers/sx126x/radio/sx126x/radio.c ****     case LORA_BW_125:
  215              		.loc 1 900 9 view .LVU56
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 21
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 21
 
 
  216 003a 7047     		bx	lr
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  255 0050 48E80100 		.word	125000
  256 0054 90D00300 		.word	250000
  257 0058 20A10700 		.word	500000
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 22
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 22
 
 
  258              		.cfi_endproc
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  926:Drivers/sx126x/radio/sx126x/radio.c ****                ( ( crcOn == true ) ? 2 : 0 ) 
  299              		.loc 1 926 67 view .LVU82
  300 0012 9DF80000 		ldrb	r0, [sp]	@ zero_extendqisi2
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 23
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 23
 
 
  301 0016 1844     		add	r0, r0, r3
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  344 0006 9DF81850 		ldrb	r5, [sp, #24]	@ zero_extendqisi2
  937:Drivers/sx126x/radio/sx126x/radio.c ****     int32_t crDenom           = coderate + 4;
  345              		.loc 1 937 5 is_stmt 1 view .LVU90
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 24
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 24
 
 
  346              		.loc 1 937 13 is_stmt 0 view .LVU91
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  958:Drivers/sx126x/radio/sx126x/radio.c ****                             ( crcOn ? 16 : 0 ) -
  379              		.loc 1 958 42 view .LVU105
  380 002e 8DB3     		cbz	r5, .L47
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 25
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 25
 
 
  381 0030 4FF0100C 		mov	ip, #16
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  976:Drivers/sx126x/radio/sx126x/radio.c ****             ceilDenominator = 4 * datarate;
  977:Drivers/sx126x/radio/sx126x/radio.c ****         }
  978:Drivers/sx126x/radio/sx126x/radio.c ****     }
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 26
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 26
 
 
  979:Drivers/sx126x/radio/sx126x/radio.c **** 
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  452              	.LVL54:
  995:Drivers/sx126x/radio/sx126x/radio.c **** }
  453              		.loc 1 995 1 view .LVU136
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 27
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 27
 
 
  454 0078 8840     		lsls	r0, r0, r1
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  497              	.LVL61:
  982:Drivers/sx126x/radio/sx126x/radio.c ****     }
  498              		.loc 1 982 23 view .LVU148
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 28
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 28
 
 
  499 00a4 D8E7     		b	.L41
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
 1005:Drivers/sx126x/radio/sx126x/radio.c ****     switch( modem )
  546              		.loc 1 1005 5 view .LVU156
  547 001a 48B1     		cbz	r0, .L55
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 29
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 29
 
 
  548 001c 0128     		cmp	r0, #1
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  579              	.LVL71:
 1009:Drivers/sx126x/radio/sx126x/radio.c ****                                                                   preambleLen, fixLen,
  580              		.loc 1 1009 35 view .LVU164
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 30
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 30
 
 
  581 0038 FFF7FEFF 		bl	RadioGetGfskTimeOnAirNumerator
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  626              		.section	.text.RadioOnDioIrq,"ax",%progbits
  627              		.align	1
  628              		.global	RadioOnDioIrq
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 31
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 31
 
 
  629              		.syntax unified
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
 1074:Drivers/sx126x/radio/sx126x/radio.c ****         // TimerSetValue( &RxTimeoutTimer, timeout );
 1075:Drivers/sx126x/radio/sx126x/radio.c ****         // TimerStart( &RxTimeoutTimer );
 1076:Drivers/sx126x/radio/sx126x/radio.c ****     }
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 32
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 32
 
 
 1077:Drivers/sx126x/radio/sx126x/radio.c **** 
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
 1131:Drivers/sx126x/radio/sx126x/radio.c ****             return;
 1132:Drivers/sx126x/radio/sx126x/radio.c ****         }
 1133:Drivers/sx126x/radio/sx126x/radio.c ****     }
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 33
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 33
 
 
 1134:Drivers/sx126x/radio/sx126x/radio.c **** 
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
 1188:Drivers/sx126x/radio/sx126x/radio.c **** 
 1189:Drivers/sx126x/radio/sx126x/radio.c **** void RadioSetMaxPayloadLength( RadioModems_t modem, uint8_t max )
 1190:Drivers/sx126x/radio/sx126x/radio.c **** {
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 34
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 34
 
 
 1191:Drivers/sx126x/radio/sx126x/radio.c ****     if( modem == MODEM_LORA )
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
 1245:Drivers/sx126x/radio/sx126x/radio.c **** 
 1246:Drivers/sx126x/radio/sx126x/radio.c **** void RadioOnDioIrq( void* context )
 1247:Drivers/sx126x/radio/sx126x/radio.c **** {
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 35
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 35
 
 
  637              		.loc 1 1247 1 view -0
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  689              		.thumb_func
  690              		.fpu fpv4-sp-d16
  692              	RadioGetStatus:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 36
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 36
 
 
  693              	.LFB2:
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  739              		.thumb_func
  740              		.fpu fpv4-sp-d16
  742              	RadioSetChannel:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 37
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 37
 
 
  743              	.LVL83:
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  789              		.loc 1 1198 44 is_stmt 0 view .LVU200
  790 0006 0C4B     		ldr	r3, .L81
  791 0008 93F8BF30 		ldrb	r3, [r3, #191]	@ zero_extendqisi2
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 38
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 38
 
 
 1198:Drivers/sx126x/radio/sx126x/radio.c ****         {
@@ -2278,7 +2278,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  832 0034 ECE7     		b	.L75
  833              	.L82:
  834 0036 00BF     		.align	2
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 39
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 39
 
 
  835              	.L81:
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  886              		.cfi_startproc
  887              		@ args = 0, pretend = 0, frame = 0
  888              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 40
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 40
 
 
 1170:Drivers/sx126x/radio/sx126x/radio.c ****     SX126xWriteRegister( addr, data );
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  935 000a 0120     		movs	r0, #1
  936              	.LVL100:
 1210:Drivers/sx126x/radio/sx126x/radio.c ****     if( enable == true )
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 41
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 41
 
 
  937              		.loc 1 1210 5 is_stmt 0 view .LVU232
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  985              	.LVL106:
  986              	.LFB3:
  559:Drivers/sx126x/radio/sx126x/radio.c ****     switch( modem )
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 42
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 42
 
 
  987              		.loc 1 559 1 is_stmt 1 view -0
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  1028 001e 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
  572:Drivers/sx126x/radio/sx126x/radio.c ****         {
  1029              		.loc 1 572 11 view .LVU255
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 43
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 43
 
 
  1030 0020 8242     		cmp	r2, r0
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  1078              	.LVL115:
  634:Drivers/sx126x/radio/sx126x/radio.c **** 
  1079              		.loc 1 634 5 view .LVU264
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 44
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 44
 
 
  634:Drivers/sx126x/radio/sx126x/radio.c **** 
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  648:Drivers/sx126x/radio/sx126x/radio.c ****     if( rxContinuous == true )
  1130              		.loc 1 648 18 is_stmt 0 view .LVU271
  1131 0020 754A     		ldr	r2, .L125
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 45
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 45
 
 
  1132              	.LVL119:
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  1174              	.L105:
  1175              	.LBB2:
  665:Drivers/sx126x/radio/sx126x/radio.c ****             SX126x.ModulationParams.PacketType = PACKET_TYPE_GFSK;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 46
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 46
 
 
  1176              		.loc 1 665 13 is_stmt 1 view .LVU284
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  675:Drivers/sx126x/radio/sx126x/radio.c ****             SX126x.PacketParams.Params.Gfsk.AddrComp = RADIO_ADDRESSCOMP_FILT_OFF;
  1213              		.loc 1 675 13 is_stmt 1 view .LVU302
  675:Drivers/sx126x/radio/sx126x/radio.c ****             SX126x.PacketParams.Params.Gfsk.AddrComp = RADIO_ADDRESSCOMP_FILT_OFF;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 47
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 47
 
 
  1214              		.loc 1 675 60 is_stmt 0 view .LVU303
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  1251 00b0 2646     		mov	r6, r4
  1252 00b2 16F8E00F 		ldrb	r0, [r6, #224]!	@ zero_extendqisi2
  690:Drivers/sx126x/radio/sx126x/radio.c ****             SX126xSetModulationParams( &SX126x.ModulationParams );
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 48
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 48
 
 
  1253              		.loc 1 690 13 view .LVU321
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  685:Drivers/sx126x/radio/sx126x/radio.c ****             }
  1296              		.loc 1 685 17 view .LVU333
  685:Drivers/sx126x/radio/sx126x/radio.c ****             }
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 49
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 49
 
 
  1297              		.loc 1 685 59 is_stmt 0 view .LVU334
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  1335 012a 012A     		cmp	r2, #1
  1336 012c 48D9     		bls	.L112
  1337              	.L111:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 50
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 50
 
 
  706:Drivers/sx126x/radio/sx126x/radio.c ****             ( ( bandwidth == 1 ) && ( datarate == 12 ) ) )
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  1376              		.loc 1 738 13 is_stmt 1 view .LVU366
  738:Drivers/sx126x/radio/sx126x/radio.c ****             SX126x.PacketParams.Params.LoRa.InvertIQ = ( RadioLoRaIQModes_t )iqInverted;
  1377              		.loc 1 738 53 is_stmt 0 view .LVU367
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 51
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 51
 
 
  1378 015e 84F8C8A0 		strb	r10, [r4, #200]
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  1417              		.loc 1 754 55 is_stmt 0 view .LVU382
  1418 019c 40F23670 		movw	r0, #1846
  1419 01a0 FFF7FEFF 		bl	SX126xReadRegister
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 52
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 52
 
 
  1420              	.LVL146:
@@ -3118,7 +3118,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  727:Drivers/sx126x/radio/sx126x/radio.c ****                 }
  1462              		.loc 1 727 21 is_stmt 1 view .LVU395
  727:Drivers/sx126x/radio/sx126x/radio.c ****                 }
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 53
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 53
 
 
  1463              		.loc 1 727 68 is_stmt 0 view .LVU396
@@ -3178,7 +3178,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  1514              		.cfi_offset 6, -28
  1515              		.cfi_offset 7, -24
  1516              		.cfi_offset 8, -20
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 54
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 54
 
 
  1517              		.cfi_offset 9, -16
@@ -3238,7 +3238,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  866:Drivers/sx126x/radio/sx126x/radio.c **** }
  1562              		.loc 1 866 5 view .LVU411
  866:Drivers/sx126x/radio/sx126x/radio.c **** }
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 55
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 55
 
 
  1563              		.loc 1 866 15 is_stmt 0 view .LVU412
@@ -3298,7 +3298,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  1604 0072 85F8ED00 		strb	r0, [r5, #237]
  780:Drivers/sx126x/radio/sx126x/radio.c **** 
  1605              		.loc 1 780 13 is_stmt 1 view .LVU426
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 56
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 56
 
 
  780:Drivers/sx126x/radio/sx126x/radio.c **** 
@@ -3358,7 +3358,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  797:Drivers/sx126x/radio/sx126x/radio.c **** 
  1641              		.loc 1 797 13 is_stmt 1 view .LVU446
  797:Drivers/sx126x/radio/sx126x/radio.c **** 
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 57
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 57
 
 
  1642              		.loc 1 797 52 is_stmt 0 view .LVU447
@@ -3418,7 +3418,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  1684 00ee 95E7     		b	.L130
  1685              	.LVL168:
  1686              	.L131:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 58
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 58
 
 
  795:Drivers/sx126x/radio/sx126x/radio.c ****             }
@@ -3478,7 +3478,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  1724 011a 1BB9     		cbnz	r3, .L134
  813:Drivers/sx126x/radio/sx126x/radio.c ****             ( ( bandwidth == 1 ) && ( datarate == 12 ) ) )
  1725              		.loc 1 813 62 discriminator 1 view .LVU477
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 59
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 59
 
 
  1726 011c 0C99     		ldr	r1, [sp, #48]
@@ -3538,7 +3538,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  1765              		.loc 1 843 59 is_stmt 0 view .LVU492
  1766 014c 204B     		ldr	r3, .L147+16
  1767 014e 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 60
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 60
 
 
  1768 0150 85F8C730 		strb	r3, [r5, #199]
@@ -3598,7 +3598,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  1808              		.loc 1 816 17 is_stmt 1 view .LVU506
  816:Drivers/sx126x/radio/sx126x/radio.c ****             }
  1809              		.loc 1 816 73 is_stmt 0 view .LVU507
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 61
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 61
 
 
  1810 018a 0D4B     		ldr	r3, .L147
@@ -3658,7 +3658,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  1855              		.section	.text.RadioSend,"ax",%progbits
  1856              		.align	1
  1857              		.global	RadioSend
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 62
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 62
 
 
  1858              		.syntax unified
@@ -3718,7 +3718,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
 1043:Drivers/sx126x/radio/sx126x/radio.c **** 
  1903              		.loc 1 1043 5 is_stmt 1 view .LVU528
  1904 0022 0748     		ldr	r0, .L154+4
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 63
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 63
 
 
  1905 0024 FFF7FEFF 		bl	SX126xSetPacketParams
@@ -3778,7 +3778,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  1953 0006 FFF7FEFF 		bl	SX126xSetSleep
  1954              	.LVL190:
 1057:Drivers/sx126x/radio/sx126x/radio.c **** }
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 64
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 64
 
 
  1955              		.loc 1 1057 5 view .LVU537
@@ -3838,7 +3838,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2001 0014 23B1     		cbz	r3, .L159
 1080:Drivers/sx126x/radio/sx126x/radio.c ****     }
  2002              		.loc 1 1080 9 is_stmt 1 view .LVU548
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 65
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 65
 
 
  2003 0016 6FF07F40 		mvn	r0, #-16777216
@@ -3898,7 +3898,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
 1090:Drivers/sx126x/radio/sx126x/radio.c ****                            IRQ_RADIO_ALL, //IRQ_RX_DONE | IRQ_RX_TX_TIMEOUT,
  2053              		.loc 1 1090 5 is_stmt 0 view .LVU555
  2054 000c FFF7FEFF 		bl	SX126xSetDioIrqParams
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 66
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 66
 
 
  2055              	.LVL199:
@@ -3958,7 +3958,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2101              		@ args = 0, pretend = 0, frame = 0
  2102              		@ frame_needed = 0, uses_anonymous_args = 0
 1112:Drivers/sx126x/radio/sx126x/radio.c ****     SX126xSetRxDutyCycle( rxTime, sleepTime );
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 67
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 67
 
 
  2103              		.loc 1 1112 1 is_stmt 0 view .LVU566
@@ -4018,7 +4018,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2153              		.thumb
  2154              		.thumb_func
  2155              		.fpu fpv4-sp-d16
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 68
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 68
 
 
  2157              	RadioWriteBuffer:
@@ -4078,7 +4078,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2206              	.LVL210:
 1149:Drivers/sx126x/radio/sx126x/radio.c **** }
  2207              		.loc 1 1149 5 view .LVU581
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 69
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 69
 
 
  2208 0010 FFF7FEFF 		bl	SX126xSetCad
@@ -4138,7 +4138,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2257              		.syntax unified
  2258              		.thumb
  2259              		.thumb_func
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 70
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 70
 
 
  2260              		.fpu fpv4-sp-d16
@@ -4198,7 +4198,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2310              	.LCFI33:
  2311              		.cfi_def_cfa_offset 64
  2312 0004 0546     		mov	r5, r0
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 71
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 71
 
 
  2313 0006 0E46     		mov	r6, r1
@@ -4258,7 +4258,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2357 0046 FFF7FEFF 		bl	DelayMs
  2358              	.LVL227:
  2359              	.L183:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 72
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 72
 
 
  607:Drivers/sx126x/radio/sx126x/radio.c ****     {
@@ -4318,7 +4318,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2404              		.cfi_def_cfa_offset 8
  2405              		.cfi_offset 3, -8
  2406              		.cfi_offset 14, -4
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 73
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 73
 
 
 1227:Drivers/sx126x/radio/sx126x/radio.c **** }
@@ -4378,7 +4378,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2449              	.LCFI36:
  2450              		.cfi_def_cfa_offset 12
  2451              		.cfi_offset 4, -12
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 74
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 74
 
 
  2452              		.cfi_offset 5, -8
@@ -4438,7 +4438,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
 1283:Drivers/sx126x/radio/sx126x/radio.c ****         if( ( irqRegs & IRQ_RX_DONE ) == IRQ_RX_DONE )
  2483              		.loc 1 1283 9 is_stmt 1 view .LVU643
  2484              		.loc 1 1283 11 is_stmt 0 view .LVU644
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 75
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 75
 
 
  2485 0028 14F0020F 		tst	r4, #2
@@ -4498,7 +4498,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
 1310:Drivers/sx126x/radio/sx126x/radio.c ****                     SX126xWriteRegister( REG_EVT_CLR, SX126xReadRegister( REG_EVT_CLR ) | ( 1 << 1 
 1311:Drivers/sx126x/radio/sx126x/radio.c ****                     // WORKAROUND END
 1312:Drivers/sx126x/radio/sx126x/radio.c ****                 }
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 76
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 76
 
 
 1313:Drivers/sx126x/radio/sx126x/radio.c ****                 SX126xGetPayload( RadioRxPayload, &size , 255 );
@@ -4558,7 +4558,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2523              		.loc 1 1356 9 is_stmt 1 view .LVU660
 1357:Drivers/sx126x/radio/sx126x/radio.c ****         {
 1358:Drivers/sx126x/radio/sx126x/radio.c ****             //__NOP( );
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 77
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 77
 
 
 1359:Drivers/sx126x/radio/sx126x/radio.c ****         }
@@ -4618,7 +4618,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2555              	.LBE5:
 1382:Drivers/sx126x/radio/sx126x/radio.c ****             }
 1383:Drivers/sx126x/radio/sx126x/radio.c ****         }
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 78
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 78
 
 
 1384:Drivers/sx126x/radio/sx126x/radio.c ****     }
@@ -4678,7 +4678,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2598 0094 FFF7FEFF 		bl	SX126xSetOperatingMode
  2599              	.LVL242:
  2600 0098 D0E7     		b	.L193
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 79
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 79
 
 
  2601              	.L192:
@@ -4738,7 +4738,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2641 00d0 A847     		blx	r5
  2642              	.LVL245:
  2643 00d2 B9E7     		b	.L191
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 80
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 80
 
 
  2644              	.L211:
@@ -4798,7 +4798,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2686 0114 9847     		blx	r3
  2687              	.LVL251:
  2688 0116 9AE7     		b	.L196
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 81
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 81
 
 
  2689              	.L209:
@@ -4858,7 +4858,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
 1339:Drivers/sx126x/radio/sx126x/radio.c ****                 {
  2729              		.loc 1 1339 17 view .LVU728
 1339:Drivers/sx126x/radio/sx126x/radio.c ****                 {
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 82
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 82
 
 
  2730              		.loc 1 1339 35 is_stmt 0 view .LVU729
@@ -4918,7 +4918,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2779 0000 10B5     		push	{r4, lr}
  2780              	.LCFI40:
  2781              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 83
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 83
 
 
  2782              		.cfi_offset 4, -8
@@ -4978,7 +4978,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2821 001e 8342     		cmp	r3, r0
  2822 0020 0CD2     		bcs	.L222
 1129:Drivers/sx126x/radio/sx126x/radio.c ****         {
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 84
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 84
 
 
  2823              		.loc 1 1129 9 is_stmt 1 view .LVU752
@@ -5038,7 +5038,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2863              		.loc 1 1138 21 view .LVU766
  2864 0048 0DF10502 		add	r2, sp, #5
  2865              	.LVL269:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 85
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 85
 
 
 1138:Drivers/sx126x/radio/sx126x/radio.c ****         registerList[2 * nbOfRegisters + 1] = ( uint8_t )( registerAddress >> 0 );
@@ -5098,7 +5098,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  522:Drivers/sx126x/radio/sx126x/radio.c **** 
  2911              		.loc 1 522 17 is_stmt 0 view .LVU778
  2912 0002 134B     		ldr	r3, .L226
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 86
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 86
 
 
  2913 0004 1860     		str	r0, [r3]
@@ -5158,7 +5158,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  2956 0048 0022     		movs	r2, #0
  2957 004a 1A70     		strb	r2, [r3]
  541:Drivers/sx126x/radio/sx126x/radio.c **** 
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 87
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 87
 
 
  2958              		.loc 1 541 1 view .LVU790
@@ -5218,7 +5218,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  3005 000e 08BD     		pop	{r3, pc}
  3006              	.L232:
  3007              		.align	2
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 88
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 88
 
 
  3008              	.L231:
@@ -5278,7 +5278,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  3055              	.LFE32:
  3057              		.global	RxTimeoutTimer
  3058              		.global	TxTimeoutTimer
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 89
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 89
 
 
  3059              		.global	SX126x
@@ -5338,7 +5338,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  3115      00000000 
  3116              		.section	.bss.RxContinuous,"aw",%nobits
  3117              		.set	.LANCHOR6,. + 0
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 90
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 90
 
 
  3120              	RxContinuous:
@@ -5398,7 +5398,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  3178 0005 000000   		.space	3
  3179 0008 A8160000 		.word	5800
  3180 000c 17       		.byte	23
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 91
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 91
 
 
  3181 000d 000000   		.space	3
@@ -5458,7 +5458,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  3235 009d 000000   		.space	3
  3236 00a0 38200700 		.word	467000
  3237 00a4 09       		.byte	9
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 92
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 92
 
 
  3238 00a5 000000   		.space	3
@@ -5506,136 +5506,136 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 1
  3282              		.file 8 "Drivers/sx126x/radio/sx126x/sx126x.h"
  3283              		.file 9 "Drivers/sx126x/boards/sx126x-board.h"
  3284              		.file 10 "Drivers/sx126x/system/delay.h"
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 93
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 93
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 radio.c
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:18     .text.RadioGetFskBandwidthRegValue:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:25     .text.RadioGetFskBandwidthRegValue:00000000 RadioGetFskBandwidthRegValue
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:95     .text.RadioGetFskBandwidthRegValue:00000038 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:100    .text.RadioCheckRfFrequency:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:107    .text.RadioCheckRfFrequency:00000000 RadioCheckRfFrequency
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:125    .text.RadioGetLoRaBandwidthInHz:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:131    .text.RadioGetLoRaBandwidthInHz:00000000 RadioGetLoRaBandwidthInHz
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:145    .text.RadioGetLoRaBandwidthInHz:00000008 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:255    .text.RadioGetLoRaBandwidthInHz:00000050 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:262    .text.RadioGetGfskTimeOnAirNumerator:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:268    .text.RadioGetGfskTimeOnAirNumerator:00000000 RadioGetGfskTimeOnAirNumerator
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:322    .text.RadioGetLoRaTimeOnAirNumerator:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:328    .text.RadioGetLoRaTimeOnAirNumerator:00000000 RadioGetLoRaTimeOnAirNumerator
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:504    .text.RadioTimeOnAir:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:511    .text.RadioTimeOnAir:00000000 RadioTimeOnAir
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:622    .text.RadioTimeOnAir:00000070 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:627    .text.RadioOnDioIrq:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:634    .text.RadioOnDioIrq:00000000 RadioOnDioIrq
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:652    .text.RadioOnDioIrq:00000008 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:657    .text.RadioStandby:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:664    .text.RadioStandby:00000000 RadioStandby
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:685    .text.RadioGetStatus:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:692    .text.RadioGetStatus:00000000 RadioGetStatus
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:735    .text.RadioSetChannel:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:742    .text.RadioSetChannel:00000000 RadioSetChannel
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:764    .text.RadioSetMaxPayloadLength:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:771    .text.RadioSetMaxPayloadLength:00000000 RadioSetMaxPayloadLength
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:836    .text.RadioSetMaxPayloadLength:00000038 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:842    .text.RadioRead:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:849    .text.RadioRead:00000000 RadioRead
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:875    .text.RadioWrite:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:882    .text.RadioWrite:00000000 RadioWrite
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:907    .text.RadioSetPublicNetwork:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:914    .text.RadioSetPublicNetwork:00000000 RadioSetPublicNetwork
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:984    .text.RadioSetModem:00000000 RadioSetModem
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:972    .text.RadioSetPublicNetwork:00000040 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:977    .text.RadioSetModem:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:1043   .text.RadioSetModem:0000002c $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:1048   .text.RadioRandom:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:1055   .text.RadioRandom:00000000 RadioRandom
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:1090   .text.RadioSetRxConfig:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:1097   .text.RadioSetRxConfig:00000000 RadioSetRxConfig
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:1483   .text.RadioSetRxConfig:000001f8 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:1494   .text.RadioSetTxConfig:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:1501   .text.RadioSetTxConfig:00000000 RadioSetTxConfig
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:1847   .text.RadioSetTxConfig:000001c0 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:1856   .text.RadioSend:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:1863   .text.RadioSend:00000000 RadioSend
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:1925   .text.RadioSend:0000003c $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:1931   .text.RadioSleep:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:1938   .text.RadioSleep:00000000 RadioSleep
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:1965   .text.RadioRx:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:1972   .text.RadioRx:00000000 RadioRx
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2021   .text.RadioRx:0000002c $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2027   .text.RadioRxBoosted:00000000 $t
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 94
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:18     .text.RadioGetFskBandwidthRegValue:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:25     .text.RadioGetFskBandwidthRegValue:00000000 RadioGetFskBandwidthRegValue
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:95     .text.RadioGetFskBandwidthRegValue:00000038 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:100    .text.RadioCheckRfFrequency:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:107    .text.RadioCheckRfFrequency:00000000 RadioCheckRfFrequency
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:125    .text.RadioGetLoRaBandwidthInHz:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:131    .text.RadioGetLoRaBandwidthInHz:00000000 RadioGetLoRaBandwidthInHz
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:145    .text.RadioGetLoRaBandwidthInHz:00000008 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:255    .text.RadioGetLoRaBandwidthInHz:00000050 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:262    .text.RadioGetGfskTimeOnAirNumerator:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:268    .text.RadioGetGfskTimeOnAirNumerator:00000000 RadioGetGfskTimeOnAirNumerator
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:322    .text.RadioGetLoRaTimeOnAirNumerator:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:328    .text.RadioGetLoRaTimeOnAirNumerator:00000000 RadioGetLoRaTimeOnAirNumerator
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:504    .text.RadioTimeOnAir:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:511    .text.RadioTimeOnAir:00000000 RadioTimeOnAir
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:622    .text.RadioTimeOnAir:00000070 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:627    .text.RadioOnDioIrq:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:634    .text.RadioOnDioIrq:00000000 RadioOnDioIrq
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:652    .text.RadioOnDioIrq:00000008 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:657    .text.RadioStandby:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:664    .text.RadioStandby:00000000 RadioStandby
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:685    .text.RadioGetStatus:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:692    .text.RadioGetStatus:00000000 RadioGetStatus
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:735    .text.RadioSetChannel:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:742    .text.RadioSetChannel:00000000 RadioSetChannel
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:764    .text.RadioSetMaxPayloadLength:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:771    .text.RadioSetMaxPayloadLength:00000000 RadioSetMaxPayloadLength
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:836    .text.RadioSetMaxPayloadLength:00000038 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:842    .text.RadioRead:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:849    .text.RadioRead:00000000 RadioRead
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:875    .text.RadioWrite:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:882    .text.RadioWrite:00000000 RadioWrite
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:907    .text.RadioSetPublicNetwork:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:914    .text.RadioSetPublicNetwork:00000000 RadioSetPublicNetwork
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:984    .text.RadioSetModem:00000000 RadioSetModem
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:972    .text.RadioSetPublicNetwork:00000040 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:977    .text.RadioSetModem:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:1043   .text.RadioSetModem:0000002c $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:1048   .text.RadioRandom:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:1055   .text.RadioRandom:00000000 RadioRandom
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:1090   .text.RadioSetRxConfig:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:1097   .text.RadioSetRxConfig:00000000 RadioSetRxConfig
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:1483   .text.RadioSetRxConfig:000001f8 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:1494   .text.RadioSetTxConfig:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:1501   .text.RadioSetTxConfig:00000000 RadioSetTxConfig
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:1847   .text.RadioSetTxConfig:000001c0 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:1856   .text.RadioSend:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:1863   .text.RadioSend:00000000 RadioSend
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:1925   .text.RadioSend:0000003c $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:1931   .text.RadioSleep:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:1938   .text.RadioSleep:00000000 RadioSleep
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:1965   .text.RadioRx:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:1972   .text.RadioRx:00000000 RadioRx
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2021   .text.RadioRx:0000002c $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2027   .text.RadioRxBoosted:00000000 $t
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 94
 
 
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2034   .text.RadioRxBoosted:00000000 RadioRxBoosted
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2083   .text.RadioRxBoosted:0000002c $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2089   .text.RadioSetRxDutyCycle:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2096   .text.RadioSetRxDutyCycle:00000000 RadioSetRxDutyCycle
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2118   .text.RadioReadBuffer:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2125   .text.RadioReadBuffer:00000000 RadioReadBuffer
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2150   .text.RadioWriteBuffer:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2157   .text.RadioWriteBuffer:00000000 RadioWriteBuffer
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2182   .text.RadioStartCad:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2189   .text.RadioStartCad:00000000 RadioStartCad
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2216   .text.RadioSetTxContinuousWave:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2223   .text.RadioSetTxContinuousWave:00000000 RadioSetTxContinuousWave
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2255   .text.RadioRssi:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2262   .text.RadioRssi:00000000 RadioRssi
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2286   .text.RadioIsChannelFree:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2293   .text.RadioIsChannelFree:00000000 RadioIsChannelFree
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2389   .text.RadioGetWakeupTime:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2396   .text.RadioGetWakeupTime:00000000 RadioGetWakeupTime
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2418   .text.RadioIrqProcess:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2425   .text.RadioIrqProcess:00000000 RadioIrqProcess
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2754   .text.RadioIrqProcess:00000164 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2764   .text.RadioAddRegisterToRetentionList:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2771   .text.RadioAddRegisterToRetentionList:00000000 RadioAddRegisterToRetentionList
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2890   .text.RadioInit:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2897   .text.RadioInit:00000000 RadioInit
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2963   .text.RadioInit:00000050 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2970   .text.RadioOnTxTimeoutIrq:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:2977   .text.RadioOnTxTimeoutIrq:00000000 RadioOnTxTimeoutIrq
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3009   .text.RadioOnTxTimeoutIrq:00000010 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3014   .text.RadioOnRxTimeoutIrq:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3021   .text.RadioOnRxTimeoutIrq:00000000 RadioOnRxTimeoutIrq
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3053   .text.RadioOnRxTimeoutIrq:00000010 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3133   .bss.RxTimeoutTimer:00000000 RxTimeoutTimer
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3153   .bss.TxTimeoutTimer:00000000 TxTimeoutTimer
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3140   .bss.SX126x:00000000 SX126x
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3086   .bss.IrqFired:00000000 IrqFired
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3114   .bss.RadioRxPayload:00000000 RadioRxPayload
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3100   .bss.RadioPktStatus:00000000 RadioPktStatus
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3120   .bss.RxContinuous:00000000 RxContinuous
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3127   .bss.RxTimeout:00000000 RxTimeout
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3147   .bss.TxTimeout:00000000 TxTimeout
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3159   .data.MaxPayloadLength:00000000 MaxPayloadLength
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3166   .rodata.Bandwidths:00000000 Bandwidths
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3175   .rodata.FskBandwidths:00000000 FskBandwidths
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3246   .rodata.Radio:00000000 Radio
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3071   .rodata:00000000 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3087   .bss.IrqFired:00000000 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3089   .bss.RadioEvents:00000000 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3093   .bss.RadioEvents:00000000 RadioEvents
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3096   .bss.RadioPktStatus:00000000 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3103   .bss.RadioPublicNetwork:00000000 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3107   .bss.RadioPublicNetwork:00000000 RadioPublicNetwork
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3110   .bss.RadioRxPayload:00000000 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3121   .bss.RxContinuous:00000000 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3123   .bss.RxTimeout:00000000 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3130   .bss.RxTimeoutTimer:00000000 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3136   .bss.SX126x:00000000 $d
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s 			page 95
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2034   .text.RadioRxBoosted:00000000 RadioRxBoosted
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2083   .text.RadioRxBoosted:0000002c $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2089   .text.RadioSetRxDutyCycle:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2096   .text.RadioSetRxDutyCycle:00000000 RadioSetRxDutyCycle
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2118   .text.RadioReadBuffer:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2125   .text.RadioReadBuffer:00000000 RadioReadBuffer
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2150   .text.RadioWriteBuffer:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2157   .text.RadioWriteBuffer:00000000 RadioWriteBuffer
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2182   .text.RadioStartCad:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2189   .text.RadioStartCad:00000000 RadioStartCad
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2216   .text.RadioSetTxContinuousWave:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2223   .text.RadioSetTxContinuousWave:00000000 RadioSetTxContinuousWave
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2255   .text.RadioRssi:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2262   .text.RadioRssi:00000000 RadioRssi
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2286   .text.RadioIsChannelFree:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2293   .text.RadioIsChannelFree:00000000 RadioIsChannelFree
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2389   .text.RadioGetWakeupTime:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2396   .text.RadioGetWakeupTime:00000000 RadioGetWakeupTime
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2418   .text.RadioIrqProcess:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2425   .text.RadioIrqProcess:00000000 RadioIrqProcess
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2754   .text.RadioIrqProcess:00000164 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2764   .text.RadioAddRegisterToRetentionList:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2771   .text.RadioAddRegisterToRetentionList:00000000 RadioAddRegisterToRetentionList
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2890   .text.RadioInit:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2897   .text.RadioInit:00000000 RadioInit
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2963   .text.RadioInit:00000050 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2970   .text.RadioOnTxTimeoutIrq:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:2977   .text.RadioOnTxTimeoutIrq:00000000 RadioOnTxTimeoutIrq
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3009   .text.RadioOnTxTimeoutIrq:00000010 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3014   .text.RadioOnRxTimeoutIrq:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3021   .text.RadioOnRxTimeoutIrq:00000000 RadioOnRxTimeoutIrq
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3053   .text.RadioOnRxTimeoutIrq:00000010 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3133   .bss.RxTimeoutTimer:00000000 RxTimeoutTimer
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3153   .bss.TxTimeoutTimer:00000000 TxTimeoutTimer
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3140   .bss.SX126x:00000000 SX126x
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3086   .bss.IrqFired:00000000 IrqFired
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3114   .bss.RadioRxPayload:00000000 RadioRxPayload
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3100   .bss.RadioPktStatus:00000000 RadioPktStatus
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3120   .bss.RxContinuous:00000000 RxContinuous
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3127   .bss.RxTimeout:00000000 RxTimeout
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3147   .bss.TxTimeout:00000000 TxTimeout
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3159   .data.MaxPayloadLength:00000000 MaxPayloadLength
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3166   .rodata.Bandwidths:00000000 Bandwidths
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3175   .rodata.FskBandwidths:00000000 FskBandwidths
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3246   .rodata.Radio:00000000 Radio
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3071   .rodata:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3087   .bss.IrqFired:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3089   .bss.RadioEvents:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3093   .bss.RadioEvents:00000000 RadioEvents
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3096   .bss.RadioPktStatus:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3103   .bss.RadioPublicNetwork:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3107   .bss.RadioPublicNetwork:00000000 RadioPublicNetwork
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3110   .bss.RadioRxPayload:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3121   .bss.RxContinuous:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3123   .bss.RxTimeout:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3130   .bss.RxTimeoutTimer:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3136   .bss.SX126x:00000000 $d
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s 			page 95
 
 
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3143   .bss.TxTimeout:00000000 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3150   .bss.TxTimeoutTimer:00000000 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3162   .rodata.Bandwidths:00000000 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3171   .rodata.FskBandwidths:00000000 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:3243   .rodata.Radio:00000000 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:156    .text.RadioGetLoRaBandwidthInHz:00000013 $d
-C:\Users\andywei\AppData\Local\Temp\ccCe1C2z.s:156    .text.RadioGetLoRaBandwidthInHz:00000014 $t
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3143   .bss.TxTimeout:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3150   .bss.TxTimeoutTimer:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3162   .rodata.Bandwidths:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3171   .rodata.FskBandwidths:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:3243   .rodata.Radio:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:156    .text.RadioGetLoRaBandwidthInHz:00000013 $d
+C:\Users\andywei\AppData\Local\Temp\ccQOZpDW.s:156    .text.RadioGetLoRaBandwidthInHz:00000014 $t
 
 UNDEFINED SYMBOLS
 SX126xSetStandby

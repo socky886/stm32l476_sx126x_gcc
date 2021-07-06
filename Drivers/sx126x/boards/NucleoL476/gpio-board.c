@@ -339,7 +339,7 @@ uint32_t GpioMcuRead( Gpio_t *obj )
 
 // void EXTI1_IRQHandler( void )
 // {
-//     HAL_GPIO_EXTI_IRQHandler( GPIO_PIN_1 );
+//    HAL_GPIO_EXTI_IRQHandler( GPIO_PIN_1 );
 // }
 
 // void EXTI2_IRQHandler( void )

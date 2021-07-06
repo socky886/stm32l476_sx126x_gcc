@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
   27:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** #include "rtc-board.h"
   28:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** #include "gpio-board.h"
   29:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** #if defined( BOARD_IOE_EXT )
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 2
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 2
 
 
   30:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** #include "gpio-ioe.h"
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
   84:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         else if( mode == PIN_ANALOGIC )
   85:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         {
   86:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****             GPIO_InitStructure.Mode = GPIO_MODE_ANALOG;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 3
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 3
 
 
   87:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         }
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
   38              		.loc 1 132 1 view .LVU3
   39 0002 7047     		bx	lr
   40              		.cfi_endproc
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 4
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 4
 
 
   41              	.LFE133:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  144:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         {
  145:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****             return;
  146:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         }
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 5
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 5
 
 
  147:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** 
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  118 002e 01A9     		add	r1, sp, #4
  119              	.LVL5:
  120              		.loc 1 168 9 is_stmt 0 view .LVU31
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 6
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 6
 
 
  121 0030 6068     		ldr	r0, [r4, #4]
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  154 0054 032D     		cmp	r5, #3
  155 0056 1CD1     		bne	.L23
  180:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****             break;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 7
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 7
 
 
  156              		.loc 1 180 22 view .LVU40
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  206              	.L21:
  177:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****             break;
  207              		.loc 1 177 22 view .LVU44
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 8
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 8
 
 
  208 008e 0221     		movs	r1, #2
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  231 00b6 2825     		movs	r5, #40
  232 00b8 0DE0     		b	.L11
  233              	.L40:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 9
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 9
 
 
  188:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         {
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  232:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         // IOExt Pin
  233:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         GpioIoeSetInterrupt( obj, irqMode, irqPriority, irqHandler );
  234:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** #endif
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 10
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 10
 
 
  235:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****     }
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  204:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         case GPIO_PIN_5:
  312              		.loc 1 204 13 view .LVU71
  203:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****             break;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 11
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 11
 
 
  313              		.loc 1 203 19 is_stmt 0 view .LVU72
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  358 013c CBE7     		b	.L11
  359              	.L34:
  218:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****             break;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 12
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 12
 
 
  360              		.loc 1 218 19 view .LVU82
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  241:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****     {
  242:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         // Clear callback before changing pin mode
  243:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         GpioIrq[( obj->pin ) & 0x0F] = NULL;
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 13
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 13
 
 
  410              		.loc 1 243 9 is_stmt 1 view .LVU89
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  450              		.align	1
  451              		.global	GpioMcuWrite
  452              		.syntax unified
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 14
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 14
 
 
  453              		.thumb
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  275:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****     else
  276:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****     {
  277:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** #if defined( BOARD_IOE_EXT )
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 15
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 15
 
 
  278:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         // IOExt Pin
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
   43:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         {
  536              		.loc 1 43 9 is_stmt 1 view .LVU123
   43:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         {
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 16
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 16
 
 
  537              		.loc 1 43 11 is_stmt 0 view .LVU124
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  576              	.L61:
   73:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         }
  577              		.loc 1 73 13 discriminator 1 view .LVU140
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 17
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 17
 
 
   76:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         GPIO_InitStructure.Pull = obj->pull = type;
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  615              		.loc 1 126 5 view .LVU157
  616              	.L57:
  127:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** 
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 18
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 18
 
 
  617              		.loc 1 127 1 is_stmt 0 view .LVU158
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
   73:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         }
  659              		.loc 1 73 13 view .LVU171
  660 0098 0499     		ldr	r1, [sp, #16]
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 19
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 19
 
 
  661 009a D7E7     		b	.L61
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  701 00c8 CD6C     		ldr	r5, [r1, #76]
  702 00ca 45F00405 		orr	r5, r5, #4
  703 00ce CD64     		str	r5, [r1, #76]
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 20
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 20
 
 
  704              	.LVL40:
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  744              		.loc 1 88 14 is_stmt 1 view .LVU199
   88:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****         {
  745              		.loc 1 88 16 is_stmt 0 view .LVU200
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 21
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 21
 
 
  746 0100 022A     		cmp	r2, #2
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  785 0120 9EE7     		b	.L66
  786              	.LVL48:
  787              	.L81:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 22
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 22
 
 
   92:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****             }
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  285:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** {
  834              		.loc 1 285 1 is_stmt 1 view -0
  835              		.cfi_startproc
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 23
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 23
 
 
  836              		@ args = 0, pretend = 0, frame = 0
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  868              	.LFE137:
  870              		.section	.text.GpioMcuRead,"ax",%progbits
  871              		.align	1
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 24
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 24
 
 
  872              		.global	GpioMcuRead
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  912 0014 4188     		ldrh	r1, [r0, #2]
  913 0016 4068     		ldr	r0, [r0, #4]
  914              	.LVL59:
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 25
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 25
 
 
  915              		.loc 1 322 16 view .LVU250
@@ -1484,7 +1484,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  339:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** 
  340:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** // void EXTI1_IRQHandler( void )
  341:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** // {
- 342:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** //     HAL_GPIO_EXTI_IRQHandler( GPIO_PIN_1 );
+ 342:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** //    HAL_GPIO_EXTI_IRQHandler( GPIO_PIN_1 );
  343:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** // }
  344:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** 
  345:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** // void EXTI2_IRQHandler( void )
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  353:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** // }
  354:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** 
  355:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** // void EXTI4_IRQHandler( void )
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 26
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 26
 
 
  356:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** // {
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  390:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****     }
  391:Drivers/sx126x/boards/NucleoL476/gpio-board.c **** 
  392:Drivers/sx126x/boards/NucleoL476/gpio-board.c ****     if( ( GpioIrq[callbackIndex] != NULL ) && ( GpioIrq[callbackIndex]->IrqHandler != NULL ) )
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 27
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 27
 
 
  960              		.loc 1 392 5 is_stmt 1 view .LVU259
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  1002 0028 F9E7     		b	.L94
  1003              	.L101:
  1004 002a 00BF     		.align	2
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 28
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 28
 
 
  1005              	.L100:
@@ -1642,36 +1642,36 @@ ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 1
  1022              		.file 5 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_gpio.h"
  1023              		.file 6 "Drivers/sx126x/system/gpio.h"
  1024              		.file 7 "Drivers/STM32L4xx_HAL_Driver/Inc/stm32l4xx_hal_cortex.h"
-ARM GAS  C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s 			page 29
+ARM GAS  C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s 			page 29
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 gpio-board.c
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:18     .text.GpioMcuSetContext:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:26     .text.GpioMcuSetContext:00000000 GpioMcuSetContext
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:44     .text.GpioMcuSetInterrupt:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:51     .text.GpioMcuSetInterrupt:00000000 GpioMcuSetInterrupt
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:173    .text.GpioMcuSetInterrupt:0000006e $d
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:370    .text.GpioMcuSetInterrupt:00000148 $d
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:379    .text.GpioMcuRemoveInterrupt:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:386    .text.GpioMcuRemoveInterrupt:00000000 GpioMcuRemoveInterrupt
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:445    .text.GpioMcuRemoveInterrupt:00000030 $d
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:450    .text.GpioMcuWrite:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:457    .text.GpioMcuWrite:00000000 GpioMcuWrite
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:500    .text.GpioMcuInit:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:507    .text.GpioMcuInit:00000000 GpioMcuInit
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:815    .text.GpioMcuInit:00000138 $d
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:824    .text.GpioMcuToggle:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:831    .text.GpioMcuToggle:00000000 GpioMcuToggle
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:871    .text.GpioMcuRead:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:878    .text.GpioMcuRead:00000000 GpioMcuRead
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:931    .text.HAL_GPIO_EXTI_Callback:00000000 $t
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:938    .text.HAL_GPIO_EXTI_Callback:00000000 HAL_GPIO_EXTI_Callback
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:1006   .text.HAL_GPIO_EXTI_Callback:0000002c $d
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:1011   .bss.GpioIrq:00000000 $d
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:1015   .bss.GpioIrq:00000000 GpioIrq
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:205    .text.GpioMcuSetInterrupt:0000008d $d
-C:\Users\andywei\AppData\Local\Temp\cchBvYJz.s:205    .text.GpioMcuSetInterrupt:0000008e $t
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:18     .text.GpioMcuSetContext:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:26     .text.GpioMcuSetContext:00000000 GpioMcuSetContext
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:44     .text.GpioMcuSetInterrupt:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:51     .text.GpioMcuSetInterrupt:00000000 GpioMcuSetInterrupt
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:173    .text.GpioMcuSetInterrupt:0000006e $d
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:370    .text.GpioMcuSetInterrupt:00000148 $d
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:379    .text.GpioMcuRemoveInterrupt:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:386    .text.GpioMcuRemoveInterrupt:00000000 GpioMcuRemoveInterrupt
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:445    .text.GpioMcuRemoveInterrupt:00000030 $d
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:450    .text.GpioMcuWrite:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:457    .text.GpioMcuWrite:00000000 GpioMcuWrite
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:500    .text.GpioMcuInit:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:507    .text.GpioMcuInit:00000000 GpioMcuInit
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:815    .text.GpioMcuInit:00000138 $d
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:824    .text.GpioMcuToggle:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:831    .text.GpioMcuToggle:00000000 GpioMcuToggle
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:871    .text.GpioMcuRead:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:878    .text.GpioMcuRead:00000000 GpioMcuRead
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:931    .text.HAL_GPIO_EXTI_Callback:00000000 $t
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:938    .text.HAL_GPIO_EXTI_Callback:00000000 HAL_GPIO_EXTI_Callback
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:1006   .text.HAL_GPIO_EXTI_Callback:0000002c $d
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:1011   .bss.GpioIrq:00000000 $d
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:1015   .bss.GpioIrq:00000000 GpioIrq
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:205    .text.GpioMcuSetInterrupt:0000008d $d
+C:\Users\andywei\AppData\Local\Temp\ccWpHqWc.s:205    .text.GpioMcuSetInterrupt:0000008e $t
 
 UNDEFINED SYMBOLS
 HAL_GPIO_Init
